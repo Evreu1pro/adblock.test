@@ -1,0 +1,1269 @@
+<!DOCTYPE html>
+<html lang="en"> <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PrivacyTester 2025 - Detailed Report</title> <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+
+    <style>
+        /* ... (All previous CSS styles remain the same) ... */
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+        .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        body.dark-mode { background-color: #1a202c; color: #f7fafc; }
+        .dark-mode .dark\:bg-gray-800 { background-color: #2d3748 !important; }
+        .dark-mode .dark\:bg-gray-900 { background-color: #1a202c !important; }
+        .dark-mode .dark\:text-white { color: #f7fafc !important; }
+        .dark-mode .dark\:text-gray-300 { color: #cbd5e0 !important; }
+        .dark-mode .dark\:border-gray-700 { border-color: #4a5568 !important; }
+        .dark-mode .dark\:hover\:bg-gray-700:hover { background-color: #4a5568 !important; }
+        .dark-mode .dark\:bg-opacity-30 { background-color: rgba(255, 255, 255, 0.08) !important; }
+        .dark-mode .dark\:bg-indigo-900 { background-color: #4c51bf !important; }
+        .dark-mode .dark\:bg-purple-900 { background-color: #553c9a !important; }
+        .progress-bar { transition: width 0.3s ease-in-out; }
+        .result-icon { width: 1.1rem; height: 1.1rem; margin-right: 0.4rem; display: inline-block; vertical-align: middle;}
+        .status-line { min-height: 1.5em; }
+        .currently-checking { font-style: italic; color: #6b7280; font-size: 0.8rem; }
+        .dark-mode .currently-checking { color: #9ca3af; }
+
+        /* Result colors */
+        .result-success { color: #34d399; } .result-fail { color: #f87171; } .result-warning { color: #fbbf24; } .result-info { color: #60a5fa; }
+        .dark-mode .result-success { color: #6ee7b7; } .dark-mode .result-fail { color: #fca5a5; } .dark-mode .result-warning { color: #fcd34d; } .dark-mode .result-info { color: #93c5fd; }
+
+         /* Domain list item styles */
+         .domain-item { display: flex; align-items: center; font-size: 0.8rem; margin-bottom: 0.25rem; }
+         .domain-item .fa-check-circle { color: #34d399; margin-right: 0.5rem; } /* Green */
+         .domain-item .fa-times-circle { color: #f87171; margin-right: 0.5rem; } /* Red */
+         .dark-mode .domain-item .fa-check-circle { color: #6ee7b7; }
+         .dark-mode .domain-item .fa-times-circle { color: #fca5a5; }
+         .domain-name { font-family: monospace; color: #4b5563; } /* Gray 600 */
+         .dark-mode .domain-name { color: #d1d5db; } /* Gray 300 */
+         .domain-status { margin-left: auto; font-weight: 500; }
+         .domain-status-blocked { color: #34d399; } /* Green */
+         .domain-status-allowed { color: #f87171; } /* Red */
+         .dark-mode .domain-status-blocked { color: #6ee7b7; }
+         .dark-mode .domain-status-allowed { color: #fca5a5; }
+
+
+        /* Code block styles */
+        .code-block { background-color: #f3f4f6; border-radius: 0.375rem; padding: 1rem; overflow-x: auto; font-family: monospace; font-size: 0.875rem; line-height: 1.25rem; margin-bottom: 1rem; white-space: pre; }
+        .dark-mode .code-block { background-color: #2d3748; color: #e2e8f0; }
+        .dark-mode .hljs { background: #2d3748 !important; color: #e2e8f0 !important; }
+        .hljs { background: #f3f4f6 !important; color: #1f2937 !important; }
+
+        /* Styles for <details> element */
+        details {
+            border: 1px solid #e5e7eb; /* Gray 200 */
+            border-radius: 0.375rem; /* rounded-md */
+            margin-bottom: 0.75rem; /* mb-3 */
+            background-color: #ffffff;
+        }
+        details[open] {
+             background-color: #f9fafb; /* Gray 50 */
+        }
+        .dark-mode details {
+             border-color: #4b5563; /* Gray 600 */
+             background-color: #374151; /* Gray 700 */
+        }
+         .dark-mode details[open] {
+             background-color: #4b5563; /* Gray 600 */
+         }
+
+        summary {
+            padding: 0.75rem 1rem; /* p-3 p-4 */
+            cursor: pointer;
+            font-weight: 600; /* font-semibold */
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            list-style: none; /* Remove default marker */
+            color: #1f2937; /* Gray 800 */
+        }
+        summary::-webkit-details-marker { display: none; } /* Hide marker in Chrome/Safari */
+        summary::marker { display: none; } /* Hide marker in Firefox */
+        .dark-mode summary {
+             color: #f3f4f6; /* Gray 100 */
+        }
+
+        summary .summary-icon { /* For the warning icon */
+            margin-right: 0.5rem;
+        }
+         summary .summary-category-status { /* For 'X/Y Blocked' text */
+             font-size: 0.8rem;
+             font-weight: normal;
+             color: #6b7280; /* Gray 500 */
+             margin-left: 1rem;
+         }
+         .dark-mode summary .summary-category-status {
+             color: #9ca3af; /* Gray 400 */
+         }
+
+        summary .summary-arrow { /* Custom arrow */
+             transition: transform 0.2s ease-in-out;
+             margin-left: auto; /* Push arrow to the right */
+        }
+        details[open] summary .summary-arrow {
+            transform: rotate(90deg);
+        }
+
+        .details-content {
+            padding: 0 1rem 1rem 1rem; /* px-4 pb-4 */
+            font-size: 0.875rem; /* text-sm */
+            color: #4b5563; /* Gray 600 */
+            border-top: 1px solid #e5e7eb; /* Gray 200 */
+            margin-top: 0.5rem; /* Add space between summary and content */
+        }
+        .dark-mode .details-content {
+             color: #d1d5db; /* Gray 300 */
+             border-top-color: #4b5563; /* Gray 600 */
+        }
+        .details-content strong { /* Highlight implications */
+             color: #c2410c; /* Orange 700 */
+        }
+        .dark-mode .details-content strong {
+             color: #fdba74; /* Orange 300 */
+        }
+        .details-content code { /* Inline code for data points */
+            background-color: rgba(209, 213, 219, 0.3); /* Gray 300 with opacity */
+            padding: 0.1em 0.3em;
+            border-radius: 0.2em;
+            font-size: 0.9em;
+        }
+        .dark-mode .details-content code {
+             background-color: rgba(75, 85, 99, 0.5); /* Gray 600 with opacity */
+        }
+    </style>
+</head>
+<body class="bg-gray-50 font-sans">
+    <div class="fixed top-4 right-4 z-50"> <button id="darkModeToggle" class="p-2 rounded-full bg-white shadow-lg text-gray-800 hover:bg-gray-200 transition dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"><i class="fas fa-moon"></i></button> </div>
+     <header class="gradient-bg text-white py-16"> <div class="container mx-auto px-4"> <div class="max-w-4xl mx-auto text-center animate-fade-in"> <h1 id="mainTitle" class="text-4xl md:text-6xl font-bold mb-6">PrivacyTester 2025</h1> <p id="subTitle" class="text-xl md:text-2xl mb-8">Advanced Browser Privacy & Tracking Test</p> <button id="startTestBtn" class="bg-white text-indigo-700 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-lg"> Start Advanced Test <i class="fas fa-vial ml-2"></i> </button> </div> </div> </header>
+
+    <main>
+        <section id="testSection" class="py-16 hidden">
+             <div class="container mx-auto px-4"> <h2 id="testInProgressTitle" class="text-3xl font-bold text-center mb-12 dark:text-white">Advanced Privacy Test in Progress</h2> <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden dark:bg-gray-800 dark:text-white"> <div class="bg-gray-200 h-2 dark:bg-gray-700"><div id="testProgress" class="bg-indigo-600 h-full progress-bar" style="width: 0%"></div></div> <div id="testStepsContainer" class="p-6 space-y-4"></div> <div id="testComplete" class="hidden text-center p-6"> <div class="bg-green-100 text-green-800 p-4 rounded-lg mb-6 dark:bg-green-900 dark:text-green-100"><i class="fas fa-check-circle text-4xl mb-3"></i><h3 id="testCompleteTitle" class="text-2xl font-bold mb-2">Advanced Test Complete!</h3><p id="testCompleteSubTitle">Your detailed privacy analysis is ready.</p></div> <button id="viewResultsBtn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"> View Detailed Results <i class="fas fa-arrow-right ml-2"></i> </button> </div> </div> </div>
+        </section>
+
+        <section id="resultsSection" class="py-16 bg-gray-100 hidden dark:bg-gray-900">
+            <div class="container mx-auto px-4">
+                <h2 id="resultsTitle" class="text-3xl font-bold text-center mb-12 dark:text-white">Advanced Privacy Analysis Results</h2>
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-8 dark:bg-gray-800">
+                        <div class="p-6">
+                            <h3 id="summaryTitle" class="text-2xl font-semibold mb-6 dark:text-white">Summary</h3>
+                            <div id="resultsSummaryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
+                                </div>
+
+                            <h3 id="detailedAnalysisTitle" class="text-2xl font-semibold mb-6 mt-10 dark:text-white">Detailed Test Analysis</h3>
+                            <div id="resultsDetailedContainer" class="space-y-4">
+                                </div>
+
+                            <h3 id="trackerBreakdownTitle" class="text-2xl font-semibold mb-6 mt-10 dark:text-white">Tracker Blocking Breakdown</h3>
+                            <div id="trackerBreakdownContainer" class="space-y-3">
+                                <p id="trackerBreakdownLoading" class="text-gray-500 dark:text-gray-400 italic"></p>
+                            </div>
+
+                            <h3 id="exposedInfoTitle" class="text-2xl font-semibold mb-4 mt-10 dark:text-white">Potentially Exposed Information Analysis</h3>
+                             <div id="exposedInfoContainer" class="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
+                                 <p id="exposedInfoSubTitle" class="mb-4 dark:text-gray-300">Analysis of techniques where your browser's protection might be bypassed:</p>
+                                 <div id="exposedInfoList" class="space-y-3">
+                                     <p id="noExposureText" class="hidden text-green-700 dark:text-green-300 font-semibold">
+                                         <i class="fas fa-shield-alt mr-2"></i><span id="noExposureMessage">No significant information exposure vectors were detected in this test.</span>
+                                     </p>
+                                     </div>
+                                 <p id="exposedInfoAssessment" class="mt-4 font-semibold text-sm text-gray-800 dark:text-gray-100 border-t border-gray-300 dark:border-gray-600 pt-3"></p>
+                             </div>
+
+                            <div class="mt-8 bg-indigo-50 p-4 rounded-lg dark:bg-indigo-900 dark:bg-opacity-30">
+                                <h4 id="recommendationsTitle" class="text-lg font-semibold mb-2 dark:text-white">Recommendations</h4>
+                                <ul id="recommendationsList" class="list-disc pl-5 space-y-1 dark:text-gray-300">
+                                    </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center space-y-4 md:space-y-0 md:space-x-4">
+                         <button id="viewArchitectureBtn" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"> View Platform Architecture <i class="fas fa-cogs ml-2"></i> </button>
+                         <button id="runAgainBtn" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition border border-indigo-600 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700"> Run Test Again <i class="fas fa-sync-alt ml-2"></i> </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="architectureSection" class="py-16 hidden bg-gray-100 dark:bg-gray-900">
+             <div class="container mx-auto px-4">
+                 <h2 id="architectureTitle" class="text-3xl font-bold text-center mb-6 dark:text-white">Расширенная архитектура экспертной системы...</h2>
+                 <div class="max-w-5xl mx-auto space-y-12">
+                     <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800"> <h3 id="archGlobalDbTitle" class="text-2xl font-semibold mb-6 dark:text-white">1. Глобальная база трекеров...</h3> </div>
+                     <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800"> <h3 id="archMultiPlatformTitle" class="text-2xl font-semibold mb-6 dark:text-white">2. Многоплатформенное тестирование...</h3> </div>
+                     <div class="bg-indigo-50 p-6 rounded-xl shadow-lg dark:bg-indigo-900 dark:bg-opacity-30"> <h3 id="archConclusionTitle" class="text-2xl font-semibold mb-4 dark:text-white">Итог</h3> </div>
+                     <div class="text-center mt-12"> <button id="backToResultsFromArchBtn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"> <i class="fas fa-arrow-left mr-2"></i> Back to Results </button> </div>
+                 </div>
+             </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-800 text-white py-8 dark:bg-gray-900"> </footer>
+
+    <script>
+        // --- Internationalization (i18n) ---
+        const translations = {
+            'en': {
+                // Meta & Titles
+                htmlLang: 'en',
+                pageTitle: 'PrivacyTester 2025 - Detailed Report',
+                mainTitle: 'PrivacyTester 2025',
+                subTitle: 'Advanced Browser Privacy & Tracking Test',
+                testInProgressTitle: 'Advanced Privacy Test in Progress',
+                testCompleteTitle: 'Advanced Test Complete!',
+                testCompleteSubTitle: 'Your detailed privacy analysis is ready.',
+                resultsTitle: 'Advanced Privacy Analysis Results',
+                summaryTitle: 'Summary',
+                detailedAnalysisTitle: 'Detailed Test Analysis',
+                trackerBreakdownTitle: 'Tracker Blocking Breakdown',
+                exposedInfoTitle: 'Potentially Exposed Information Analysis',
+                exposedInfoSubTitle: "Analysis of techniques where your browser's protection might be bypassed:",
+                noExposureMessage: 'No significant information exposure vectors were detected in this test.',
+                recommendationsTitle: 'Recommendations',
+                architectureTitle: 'Advanced Expert System Architecture...',
+                archGlobalDbTitle: '1. Global Tracker Database...',
+                archMultiPlatformTitle: '2. Multi-Platform Testing...',
+                archConclusionTitle: 'Conclusion',
+                overallScoreLabel: 'Overall Privacy Score',
+                // Button Texts (Initial Load)
+                startTestBtn: 'Start Advanced Test',
+                viewResultsBtn: 'View Detailed Results',
+                viewArchitectureBtn: 'View Platform Architecture',
+                runAgainBtn: 'Run Test Again',
+                backToResultsFromArchBtn: 'Back to Results',
+                // Test Names (used as keys for results/recommendations)
+                testName_cosmeticFiltering: 'Cosmetic Ad Filtering (Static/Dynamic)',
+                testName_cnameCloaking: 'CNAME Cloaking Defense',
+                testName_fingerprintingAPI: 'Browser API Fingerprinting',
+                testName_canvasFingerprinting: 'Canvas Fingerprinting Resistance',
+                testName_audioFingerprinting: 'Audio Fingerprinting Resistance',
+                testName_webRTCLeak: 'WebRTC IP Leak',
+                testName_serviceWorkerTracking: 'Service Worker Tracking',
+                testName_webSocketTracking: 'WebSocket Tracking',
+                testName_comprehensiveTracking: 'Comprehensive Tracker Blocking',
+                testName_scriptAds: 'Ad Script Execution (Informational)', // Conceptual
+                testName_scriptPagead: 'Page Ad Script Execution (Informational)', // Conceptual
+                // Status & Result Messages
+                statusInitializing: 'Initializing...',
+                statusBlocked: 'Blocked',
+                statusAllowed: 'Allowed',
+                statusFailed: 'Failed',
+                statusRestricted: 'Restricted',
+                statusProtected: 'Protected',
+                statusVisible: 'Visible',
+                statusCompleted: 'Complete',
+                statusError: 'Test execution failed.',
+                cosmeticFilteringBlockedMsg: '{count}/2 ad element types likely hidden.',
+                cosmeticFilteringVisibleMsg: '{count}/2 ad element types visible.',
+                cnameCloakingBlockedMsg: 'CNAME cloak defense detected.',
+                cnameCloakingAllowedMsg: 'CNAME cloaked request allowed (potential tracking).',
+                cnameCloakingError: 'Cannot test CNAME (invalid hostname).',
+                fingerprintingRestrictedMsg: '{restricted}/{total} fingerprinting APIs restricted.',
+                fingerprintingExposureMsg: '{exposed}/{total} fingerprinting APIs exposed data.',
+                canvasResistedRandom: 'Canvas fingerprinting likely resisted (randomized).',
+                canvasResistedBlank: 'Canvas fingerprinting likely resisted (blank/restricted API).',
+                canvasVulnerable: 'Canvas API accessible, potential fingerprinting vector.',
+                canvasFailed: 'Canvas fingerprinting resisted (API access failed).',
+                audioResistedZero: 'Audio fingerprinting likely resisted (zero/uniform data).',
+                audioResistedFailed: 'Audio fingerprinting resisted (API access failed).',
+                audioVulnerable: 'Web Audio API accessible, potential fingerprinting vector.',
+                webRTCLeakBlocked: 'WebRTC connection attempt did not reveal potential local IPs.',
+                webRTCLeakDetected: 'WebRTC SDP potentially leaks local IP/hostname.',
+                webRTCLeakFailed: 'WebRTC API access failed or restricted.',
+                swTrackingBlocked: 'Service Worker registration failed or blocked.',
+                swTrackingAllowed: 'Service Worker registration allowed (potential persistent tracking).',
+                swTrackingNotSupported: 'Service Workers not supported.',
+                wsTrackingBlocked: 'WebSocket connection blocked or failed.',
+                wsTrackingAllowed: 'WebSocket connection allowed (potential real-time tracking).',
+                wsTrackingTimeout: 'WebSocket connection timed out.',
+                comprehensiveBlockedMsg: '{blocked}/{total} known trackers blocked across all categories.',
+                comprehensiveSomeAllowedMsg: '{blocked}/{total} known trackers blocked. Some ({allowed}) were allowed.',
+                scriptAdsBlockedMsg: 'Ad script loading appears blocked (Informational).', // Placeholder
+                scriptAdsAllowedMsg: 'Ad script loading may be allowed (Informational).', // Placeholder
+                scriptPageadBlockedMsg: 'Page ad script loading appears blocked (Informational).', // Placeholder
+                scriptPageadAllowedMsg: 'Page ad script loading may be allowed (Informational).', // Placeholder
+
+                // Exposed Info Implications (keys match test IDs)
+                implication_cosmeticFiltering: "If ad elements aren't hidden, they can be visually disruptive and trackers within them might still load, even if scripts are blocked.",
+                implication_cnameCloaking: "This technique masks third-party trackers under a first-party subdomain (e.g., `stats.your-site.com` actually pointing to a tracker). If allowed, it bypasses standard domain-based blocklists, allowing trackers to operate undetected and collect Browse data.",
+                implication_fingerprintingAPI: "Your browser provides various details (CPU, memory, screen, fonts, language, etc.) via APIs. Individually minor, these details combined create a highly unique 'fingerprint'. Trackers collect this to identify and track your specific browser across sites and sessions, often even if you clear cookies or use private mode.",
+                implication_canvasFingerprinting: "Websites can instruct your browser to draw a hidden image using the Canvas API. Minor variations in your graphics card, drivers, and installed fonts cause the resulting image data to be unique. This unique hash acts as a stable identifier for your browser, contributing significantly to your overall digital fingerprint.",
+                implication_audioFingerprinting: "Similar to Canvas, the Web Audio API can process a sound signal. Variations in your audio hardware and software produce a unique output hash. This adds another stable identifier to your browser's fingerprint, making you easier to track across different websites.",
+                implication_webRTCLeak: "WebRTC, used for real-time communication, can inadvertently reveal your actual local IP address or computer's mDNS name, even if you're using a VPN. This leak can deanonymize your connection and expose your network details.",
+                implication_serviceWorkerTracking: "Service Workers allow websites to run scripts in the background, even when the site tab is closed. If allowed for tracking purposes, they can persistently monitor activity, sync data, or regenerate tracking identifiers, making tracking much harder to evade.",
+                implication_webSocketTracking: "WebSockets provide a persistent, two-way communication channel. Trackers can use this to monitor your interactions (mouse movements, clicks, typing) on a page in real-time and send this data back instantly, creating a very granular activity log.",
+                implication_comprehensiveTracking: "Failure to block known tracker domains allows advertising networks, analytics companies, social media platforms, and others to monitor your activity across different websites, build detailed profiles about your interests and behavior, and potentially link your activity back to you.",
+                implication_scriptAds: "(Informational) Allowing external ad scripts is the primary way most ad networks track users and display ads.",
+                implication_scriptPagead: "(Informational) Allowing Google's specific page ad scripts enables their widespread tracking and advertising network.",
+
+                // Exposed Info Summary Texts
+                exposedDataIntro: "Specific details potentially forming your unique digital fingerprint include:",
+                assessmentLow: "Low potential",
+                assessmentModerate: "Moderate potential",
+                assessmentHigh: "High potential",
+                assessmentOverall: "Overall assessment: Your setup shows {level} for information exposure via {count} of the techniques tested. ",
+                assessmentFingerprintData: "This combined information can be used by trackers to build a detailed profile, track you across websites, and deliver targeted (often unwanted) content or ads.",
+                assessmentExcellent: "Excellent! Your browser configuration appears to strongly resist the tracking techniques tested.",
+
+                // Recommendations (keys match test IDs)
+                recommendation_cosmeticFiltering: 'Enhance cosmetic filtering rules in your ad/tracker blocker.',
+                recommendation_cnameCloaking: 'Use a blocker with effective CNAME uncloaking capabilities (e.g., uBlock Origin).',
+                recommendation_fingerprintingAPI: 'Use a privacy-focused browser or extensions that limit API exposure (e.g., Brave, Firefox with resistFingerprinting, NoScript).',
+                recommendation_canvasFingerprinting: 'Enable Canvas fingerprinting resistance (randomization/blocking) in your browser or extensions.',
+                recommendation_audioFingerprinting: 'Consider privacy browsers or settings designed to resist audio fingerprinting.',
+                recommendation_webRTCLeak: 'Check WebRTC leak prevention settings in your browser/VPN, or use extensions specifically for this.',
+                recommendation_serviceWorkerTracking: 'Review browser settings for Service Worker control or rely on your tracker blocker.',
+                recommendation_webSocketTracking: 'Ensure your tracker blocker effectively blocks domains that use WebSockets for tracking.',
+                recommendation_comprehensiveTracking: 'Ensure your tracker blocker list is comprehensive and up-to-date. Review the allowed domains in the breakdown.',
+                 recommendation_scriptAds: '(Informational) Use a robust script blocker (like uBlock Origin or NoScript) to control ad script execution.',
+                 recommendation_scriptPagead: '(Informational) Ensure Google ad scripts are blocked by your primary blocker.',
+                // Generic Recommendations
+                recommendation_genericReview: 'Review the failed tests above and consider general privacy enhancements.',
+                recommendation_genericKeepUpdated: 'Keep your browser and privacy tools updated to maintain this level of protection.',
+                recommendation_genericUsePrivacyTools: 'Consider using privacy-focused browsers (e.g., Brave, Firefox) or extensions (e.g., uBlock Origin, Privacy Badger).',
+                recommendation_genericClearData: 'Regularly clear unnecessary browser data (cookies, site data).',
+                // Tracker Categories
+                categoryName_Ads: 'Advertising Trackers',
+                categoryName_Analytics: 'Analytics & Session Replay',
+                categoryName_ErrorTrackers: 'Error Trackers',
+                categoryName_SocialTrackers: 'Social Media Trackers',
+                categoryName_Mix: 'Mixed Trackers',
+                categoryName_OEMs: 'Device Manufacturer Trackers (OEMs)',
+                // Misc
+                detailsLabel: 'Details',
+                scoreImpactLabel: 'Score Impact',
+                dataPointsLabel: 'Specific Data Points Exposed:',
+                implicationLabel: 'Implication',
+                blockedRatioText: '{blocked}/{total} Blocked',
+
+            },
+            'ru': {
+                // Meta & Titles
+                htmlLang: 'ru',
+                pageTitle: 'PrivacyTester 2025 - Подробный отчет',
+                mainTitle: 'PrivacyTester 2025',
+                subTitle: 'Расширенный тест приватности и отслеживания браузера',
+                testInProgressTitle: 'Выполняется расширенный тест приватности',
+                testCompleteTitle: 'Расширенный тест завершен!',
+                testCompleteSubTitle: 'Ваш подробный анализ приватности готов.',
+                resultsTitle: 'Результаты расширенного анализа приватности',
+                summaryTitle: 'Сводка',
+                detailedAnalysisTitle: 'Детальный анализ тестов',
+                trackerBreakdownTitle: 'Блокировка трекеров (по категориям)',
+                exposedInfoTitle: 'Анализ потенциально раскрытой информации',
+                exposedInfoSubTitle: 'Анализ методов, с помощью которых защита вашего браузера может быть обойдена:',
+                noExposureMessage: 'В этом тесте не обнаружено существенных векторов утечки информации.',
+                recommendationsTitle: 'Рекомендации',
+                architectureTitle: 'Расширенная архитектура экспертной системы...',
+                archGlobalDbTitle: '1. Глобальная база трекеров...',
+                archMultiPlatformTitle: '2. Многоплатформенное тестирование...',
+                archConclusionTitle: 'Итог',
+                overallScoreLabel: 'Общий балл приватности',
+                 // Button Texts (Initial Load)
+                startTestBtn: 'Начать расширенный тест',
+                viewResultsBtn: 'Посмотреть подробные результаты',
+                viewArchitectureBtn: 'Посмотреть архитектуру платформы',
+                runAgainBtn: 'Запустить тест снова',
+                backToResultsFromArchBtn: 'Назад к результатам',
+                 // Test Names
+                testName_cosmeticFiltering: 'Косметическая фильтрация рекламы (стат./динам.)',
+                testName_cnameCloaking: 'Защита от CNAME Cloaking',
+                testName_fingerprintingAPI: 'Fingerprinting через API браузера',
+                testName_canvasFingerprinting: 'Устойчивость к Canvas Fingerprinting',
+                testName_audioFingerprinting: 'Устойчивость к Audio Fingerprinting',
+                testName_webRTCLeak: 'Утечка IP через WebRTC',
+                testName_serviceWorkerTracking: 'Отслеживание через Service Worker',
+                testName_webSocketTracking: 'Отслеживание через WebSocket',
+                testName_comprehensiveTracking: 'Комплексная блокировка трекеров',
+                testName_scriptAds: 'Выполнение скриптов рекламы (Инфо)', // Conceptual
+                testName_scriptPagead: 'Выполнение скриптов Page Ad (Инфо)', // Conceptual
+                 // Status & Result Messages
+                statusInitializing: 'Инициализация...',
+                statusBlocked: 'Заблокировано',
+                statusAllowed: 'Разрешено',
+                statusFailed: 'Не пройдено',
+                statusRestricted: 'Ограничено',
+                statusProtected: 'Защищено',
+                statusVisible: 'Видно',
+                statusCompleted: 'Завершено',
+                statusError: 'Ошибка выполнения теста.',
+                cosmeticFilteringBlockedMsg: 'Вероятно, скрыто {count}/2 типов рекламных элементов.',
+                cosmeticFilteringVisibleMsg: 'Видно {count}/2 типов рекламных элементов.',
+                cnameCloakingBlockedMsg: 'Обнаружена защита от CNAME cloak.',
+                cnameCloakingAllowedMsg: 'Разрешен замаскированный CNAME запрос (потенциальное отслеживание).',
+                cnameCloakingError: 'Не удается проверить CNAME (неверное имя хоста).',
+                fingerprintingRestrictedMsg: 'Ограничен доступ к {restricted}/{total} API для fingerprinting.',
+                fingerprintingExposureMsg: 'Раскрыты данные через {exposed}/{total} API для fingerprinting.',
+                canvasResistedRandom: 'Вероятно, Canvas fingerprinting отражен (рандомизация).',
+                canvasResistedBlank: 'Вероятно, Canvas fingerprinting отражен (пустой/ограниченный API).',
+                canvasVulnerable: 'Canvas API доступен, потенциальный вектор fingerprinting.',
+                canvasFailed: 'Canvas fingerprinting отражен (ошибка доступа к API).',
+                audioResistedZero: 'Вероятно, Audio fingerprinting отражен (нулевые/одинаковые данные).',
+                audioResistedFailed: 'Audio fingerprinting отражен (ошибка доступа к API).',
+                audioVulnerable: 'Web Audio API доступен, потенциальный вектор fingerprinting.',
+                webRTCLeakBlocked: 'Попытка соединения WebRTC не выявила потенциальных локальных IP.',
+                webRTCLeakDetected: 'WebRTC SDP потенциально раскрывает локальный IP/имя хоста.',
+                webRTCLeakFailed: 'Доступ к WebRTC API не удался или ограничен.',
+                swTrackingBlocked: 'Регистрация Service Worker не удалась или заблокирована.',
+                swTrackingAllowed: 'Регистрация Service Worker разрешена (потенциальное постоянное отслеживание).',
+                swTrackingNotSupported: 'Service Workers не поддерживаются.',
+                wsTrackingBlocked: 'Соединение WebSocket заблокировано или не удалось.',
+                wsTrackingAllowed: 'Соединение WebSocket разрешено (потенциальное отслеживание в реальном времени).',
+                wsTrackingTimeout: 'Тайм-аут соединения WebSocket.',
+                comprehensiveBlockedMsg: 'Заблокировано {blocked}/{total} известных трекеров по всем категориям.',
+                comprehensiveSomeAllowedMsg: 'Заблокировано {blocked}/{total} известных трекеров. Некоторые ({allowed}) были разрешены.',
+                scriptAdsBlockedMsg: 'Загрузка скриптов рекламы, похоже, заблокирована (Инфо).',
+                scriptAdsAllowedMsg: 'Загрузка скриптов рекламы может быть разрешена (Инфо).',
+                scriptPageadBlockedMsg: 'Загрузка скриптов Page Ad, похоже, заблокирована (Инфо).',
+                scriptPageadAllowedMsg: 'Загрузка скриптов Page Ad может быть разрешена (Инфо).',
+
+                 // Exposed Info Implications
+                implication_cosmeticFiltering: 'Если рекламные элементы не скрыты, они могут мешать визуально, а трекеры внутри них все еще могут загружаться, даже если скрипты заблокированы.',
+                implication_cnameCloaking: 'Этот метод маскирует сторонние трекеры под поддоменом первого уровня (например, `stats.your-site.com`, фактически указывающий на трекер). Если разрешено, это обходит стандартные списки блокировки по домену, позволяя трекерам работать незаметно и собирать данные о просмотре.',
+                implication_fingerprintingAPI: 'Ваш браузер предоставляет различные сведения (ЦП, память, экран, шрифты, язык и т. д.) через API. По отдельности незначительные, эти детали в совокупности создают уникальный "отпечаток". Трекеры собирают его для идентификации и отслеживания вашего браузера на сайтах и в сессиях, часто даже если вы чистите куки или используете приватный режим.',
+                implication_canvasFingerprinting: 'Веб-сайты могут приказать вашему браузеру нарисовать скрытое изображение с помощью Canvas API. Небольшие различия в вашей видеокарте, драйверах и установленных шрифтах делают результирующие данные изображения уникальными. Этот уникальный хэш действует как стабильный идентификатор для вашего браузера, внося значительный вклад в ваш цифровой отпечаток.',
+                implication_audioFingerprinting: 'Подобно Canvas, Web Audio API может обрабатывать звуковой сигнал. Вариации в вашем аудиооборудовании и ПО создают уникальный выходной хэш. Это добавляет еще один стабильный идентификатор к отпечатку вашего браузера, облегчая ваше отслеживание на разных веб-сайтах.',
+                implication_webRTCLeak: 'WebRTC, используемый для общения в реальном времени, может случайно раскрыть ваш реальный локальный IP-адрес или mDNS-имя компьютера, даже если вы используете VPN. Эта утечка может деанонимизировать ваше соединение и раскрыть детали вашей сети.',
+                implication_serviceWorkerTracking: 'Service Workers позволяют веб-сайтам запускать скрипты в фоновом режиме, даже когда вкладка сайта закрыта. Если разрешено для целей отслеживания, они могут постоянно отслеживать активность, синхронизировать данные или восстанавливать идентификаторы отслеживания, что значительно усложняет уклонение от отслеживания.',
+                implication_webSocketTracking: 'WebSockets обеспечивают постоянный двусторонний канал связи. Трекеры могут использовать это для мониторинга ваших взаимодействий (движения мыши, клики, ввод текста) на странице в реальном времени и мгновенной отправки этих данных, создавая очень подробный журнал активности.',
+                implication_comprehensiveTracking: 'Неспособность блокировать известные домены трекеров позволяет рекламным сетям, аналитическим компаниям, социальным сетям и другим отслеживать вашу активность на разных веб-сайтах, создавать подробные профили о ваших интересах и поведении и потенциально связывать вашу активность с вами.',
+                 implication_scriptAds: '(Инфо) Разрешение внешних рекламных скриптов — основной способ, которым большинство рекламных сетей отслеживают пользователей и показывают рекламу.',
+                 implication_scriptPagead: '(Инфо) Разрешение специфических скриптов Google page ad обеспечивает их широкое отслеживание и рекламную сеть.',
+
+                // Exposed Info Summary Texts
+                exposedDataIntro: "Конкретные детали, потенциально формирующие ваш уникальный цифровой отпечаток, включают:",
+                assessmentLow: "Низкий потенциал",
+                assessmentModerate: "Средний потенциал",
+                assessmentHigh: "Высокий потенциал",
+                assessmentOverall: "Общая оценка: Ваша конфигурация показывает {level} для раскрытия информации через {count} протестированных методов. ",
+                assessmentFingerprintData: "Эта комбинированная информация может использоваться трекерами для создания подробного профиля, отслеживания вас на веб-сайтах и ​​предоставления целевого (часто нежелательного) контента или рекламы.",
+                assessmentExcellent: "Отлично! Конфигурация вашего браузера, по-видимому, эффективно противостоит протестированным методам отслеживания.",
+
+                 // Recommendations
+                recommendation_cosmeticFiltering: 'Улучшите правила косметической фильтрации в вашем блокировщике рекламы/трекеров.',
+                recommendation_cnameCloaking: 'Используйте блокировщик с эффективными возможностями демаскировки CNAME (например, uBlock Origin).',
+                recommendation_fingerprintingAPI: 'Используйте браузер, ориентированный на приватность, или расширения, ограничивающие доступ к API (например, Brave, Firefox с resistFingerprinting, NoScript).',
+                recommendation_canvasFingerprinting: 'Включите защиту от Canvas fingerprinting (рандомизация/блокировка) в вашем браузере или расширениях.',
+                recommendation_audioFingerprinting: 'Рассмотрите браузеры или настройки для защиты от Audio fingerprinting.',
+                recommendation_webRTCLeak: 'Проверьте настройки предотвращения утечек WebRTC в вашем браузере/VPN или используйте специальные расширения.',
+                recommendation_serviceWorkerTracking: 'Проверьте настройки браузера для контроля Service Worker или положитесь на ваш блокировщик трекеров.',
+                recommendation_webSocketTracking: 'Убедитесь, что ваш блокировщик эффективно блокирует домены, использующие WebSockets для отслеживания.',
+                recommendation_comprehensiveTracking: 'Убедитесь, что список вашего блокировщика трекеров полон и актуален. Просмотрите разрешенные домены в детальной разбивке.',
+                recommendation_scriptAds: '(Инфо) Используйте надежный блокировщик скриптов (например, uBlock Origin или NoScript) для контроля выполнения рекламных скриптов.',
+                recommendation_scriptPagead: '(Инфо) Убедитесь, что рекламные скрипты Google заблокированы вашим основным блокировщиком.',
+                 // Generic Recommendations
+                recommendation_genericReview: 'Просмотрите неудачные тесты выше и рассмотрите общие улучшения приватности.',
+                recommendation_genericKeepUpdated: 'Поддерживайте ваш браузер и инструменты приватности в актуальном состоянии для сохранения этого уровня защиты.',
+                recommendation_genericUsePrivacyTools: 'Рассмотрите использование браузеров, ориентированных на приватность (например, Brave, Firefox), или расширений (например, uBlock Origin, Privacy Badger).',
+                recommendation_genericClearData: 'Регулярно очищайте ненужные данные браузера (куки, данные сайтов).',
+                 // Tracker Categories
+                categoryName_Ads: 'Рекламные трекеры',
+                categoryName_Analytics: 'Аналитика и Запись сессий',
+                categoryName_ErrorTrackers: 'Трекеры ошибок',
+                categoryName_SocialTrackers: 'Трекеры социальных сетей',
+                categoryName_Mix: 'Смешанные трекеры',
+                categoryName_OEMs: 'Трекеры производителей устройств (OEM)',
+                // Misc
+                detailsLabel: 'Детали',
+                scoreImpactLabel: 'Влияние на балл',
+                dataPointsLabel: 'Конкретные раскрытые данные:',
+                implicationLabel: 'Последствия',
+                blockedRatioText: 'Заблокировано {blocked}/{total}',
+            }
+            // Add more languages here...
+        };
+
+        let currentLang = 'en'; // Default language
+
+        function detectLanguage() {
+            const browserLang = navigator.language || navigator.userLanguage || 'en';
+            const baseLang = browserLang.split('-')[0].toLowerCase();
+            if (translations[baseLang]) {
+                currentLang = baseLang;
+            } else {
+                currentLang = 'en'; // Fallback
+            }
+            document.documentElement.lang = translations[currentLang].htmlLang || 'en'; // Set html lang attribute
+            console.log("Detected language:", currentLang);
+        }
+
+        function getString(key, replacements = {}) {
+            const langTranslations = translations[currentLang] || translations['en'];
+            let str = langTranslations[key] || translations['en'][key] || key; // Fallback chain
+
+             // Perform replacements
+            for (const placeholder in replacements) {
+                 // Use a regex to replace all occurrences of {placeholder}
+                 // Need to escape placeholder for regex if it contains special chars, though unlikely here
+                 const regex = new RegExp(`\\{${placeholder}\\}`, 'g');
+                 str = str.replace(regex, replacements[placeholder]);
+             }
+            return str;
+        }
+
+        // Initialize language on load
+        detectLanguage();
+
+
+        // --- Dark Mode --- (Same JS as before)
+        const darkModeToggle = document.getElementById('darkModeToggle'); const body = document.body;
+        if (localStorage.getItem('darkMode') === 'enabled' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { enableDarkMode(); } else { disableDarkMode(); } darkModeToggle.addEventListener('click', () => { if (body.classList.contains('dark-mode')) { disableDarkMode(); localStorage.setItem('darkMode', 'disabled'); } else { enableDarkMode(); localStorage.setItem('darkMode', 'enabled'); } hljs.highlightAll(); }); function enableDarkMode() { body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; } function disableDarkMode() { body.classList.remove('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; } hljs.highlightAll();
+
+
+        // --- Section Navigation & Test Flow --- (References updated)
+        const startTestBtn = document.getElementById('startTestBtn');
+        const testSection = document.getElementById('testSection');
+        const resultsSection = document.getElementById('resultsSection');
+        const architectureSection = document.getElementById('architectureSection');
+        const testProgress = document.getElementById('testProgress');
+        const testStepsContainer = document.getElementById('testStepsContainer');
+        const testComplete = document.getElementById('testComplete');
+        const viewResultsBtn = document.getElementById('viewResultsBtn');
+        const runAgainBtn = document.getElementById('runAgainBtn');
+        const viewArchitectureBtn = document.getElementById('viewArchitectureBtn');
+        const backToResultsFromArchBtn = document.getElementById('backToResultsFromArchBtn');
+        const resultsSummaryContainer = document.getElementById('resultsSummaryContainer');
+        const resultsDetailedContainer = document.getElementById('resultsDetailedContainer');
+        const trackerBreakdownContainer = document.getElementById('trackerBreakdownContainer'); // New container
+        const trackerBreakdownLoading = document.getElementById('trackerBreakdownLoading'); // Loading text
+        const recommendationsList = document.getElementById('recommendationsList');
+        const exposedInfoContainer = document.getElementById('exposedInfoContainer');
+        const exposedInfoList = document.getElementById('exposedInfoList');
+        const exposedInfoAssessment = document.getElementById('exposedInfoAssessment');
+        const noExposureText = document.getElementById('noExposureText');
+
+
+        // --- Tracker Categories & Domains ---
+        const trackerCategories = {
+             'Ads': {
+                 nameKey: 'categoryName_Ads', // For translation
+                 testsCount: 20, // User provided number
+                 domains: [
+                    'adtago.s3.amazonaws.com', 'advice-ads.s3.amazonaws.com', // Amazon (Indirect)
+                    'pagead2.googlesyndication.com', 'adservice.google.com', 'pagead2.googleadservices.com', 'afs.googlesyndication.com', // Google Ads
+                    'stats.g.doubleclick.net', 'ad.doubleclick.net', 'static.doubleclick.net', 'm.doubleclick.net', 'mediavisor.doubleclick.net', // Doubleclick
+                    'ads30.adcolony.com', 'adc3-launch.adcolony.com', 'events3alt.adcolony.com', 'wd.adcolony.com', // AdColony
+                    'static.media.net', 'media.net', 'adservetx.media.net' // Media.net
+                 ]
+             },
+             'Analytics': {
+                 nameKey: 'categoryName_Analytics',
+                 testsCount: 30,
+                 domains: [
+                    'analytics.google.com', 'click.googleanalytics.com', 'google-analytics.com', 'ssl.google-analytics.com', // Google Analytics
+                    'adm.hotjar.com', 'identify.hotjar.com', 'insights.hotjar.com', 'script.hotjar.com', 'surveys.hotjar.com', 'careers.hotjar.com', 'events.hotjar.io', // Hotjar
+                    'mouseflow.com', 'cdn.mouseflow.com', 'o2.mouseflow.com', 'gtm.mouseflow.com', 'api.mouseflow.com', 'tools.mouseflow.com', 'cdn-test.mouseflow.com', // MouseFlow
+                    'freshmarketer.com', 'claritybt.freshmarketer.com', 'fwtracks.freshmarketer.com', // FreshWorks (FreshMarketer)
+                    'luckyorange.com', 'api.luckyorange.com', 'realtime.luckyorange.com', 'cdn.luckyorange.com', 'w1.luckyorange.com', 'upload.luckyorange.net', 'cs.luckyorange.net', 'settings.luckyorange.net', // Lucky Orange
+                    'stats.wp.com', // Stats WP Plugin (Automattic)
+                    'analyticsengine.s3.amazonaws.com', 'analytics.s3.amazonaws.com' // Amazon (Indirect)
+                 ]
+             },
+             'ErrorTrackers': {
+                 nameKey: 'categoryName_ErrorTrackers',
+                 testsCount: 6,
+                 domains: [
+                     'notify.bugsnag.com', 'sessions.bugsnag.com', 'api.bugsnag.com', 'app.bugsnag.com', // Bugsnag
+                     'browser.sentry-cdn.com', 'app.getsentry.com' // Sentry
+                 ]
+             },
+             'SocialTrackers': {
+                 nameKey: 'categoryName_SocialTrackers',
+                 testsCount: 20,
+                 domains: [
+                     'pixel.facebook.com', 'an.facebook.com', // Facebook
+                     'static.ads-twitter.com', 'ads-api.twitter.com', // Twitter
+                     'ads.linkedin.com', 'analytics.pointdrive.linkedin.com', // LinkedIn
+                     'ads.pinterest.com', 'log.pinterest.com', 'analytics.pinterest.com', 'trk.pinterest.com', // Pinterest
+                     'events.reddit.com', 'events.redditmedia.com', // Reddit
+                     'googleusercontent.com/youtube.com/0', // YouTube (Example, may need refinement)
+                     'ads-api.tiktok.com', 'analytics.tiktok.com', 'ads-sg.tiktok.com', 'analytics-sg.tiktok.com', 'business-api.tiktok.com', 'ads.tiktok.com', 'log.byteoversea.com' // TikTok
+                 ]
+             },
+             'Mix': {
+                 nameKey: 'categoryName_Mix',
+                 testsCount: 20,
+                 domains: [
+                     'ads.yahoo.com', 'analytics.yahoo.com', 'geo.yahoo.com', 'udc.yahoo.com', 'udcm.yahoo.com', 'analytics.query.yahoo.com', 'partnerads.ysm.yahoo.com', 'log.fc.yahoo.com', 'gemini.yahoo.com', 'adtech.yahooinc.com', // Yahoo
+                     'extmaps-api.yandex.net', 'appmetrica.yandex.ru', 'adfstat.yandex.ru', 'metrika.yandex.ru', 'offerwall.yandex.net', 'adfox.yandex.ru', // Yandex
+                     'auction.unityads.unity3d.com', 'webview.unityads.unity3d.com', 'config.unityads.unity3d.com', 'adserver.unityads.unity3d.com' // Unity Ads
+                 ]
+             },
+             'OEMs': {
+                 nameKey: 'categoryName_OEMs',
+                 testsCount: 35,
+                 domains: [
+                     'iot-eu-logser.realme.com', 'iot-logser.realme.com', 'bdapi-ads.realmemobile.com', 'bdapi-in-ads.realmemobile.com', // Realme
+                     'api.ad.xiaomi.com', 'data.mistat.xiaomi.com', 'data.mistat.india.xiaomi.com', 'data.mistat.rus.xiaomi.com', 'sdkconfig.ad.xiaomi.com', 'sdkconfig.ad.intl.xiaomi.com', 'tracking.rus.miui.com', // Xiaomi
+                     'adsfs.oppomobile.com', 'adx.ads.oppomobile.com', 'ck.ads.oppomobile.com', 'data.ads.oppomobile.com', // Oppo
+                     'metrics.data.hicloud.com', 'metrics2.data.hicloud.com', 'grs.hicloud.com', 'logservice.hicloud.com', 'logservice1.hicloud.com', 'logbak.hicloud.com', // Huawei
+                     'click.oneplus.cn', 'open.oneplus.net', // OnePlus
+                     'samsungads.com', 'smetrics.samsung.com', 'nmetrics.samsung.com', 'samsung-com.112.2o7.net', 'analytics-api.samsunghealthcn.com', // Samsung
+                     'iadsdk.apple.com', 'metrics.icloud.com', 'metrics.mzstatic.com', 'api-adservices.apple.com', 'books-analytics-events.apple.com', 'weather-analytics-events.apple.com', 'notes-analytics-events.apple.com' // Apple
+                 ]
+             }
+         };
+
+        // --- Test Definitions & State ---
+        const tests = [
+            { id: 'cosmeticFiltering', nameKey: 'testName_cosmeticFiltering', func: simulateCosmeticFiltering, weight: 10 }, // Renamed, covers static/dynamic conceptually
+            { id: 'comprehensiveTracking', nameKey: 'testName_comprehensiveTracking', func: simulateComprehensiveTrackerBlocking, weight: 40 }, // New comprehensive test
+            { id: 'cnameCloaking', nameKey: 'testName_cnameCloaking', func: simulateCnameCloaking, weight: 10 },
+            { id: 'fingerprintingAPI', nameKey: 'testName_fingerprintingAPI', func: simulateFingerprintingAPI, weight: 15 },
+            { id: 'canvasFingerprinting', nameKey: 'testName_canvasFingerprinting', func: simulateCanvasFingerprinting, weight: 10 },
+            { id: 'audioFingerprinting', nameKey: 'testName_audioFingerprinting', func: simulateAudioFingerprinting, weight: 5 },
+            { id: 'webRTCLeak', nameKey: 'testName_webRTCLeak', func: simulateWebRTCLeak, weight: 5 },
+            { id: 'serviceWorkerTracking', nameKey: 'testName_serviceWorkerTracking', func: simulateServiceWorkerTracking, weight: 5 },
+            { id: 'webSocketTracking', nameKey: 'testName_webSocketTracking', func: simulateWebSocketTracking, weight: 5 },
+             // Placeholder/Conceptual tests based on flags - marked informational, low weight
+             //{ id: 'scriptAds', nameKey: 'testName_scriptAds', func: simulateScriptAds, weight: 0 }, // Example, func needs defining
+             //{ id: 'scriptPagead', nameKey: 'testName_scriptPagead', func: simulateScriptPagead, weight: 0 }, // Example, func needs defining
+        ];
+        let testResults = {}; let currentTestIndex = 0; let overallScore = 0; let currentTestTimeout = null; let collectedFingerprintData = {}; let detailedTrackerResults = {}; // Store detailed domain results
+        const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
+
+
+        // --- Event Listeners ---
+        startTestBtn.addEventListener('click', () => { hideAllSections(); testSection.classList.remove('hidden'); testSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); startAdvancedTest(); });
+        viewResultsBtn.addEventListener('click', () => { hideAllSections(); resultsSection.classList.remove('hidden'); resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); displayResults(); });
+        runAgainBtn.addEventListener('click', () => { hideAllSections(); testSection.classList.remove('hidden'); testSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); startAdvancedTest(); });
+        viewArchitectureBtn.addEventListener('click', () => { hideAllSections(); architectureSection.classList.remove('hidden'); architectureSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); hljs.highlightAll(); });
+        backToResultsFromArchBtn.addEventListener('click', () => { hideAllSections(); resultsSection.classList.remove('hidden'); resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+        function hideAllSections() { testSection.classList.add('hidden'); resultsSection.classList.add('hidden'); architectureSection.classList.add('hidden'); testComplete.classList.add('hidden'); }
+
+        // --- Set Initial Text based on Language ---
+        function setInitialUIText() {
+            document.title = getString('pageTitle');
+            document.getElementById('mainTitle').textContent = getString('mainTitle');
+            document.getElementById('subTitle').textContent = getString('subTitle');
+            document.getElementById('startTestBtn').innerHTML = `${getString('startTestBtn')} <i class="fas fa-vial ml-2"></i>`;
+             document.getElementById('testInProgressTitle').textContent = getString('testInProgressTitle');
+             document.getElementById('testCompleteTitle').textContent = getString('testCompleteTitle');
+             document.getElementById('testCompleteSubTitle').textContent = getString('testCompleteSubTitle');
+             document.getElementById('viewResultsBtn').innerHTML = `${getString('viewResultsBtn')} <i class="fas fa-arrow-right ml-2"></i>`;
+             document.getElementById('resultsTitle').textContent = getString('resultsTitle');
+             document.getElementById('summaryTitle').textContent = getString('summaryTitle');
+             document.getElementById('detailedAnalysisTitle').textContent = getString('detailedAnalysisTitle');
+             document.getElementById('trackerBreakdownTitle').textContent = getString('trackerBreakdownTitle');
+             document.getElementById('exposedInfoTitle').textContent = getString('exposedInfoTitle');
+             document.getElementById('exposedInfoSubTitle').textContent = getString('exposedInfoSubTitle');
+             document.getElementById('noExposureMessage').textContent = getString('noExposureMessage'); // Inside the hidden P tag
+             document.getElementById('recommendationsTitle').textContent = getString('recommendationsTitle');
+             document.getElementById('viewArchitectureBtn').innerHTML = `${getString('viewArchitectureBtn')} <i class="fas fa-cogs ml-2"></i>`;
+             document.getElementById('runAgainBtn').innerHTML = `${getString('runAgainBtn')} <i class="fas fa-sync-alt ml-2"></i>`;
+             document.getElementById('architectureTitle').textContent = getString('architectureTitle');
+             document.getElementById('archGlobalDbTitle').textContent = getString('archGlobalDbTitle');
+             document.getElementById('archMultiPlatformTitle').textContent = getString('archMultiPlatformTitle');
+             document.getElementById('archConclusionTitle').textContent = getString('archConclusionTitle');
+             document.getElementById('backToResultsFromArchBtn').innerHTML = `<i class="fas fa-arrow-left mr-2"></i> ${getString('backToResultsFromArchBtn')}`;
+         }
+         setInitialUIText(); // Call on load
+
+        // --- Simulation Functions ---
+
+        // Renamed from simulateAdBlocking, enhanced slightly
+        async function simulateCosmeticFiltering(updateCallback) {
+            updateCallback(getString('statusInitializing') + " ad elements..."); await delay(50);
+            const elements = [
+                { id: 'banner_ad_1', classes: 'banner_ad google_ad adsbox ad-banner', style: 'position:absolute;left:-9999px;height:1px;width:1px;' },
+                { id: 'popup_ad_1', classes: 'popup-ad annoying-ad modal-ad overlay-ad', style: 'position:absolute;top:-9999px;height:1px;width:1px;' }
+            ];
+            let createdElements = [];
+            elements.forEach(elInfo => {
+                let adEl = document.createElement('div');
+                adEl.id = elInfo.id;
+                adEl.className = elInfo.classes;
+                adEl.style.cssText = elInfo.style;
+                 document.body.appendChild(adEl);
+                 createdElements.push(adEl);
+             });
+
+            updateCallback("Waiting for cosmetic filters..."); await delay(350); // Slightly longer wait
+
+            let hiddenCount = 0;
+            let messages = [];
+            for (const adEl of createdElements) {
+                updateCallback(`Checking ${adEl.id} visibility...`); await delay(50);
+                const isHidden = !adEl || adEl.offsetParent === null || adEl.offsetHeight === 0 || adEl.offsetWidth === 0 || adEl.style.display === 'none' || window.getComputedStyle(adEl).display === 'none' || window.getComputedStyle(adEl).visibility === 'hidden';
+                if (isHidden) {
+                    hiddenCount++;
+                    messages.push(`${adEl.id}: ${getString('statusBlocked')}.`);
+                } else {
+                    messages.push(`${adEl.id}: ${getString('statusVisible')}.`);
+                }
+                adEl.remove(); // Clean up
+            }
+
+            updateCallback("Ad element check " + getString('statusCompleted') + "."); await delay(50);
+            const score = hiddenCount / elements.length;
+            const messageKey = score > 0.5 ? 'cosmeticFilteringBlockedMsg' : 'cosmeticFilteringVisibleMsg';
+            return { success: score > 0.5, score: score, message: getString(messageKey, { count: hiddenCount }), details: messages.join(' ') };
+        }
+
+        // NEW: Comprehensive Tracker Blocking
+        async function simulateComprehensiveTrackerBlocking(updateCallback) {
+            let overallBlocked = 0;
+            let overallTotal = 0;
+             detailedTrackerResults = {}; // Reset global store
+
+            for (const categoryId in trackerCategories) {
+                const category = trackerCategories[categoryId];
+                const categoryName = getString(category.nameKey); // Get translated name
+                updateCallback(`${getString('statusInitializing')} ${categoryName}...`);
+                const domains = category.domains;
+                let categoryBlocked = 0;
+                let domainResults = {};
+                const totalInCategory = domains.length;
+
+                for (let i = 0; i < totalInCategory; i++) {
+                     const domain = domains[i];
+                     // Provide more granular progress within category
+                     updateCallback(`${categoryName} (${i + 1}/${totalInCategory}): Checking ${domain}...`);
+                    try {
+                        // Use fetch with AbortSignal for timeout
+                        const controller = new AbortController();
+                        const timeoutId = setTimeout(() => controller.abort(), 1500); // 1.5 second timeout per request
+                        await fetch(`https://${domain}`, { mode: 'no-cors', cache: 'no-store', signal: controller.signal });
+                         clearTimeout(timeoutId);
+                         domainResults[domain] = 'allowed';
+                    } catch (error) {
+                        // Check if it was an AbortError (timeout) or likely a network error (blocked)
+                         if (error.name === 'AbortError') {
+                             domainResults[domain] = 'allowed'; // Treat timeout as allowed/unblocked for score
+                             console.warn(`Timeout fetching ${domain}`);
+                         } else {
+                             domainResults[domain] = 'blocked';
+                             categoryBlocked++;
+                         }
+                     }
+                    await delay(20); // Short delay between domains
+                }
+                detailedTrackerResults[categoryId] = { blocked: categoryBlocked, total: totalInCategory, results: domainResults, nameKey: category.nameKey };
+                overallBlocked += categoryBlocked;
+                overallTotal += totalInCategory;
+                updateCallback(`${categoryName}: ${getString('statusCompleted')}. ${categoryBlocked}/${totalInCategory} ${getString('statusBlocked')}.`);
+                await delay(100); // Delay between categories
+            }
+
+            updateCallback("Comprehensive tracker check " + getString('statusCompleted') + "."); await delay(50);
+
+            const score = overallTotal > 0 ? overallBlocked / overallTotal : 1; // Avoid division by zero
+            const success = score > 0.95; // High threshold for success
+             let messageKey = 'comprehensiveBlockedMsg';
+             if (overallBlocked < overallTotal && overallTotal > 0) {
+                 messageKey = 'comprehensiveSomeAllowedMsg';
+             }
+
+            return {
+                success: success,
+                score: score,
+                message: getString(messageKey, { blocked: overallBlocked, total: overallTotal, allowed: overallTotal - overallBlocked }),
+                details: `See detailed breakdown in results.`,
+                // Pass detailed results for display function
+                detailed: detailedTrackerResults
+            };
+        }
+
+
+        async function simulateCnameCloaking(updateCallback) {
+            let success = false;
+            let message = getString('cnameCloakingAllowedMsg'); // Default to failure message
+            const domain = window.location.hostname.replace(/^www\./, '');
+             if (!domain || domain === 'localhost' || domain.startsWith('127.') || domain.startsWith('192.168.')) {
+                return { success: true, score: 1, message: getString('cnameCloakingError'), details: "Running on local/IP hostname." };
+             }
+            const cloakedUrl = `https://stats-alias.${domain}/pixel.gif`; // Hypothetical cloaked URL
+             updateCallback(`Attempting fetch from stats-alias.${domain}...`);
+            try {
+                 const controller = new AbortController();
+                 const timeoutId = setTimeout(() => controller.abort(), 2000);
+                 await fetch(cloakedUrl, { mode: 'no-cors', cache: 'no-store', signal: controller.signal });
+                 clearTimeout(timeoutId);
+                 success = false; // Request went through, cloak NOT blocked
+            } catch (error) {
+                success = true; // Request failed, likely blocked
+                 message = getString('cnameCloakingBlockedMsg');
+             }
+            updateCallback("CNAME check " + getString('statusCompleted') + "."); await delay(50);
+            return { success: success, score: success ? 1 : 0, message: message };
+        }
+
+        async function simulateFingerprintingAPI(updateCallback) {
+            collectedFingerprintData = {}; let identifiablePoints = 0; const totalPoints = 7; let details = [];
+            const check = (name, value) => {
+                 updateCallback(`Checking ${name}...`);
+                 let displayValue = value;
+                 // Try to handle potential promises returned by some APIs
+                 if (value && typeof value.then === 'function') {
+                     return value.then(resolvedValue => check(name, resolvedValue)).catch(() => {
+                         details.push(`${name}: Error/Unavailable`); return false;
+                     });
+                 }
+                if (Array.isArray(value)) displayValue = value.join(', ');
+                 if (displayValue !== undefined && displayValue !== null && displayValue !== '' && displayValue !== '[object Promise]') {
+                     identifiablePoints++;
+                     details.push(`${name}: ${displayValue}`);
+                     collectedFingerprintData[name] = displayValue;
+                     return true;
+                 } else {
+                     details.push(`${name}: Hidden/Unavailable`);
+                     return false;
+                 }
+             };
+
+            try { check('CPU Cores', navigator.hardwareConcurrency); } catch(e){} await delay(70);
+            try { check('Device Memory (GB)', navigator.deviceMemory); } catch(e){} await delay(70);
+            try { check('Plugin Count', navigator.plugins?.length); } catch(e){} await delay(70);
+            try { check('MIME Type Count', navigator.mimeTypes?.length); } catch(e){} await delay(70);
+            try { check('Language', navigator.language); } catch(e){} await delay(70);
+            try { check('Languages', navigator.languages); } catch(e){} await delay(70);
+            try { check('Color Depth', screen?.colorDepth); } catch(e){} await delay(70);
+            try { collectedFingerprintData['Screen Resolution'] = `${screen?.width}x${screen?.height}`; } catch(e){}
+            try { collectedFingerprintData['User Agent'] = navigator.userAgent || 'N/A'; } catch(e){}
+            try { collectedFingerprintData['Platform'] = navigator.platform || 'N/A'; } catch(e){}
+            try { collectedFingerprintData['Timezone Offset'] = new Date().getTimezoneOffset(); } catch(e){}
+
+            updateCallback("API check " + getString('statusCompleted') + "."); await delay(50);
+            const score = 1 - (identifiablePoints / totalPoints);
+            const restrictedCount = totalPoints - identifiablePoints;
+             let messageKey = score > 0.5 ? 'fingerprintingRestrictedMsg' : 'fingerprintingExposureMsg';
+             return {
+                 success: score > 0.5,
+                 score: score,
+                 message: getString(messageKey, { restricted: restrictedCount, exposed: identifiablePoints, total: totalPoints }),
+                 details: `${getString('statusRestricted')}/${getString('statusAllowed')} points: ${restrictedCount}/${identifiablePoints}`
+             };
+         }
+
+        async function simulateCanvasFingerprinting(updateCallback) {
+            updateCallback(getString('statusInitializing') + " Canvas..."); await delay(50); let score = 0; let messageKey = 'canvasVulnerable'; let details = "";
+            try {
+                const canvas = document.createElement('canvas'); canvas.width = 200; canvas.height = 50;
+                 const ctx = canvas.getContext('2d'); if (!ctx) throw new Error("Canvas 2D context not available.");
+                updateCallback("Drawing on Canvas..."); await delay(100);
+                 ctx.fillStyle = "rgb(75, 100, 175)"; ctx.fillRect(10, 10, 150, 30); ctx.fillStyle = "#ffffff"; ctx.font = "16px Arial"; ctx.fillText("PrivacyTest! @", 20, 30);
+                updateCallback("Extracting Canvas data..."); await delay(50);
+                const dataUrl = canvas.toDataURL();
+                if (dataUrl && dataUrl.length > 100 && dataUrl !== 'data:,') { // Check for non-empty, non-trivial data URL
+                     details = `Data URL (start): ${dataUrl.substring(0, 50)}...`;
+                    // Second draw to check for randomization
+                     const canvas2 = document.createElement('canvas'); canvas2.width = 200; canvas2.height = 50; const ctx2 = canvas2.getContext('2d');
+                     ctx2.fillStyle = "rgb(75, 100, 175)"; ctx2.fillRect(10, 10, 150, 30); ctx2.fillStyle = "#ffffff"; ctx2.font = "16px Arial"; ctx2.fillText("PrivacyTest! @", 20, 30);
+                     const dataUrl2 = canvas2.toDataURL();
+                    if (dataUrl !== dataUrl2) { score = 1; messageKey = "canvasResistedRandom"; }
+                     else if (dataUrl.includes("data:image/png;base64,")) { score = 0.2; messageKey = 'canvasVulnerable'; } // Standard, potentially fingerprintable
+                     else { score = 1; messageKey = "canvasResistedBlank"; } // Non-standard data, treat as protected
+                     collectedFingerprintData['Canvas Fingerprint Hash (simulated)'] = dataUrl.slice(-50);
+                     canvas2.remove();
+                 } else { score = 1; messageKey = "canvasResistedBlank"; details = "API restricted or returns blank data."; }
+                 canvas.remove();
+             } catch (error) { score = 1; messageKey = "canvasFailed"; details = `Error: ${error.message}`; }
+            updateCallback("Canvas check " + getString('statusCompleted') + "."); await delay(50);
+            return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
+         }
+
+        async function simulateAudioFingerprinting(updateCallback) {
+             updateCallback(getString('statusInitializing') + " AudioContext..."); await delay(50); let score = 0; let messageKey = 'audioVulnerable'; let details = "";
+            try {
+                const AudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext; if (!AudioContext) throw new Error("OfflineAudioContext not supported.");
+                const context = new AudioContext(1, 44100, 44100); updateCallback("Generating audio signal..."); await delay(100);
+                const oscillator = context.createOscillator(); oscillator.type = "triangle"; oscillator.frequency.setValueAtTime(10000, context.currentTime); const compressor = context.createDynamicsCompressor();
+                 // Simple chain: oscillator -> compressor -> destination
+                 oscillator.connect(compressor); compressor.connect(context.destination); oscillator.start(0);
+                 updateCallback("Rendering audio buffer..."); await delay(150);
+                 const buffer = await context.startRendering(); const data = buffer.getChannelData(0); let sum = 0;
+                for (let i = 0; i < data.length; i++) { sum += Math.abs(data[i]); } // Simple sum hash
+                 details = `Generated audio hash (sum): ${sum.toFixed(5)}`; collectedFingerprintData['Audio Fingerprint Hash (simulated)'] = sum.toFixed(5);
+                if (sum > 0.0001) { score = 0.2; messageKey = 'audioVulnerable'; } // Non-zero sum indicates unique signal
+                 else { score = 1; messageKey = "audioResistedZero"; } // Zero or near-zero suggests protection
+             } catch (error) { score = 1; messageKey = "audioResistedFailed"; details = `Error: ${error.message}`; }
+            updateCallback("Audio check " + getString('statusCompleted') + "."); await delay(50);
+            return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
+         }
+
+        async function simulateWebRTCLeak(updateCallback) {
+            updateCallback(getString('statusInitializing') + " WebRTC..."); await delay(50); let score = 1; let messageKey = 'webRTCLeakBlocked'; let details = ""; let leakedIP = null;
+            try {
+                const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection; if (!RTCPeerConnection) throw new Error("WebRTC not supported.");
+                updateCallback("Creating Peer Connection..."); await delay(50); const pc = new RTCPeerConnection({ iceServers: [] }); // Use empty ICE servers to focus on local candidates
+                 pc.createDataChannel(""); const offer = await pc.createOffer(); await pc.setLocalDescription(offer);
+                updateCallback("Waiting for ICE candidates..."); await delay(300); const sdp = pc.localDescription?.sdp;
+                if (sdp) {
+                     updateCallback("Analyzing SDP..."); await delay(50);
+                     // Regex for typical local IPv4 addresses and mDNS names
+                     const localIpRegex = /a=candidate.*? (192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)/g;
+                     const mdnsRegex = /a=candidate.*? ([\w-]+\.local)/g; let match;
+                    if ((match = localIpRegex.exec(sdp)) !== null) { score = 0; messageKey = 'webRTCLeakDetected'; details = `Local IP pattern found: ${match[1]}`; leakedIP = match[1]; }
+                     else if ((match = mdnsRegex.exec(sdp)) !== null) { score = 0; messageKey = 'webRTCLeakDetected'; details = `mDNS name found: ${match[1]}`; leakedIP = match[1]; }
+                     else { details = "No obvious local patterns found in SDP."; }
+                 } else { details = "Could not get local SDP."; } pc.close();
+             } catch (error) { score = 1; messageKey = "webRTCLeakFailed"; details = `Error: ${error.message}`; }
+             if (leakedIP) collectedFingerprintData['WebRTC Leaked Address'] = leakedIP;
+             updateCallback("WebRTC check " + getString('statusCompleted') + "."); await delay(50);
+             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
+         }
+
+        async function simulateServiceWorkerTracking(updateCallback) {
+            updateCallback("Checking Service Worker support..."); await delay(50); let score = 1; // Default to success (blocked)
+             let messageKey = 'swTrackingBlocked'; let details = "";
+            if (!('serviceWorker' in navigator)) {
+                 updateCallback("Service Worker not supported."); await delay(50);
+                 return { success: true, score: 1, message: getString('swTrackingNotSupported') };
+             }
+            try {
+                 updateCallback("Attempting SW registration..."); await delay(100);
+                 // Use a non-existent script to test registration capability without actual execution
+                 const registration = await navigator.serviceWorker.register('sw-nonexistent-test.js', { scope: './' });
+                 messageKey = 'swTrackingAllowed'; details = `Scope: ${registration.scope}`; score = 0; // Registration succeeded, potential tracking vector
+                 updateCallback("Unregistering test SW..."); await delay(50);
+                 await registration.unregister(); details += " (Unregistered)";
+             } catch (error) {
+                 score = 1; // Registration failed, likely blocked
+                 details = `Error: ${error.message}`;
+             }
+            updateCallback("Service Worker check " + getString('statusCompleted') + "."); await delay(50);
+            return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
+         }
+
+        async function simulateWebSocketTracking(updateCallback) {
+            updateCallback(getString('statusInitializing') + " WebSocket..."); await delay(50); let score = 1; // Default to success (blocked)
+             let messageKey = 'wsTrackingBlocked'; let details = ""; let ws;
+            try {
+                await new Promise((resolve, reject) => {
+                     updateCallback("Attempting WebSocket connection...");
+                     // Use a public echo server
+                     ws = new WebSocket('wss://socketsbay.com/wss/v2/1/demo/'); // Ensure this is reliable or use another public echo server
+                     ws.onopen = () => {
+                         updateCallback("WebSocket connected.");
+                         messageKey = 'wsTrackingAllowed'; score = 0; // Connection allowed
+                         details = "Connection opened."; ws.close(1000, "Test complete"); resolve(); // Close cleanly
+                     };
+                     ws.onerror = (event) => {
+                         score = 1; details = `WebSocket error: ${event.type}`; reject(new Error("WebSocket Error"));
+                     };
+                     ws.onclose = (event) => {
+                          // If already resolved (onopen fired), do nothing more.
+                         // If it closed without opening, it's an error/block.
+                         if (score === 1) { // Only update message if it didn't open
+                             messageKey = 'wsTrackingBlocked'; // Could be blocked or just failed
+                             details = `Closed before opening: Code=${event.code}, Reason=${event.reason}`;
+                             reject(new Error("Closed before opening"));
+                         } else {
+                             resolve(); // Ensure promise resolves if closed after opening
+                         }
+                     };
+                    // Timeout logic
+                     setTimeout(() => {
+                         if (ws.readyState !== WebSocket.OPEN && ws.readyState !== WebSocket.CLOSED) {
+                             score = 1; messageKey = 'wsTrackingTimeout'; details = "Timeout";
+                             try { ws.close(); } catch (e) {} reject(new Error("Timeout"));
+                         } else if (ws.readyState === WebSocket.OPEN && score === 0) {
+                             // If it's open but somehow didn't resolve via onopen/onclose
+                             resolve();
+                         }
+                     }, 3000); // 3 second timeout
+                 });
+             } catch (error) {
+                 score = 1; // Ensure score is 1 on any exception
+                 if (!details) details = `Error: ${error.message || error}`;
+             }
+            updateCallback("WebSocket check " + getString('statusCompleted') + "."); await delay(50);
+            return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
+         }
+
+
+        // --- Test Execution Logic ---
+        function startAdvancedTest() {
+            console.log("Starting Advanced Test...");
+            collectedFingerprintData = {}; testResults = {}; currentTestIndex = 0; overallScore = 0; detailedTrackerResults = {}; // Reset detailed results
+            testStepsContainer.innerHTML = ''; testComplete.classList.add('hidden');
+             // Clear previous results display
+             resultsSummaryContainer.innerHTML = '';
+             resultsDetailedContainer.innerHTML = '';
+             trackerBreakdownContainer.innerHTML = `<p id="trackerBreakdownLoading" class="text-gray-500 dark:text-gray-400 italic">${getString('statusInitializing')}...</p>`; // Reset breakdown section
+             exposedInfoList.innerHTML = '';
+             noExposureText.classList.add('hidden');
+             exposedInfoAssessment.innerHTML = '';
+             recommendationsList.innerHTML = '';
+            testProgress.style.width = '0%';
+            runNextTest();
+        }
+
+        function runNextTest() {
+            if(currentTestTimeout) clearTimeout(currentTestTimeout);
+            if (currentTestIndex >= tests.length) {
+                console.log("All tests finished.");
+                testProgress.style.width = '100%';
+                currentTestTimeout = setTimeout(() => {
+                    testComplete.classList.remove('hidden');
+                    testComplete.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                }, 300);
+                return;
+            }
+            const test = tests[currentTestIndex];
+            const testName = getString(test.nameKey); // Get translated name
+             console.log(`Running test: ${testName}`);
+            const stepEl = document.createElement('div'); stepEl.id = `step-${test.id}`;
+            stepEl.className = 'p-3 border border-gray-200 rounded-lg dark:border-gray-700 animate-fade-in bg-white dark:bg-gray-800';
+            stepEl.innerHTML = `<h4 class="font-semibold text-md mb-1 dark:text-white">${currentTestIndex + 1}. ${testName}</h4><div class="status-line text-sm text-gray-700 dark:text-gray-300 mb-1" id="status-${test.id}"><i class="result-icon fas fa-spinner fa-spin text-indigo-500"></i><span>${getString('statusInitializing')}</span></div><div class="currently-checking" id="checking-${test.id}">&nbsp;</div><div class="text-xs text-gray-500 mt-1 dark:text-gray-400" id="details-${test.id}"></div>`;
+            testStepsContainer.appendChild(stepEl); stepEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+
+            const updateCallback = (statusText) => { const checkingEl = document.getElementById(`checking-${test.id}`); if (checkingEl) checkingEl.textContent = statusText; };
+
+            test.func(updateCallback).then(result => {
+                 console.log(`Test ${testName} result:`, result);
+                 // Store result, including detailed tracker data if present
+                 testResults[test.id] = { ...result, name: testName, nameKey: test.nameKey, weight: test.weight };
+                 updateStepUI(test.id, result);
+                 overallScore += (result.score * test.weight);
+                testProgress.style.width = `${Math.round(((currentTestIndex + 1) / tests.length) * 100)}%`;
+                currentTestIndex++;
+                currentTestTimeout = setTimeout(runNextTest, 200);
+            }).catch(error => {
+                console.error(`Error during test ${testName}:`, error);
+                 const result = { success: false, score: 0, message: getString('statusError'), details: error.message };
+                 testResults[test.id] = { ...result, name: testName, nameKey: test.nameKey, weight: test.weight };
+                 updateStepUI(test.id, result);
+                 // No score added for failed tests
+                 testProgress.style.width = `${Math.round(((currentTestIndex + 1) / tests.length) * 100)}%`;
+                currentTestIndex++;
+                currentTestTimeout = setTimeout(runNextTest, 200);
+            });
+        }
+
+        function updateStepUI(testId, result) {
+            const stepEl = document.getElementById(`step-${testId}`); const statusEl = document.getElementById(`status-${testId}`); const detailsEl = document.getElementById(`details-${testId}`); const checkingEl = document.getElementById(`checking-${testId}`); if (!stepEl || !statusEl) return;
+            let iconClass = 'result-info fas fa-info-circle'; // Default info
+             if (result.success === true) iconClass = 'result-success fas fa-check-circle';
+             else if (result.success === false) {
+                 // Determine if it's a failure or a warning based on test type
+                 const warningTests = ['cnameCloaking', 'serviceWorkerTracking', 'webSocketTracking', 'fingerprintingAPI', 'canvasFingerprinting', 'audioFingerprinting', 'webRTCLeak', 'cosmeticFiltering', 'comprehensiveTracking']; // Add more if needed
+                 if (warningTests.includes(testId)) {
+                     iconClass = 'result-warning fas fa-exclamation-triangle';
+                 } else {
+                     iconClass = 'result-fail fas fa-times-circle';
+                 }
+             }
+
+            statusEl.innerHTML = `<i class="result-icon ${iconClass}"></i><span>${result.message || getString('statusCompleted')}</span>`;
+            if (checkingEl) checkingEl.innerHTML = '&nbsp;'; // Clear 'checking...' text
+            if (detailsEl && result.details) { detailsEl.textContent = `${getString('detailsLabel')}: ${result.details}`; }
+             else if (detailsEl) { detailsEl.textContent = ''; }
+        }
+
+        // --- Display Results --- (REVISED SIGNIFICANTLY)
+        function displayResults() {
+            console.log("Displaying results. Score:", overallScore);
+            console.log("Test Results Object:", testResults);
+            console.log("Collected Fingerprint Data:", collectedFingerprintData);
+            console.log("Detailed Tracker Results:", detailedTrackerResults); // Check if populated
+
+            // Clear previous results thoroughly
+            resultsSummaryContainer.innerHTML = '';
+            resultsDetailedContainer.innerHTML = '';
+            trackerBreakdownContainer.innerHTML = ''; // Clear breakdown
+            exposedInfoList.innerHTML = '';
+            noExposureText.classList.add('hidden');
+            exposedInfoAssessment.innerHTML = '';
+            recommendationsList.innerHTML = '';
+
+            // Calculate and display final score card
+            let totalWeight = tests.reduce((sum, t) => sum + t.weight, 0);
+             let finalScorePercent = totalWeight > 0 ? Math.round((overallScore / totalWeight) * 100) : 0;
+            const scoreCard = document.createElement('div');
+             scoreCard.className = 'bg-purple-50 p-4 rounded-lg dark:bg-purple-900 dark:bg-opacity-30';
+             scoreCard.innerHTML = `<div class="flex items-center mb-2"><div class="bg-purple-100 p-2 rounded-full mr-3 dark:bg-purple-800"><i class="fas fa-user-secret text-purple-600 dark:text-purple-300"></i></div><p class="font-semibold dark:text-white">${getString('overallScoreLabel')}</p></div><p class="text-3xl font-bold dark:text-white">${finalScorePercent}/100</p>`;
+             resultsSummaryContainer.appendChild(scoreCard);
+
+            let exposedCount = 0;
+
+            // --- Populate Detailed Test Analysis (Techniques) ---
+             tests.forEach(test => {
+                 const result = testResults[test.id];
+                 if (!result) return; // Skip if test didn't run or failed catastrophically
+
+                // Determine icon based on result and test type (same logic as updateStepUI)
+                 let iconClass = 'result-info fas fa-info-circle';
+                 if (result.success === true) iconClass = 'result-success fas fa-check-circle';
+                 else if (result.success === false) {
+                     const warningTests = ['cnameCloaking', 'serviceWorkerTracking', 'webSocketTracking', 'fingerprintingAPI', 'canvasFingerprinting', 'audioFingerprinting', 'webRTCLeak', 'cosmeticFiltering', 'comprehensiveTracking'];
+                     iconClass = warningTests.includes(test.id) ? 'result-warning fas fa-exclamation-triangle' : 'result-fail fas fa-times-circle';
+                 }
+
+                const detailEl = document.createElement('div');
+                 detailEl.className = 'p-4 border border-gray-200 rounded-lg dark:border-gray-600 bg-white dark:bg-gray-800';
+                 detailEl.innerHTML = `
+                     <h4 class="font-semibold text-lg mb-2 dark:text-white">${result.name}</h4>
+                     <div class="flex items-center mb-1 text-sm">
+                         <i class="result-icon ${iconClass} mr-2"></i>
+                         <span>${result.message}</span>
+                     </div>
+                     ${result.details ? `<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">${getString('detailsLabel')}: ${result.details}</p>` : ''}
+                     <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">${getString('scoreImpactLabel')}: ${Math.round(result.score * result.weight)} / ${result.weight}</p>
+                 `;
+                 resultsDetailedContainer.appendChild(detailEl);
+
+                // Add to Exposed Info / Recommendations if test failed (result.success is false)
+                 if (result.success === false) {
+                     exposedCount++;
+                     addExposedInfo(test.id, result); // Pass result to potentially use details/nameKey
+                     addRecommendation(test.id, result); // Pass result to potentially use nameKey
+                 }
+             });
+
+             // --- Populate Tracker Blocking Breakdown ---
+             const trackerResult = testResults['comprehensiveTracking'];
+             if (trackerResult && trackerResult.detailed) {
+                 trackerBreakdownLoading.remove(); // Remove loading text
+                 for (const categoryId in trackerResult.detailed) {
+                     const categoryData = trackerResult.detailed[categoryId];
+                     const categoryName = getString(categoryData.nameKey);
+                     const detailsCatEl = document.createElement('details');
+                     detailsCatEl.className = 'bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-md mb-2'; // Slightly different style for breakdown
+
+                     const summaryStatus = getString('blockedRatioText', { blocked: categoryData.blocked, total: categoryData.total });
+                     const summaryIconClass = categoryData.blocked === categoryData.total ? 'result-success fas fa-check-circle' : 'result-warning fas fa-exclamation-triangle';
+
+                     detailsCatEl.innerHTML = `
+                         <summary class="p-3 cursor-pointer font-semibold flex justify-between items-center">
+                             <span><i class="result-icon ${summaryIconClass} mr-2"></i>${categoryName}</span>
+                             <span class="summary-category-status">${summaryStatus}</span>
+                             <i class="summary-arrow fas fa-chevron-right ml-auto"></i>
+                         </summary>
+                         <div class="details-content border-t border-gray-200 dark:border-gray-600 px-3 pt-3 pb-1 max-h-60 overflow-y-auto">
+                             </div>
+                     `;
+
+                     const contentDiv = detailsCatEl.querySelector('.details-content');
+                     if(contentDiv) {
+                         for (const domain in categoryData.results) {
+                             const status = categoryData.results[domain]; // 'blocked' or 'allowed'
+                             const itemEl = document.createElement('div');
+                             itemEl.className = 'domain-item';
+                             const icon = status === 'blocked' ? 'fa-check-circle' : 'fa-times-circle';
+                             const statusText = status === 'blocked' ? getString('statusBlocked') : getString('statusAllowed');
+                             const statusClass = status === 'blocked' ? 'domain-status-blocked' : 'domain-status-allowed';
+                             itemEl.innerHTML = `<i class="fas ${icon} mr-2"></i><span class="domain-name">${domain}</span><span class="domain-status ${statusClass}">${statusText}</span>`;
+                             contentDiv.appendChild(itemEl);
+                         }
+                     }
+                     trackerBreakdownContainer.appendChild(detailsCatEl);
+                 }
+             } else {
+                 trackerBreakdownLoading.textContent = "Tracker breakdown data not available."; // Error message
+             }
+
+
+            // --- Finalize Exposed Info Section ---
+            if (exposedCount === 0) {
+                 noExposureText.classList.remove('hidden');
+                 exposedInfoAssessment.textContent = getString('assessmentExcellent');
+                 exposedInfoContainer.className = 'p-4 border rounded-lg bg-green-50 dark:bg-gray-800 border-green-300 dark:border-green-600'; // Green theme
+             } else {
+                 let exposureLevelKey = "assessmentModerate";
+                 if (exposedCount <= 2) exposureLevelKey = "assessmentLow";
+                 if (exposedCount >= 5) exposureLevelKey = "assessmentHigh";
+                 const exposureLevelText = getString(exposureLevelKey);
+
+                let assessmentText = getString('assessmentOverall', { level: `<strong class="dark:text-orange-200">${exposureLevelText}</strong>`, count: exposedCount });
+                 let fpDataFound = false;
+                 let fpDetailsHtml = Object.entries(collectedFingerprintData)
+                     .map(([key, value]) => value ? `<li><code>${key}:</code> ${value}</li>` : null)
+                     .filter(item => item !== null)
+                     .join('');
+
+                if (fpDetailsHtml.length > 0) {
+                     fpDataFound = true;
+                     assessmentText += ` ${getString('exposedDataIntro')} <ul class="list-disc pl-5 text-xs mt-1">${fpDetailsHtml}</ul> `;
+                 }
+                 assessmentText += ` ${getString('assessmentFingerprintData')}`;
+                 exposedInfoAssessment.innerHTML = assessmentText; // Use innerHTML because of tags
+                 exposedInfoContainer.className = 'p-4 border rounded-lg bg-orange-50 dark:bg-gray-800 border-orange-300 dark:border-orange-600'; // Warning theme
+             }
+
+            // --- Finalize Recommendations ---
+            if (recommendationsList.children.length === 0 && exposedCount > 0) {
+                 const li = document.createElement('li'); li.textContent = getString('recommendation_genericReview'); recommendationsList.appendChild(li);
+             } else if (exposedCount === 0) {
+                 const li = document.createElement('li'); li.textContent = getString('recommendation_genericKeepUpdated'); recommendationsList.appendChild(li);
+             }
+            // Add general advice regardless
+            const liGeneral1 = document.createElement('li'); liGeneral1.innerHTML = getString('recommendation_genericUsePrivacyTools'); recommendationsList.appendChild(liGeneral1);
+            const liGeneral2 = document.createElement('li'); liGeneral2.textContent = getString('recommendation_genericClearData'); recommendationsList.appendChild(liGeneral2);
+        }
+
+        // REVISED function to add detailed exposed info using <details> and translations
+        function addExposedInfo(testId, result) {
+            const detailsEl = document.createElement('details');
+            const implicationKey = `implication_${testId}`;
+             // Use the test name from the result object as the summary text
+             const summaryText = result.name || testId;
+             let implicationText = getString(implicationKey); // Get translated implication
+
+            let specificDataHtml = null; // To hold specific collected data strings as HTML list items
+
+            // Add specific data points if available for certain tests
+             switch (testId) {
+                 case 'fingerprintingAPI':
+                     specificDataHtml = Object.entries(collectedFingerprintData)
+                        .filter(([key, value]) => value && !['User Agent', 'Platform', 'Timezone Offset', 'Screen Resolution', 'Language', 'Languages'].includes(key)) // Filter less unique ones if needed, keep for now
+                         .map(([key, value]) => value ? `<li><code>${key}:</code> ${value}</li>` : null)
+                         .filter(Boolean).join('');
+                     break;
+                 case 'canvasFingerprinting':
+                     specificDataHtml = collectedFingerprintData['Canvas Fingerprint Hash (simulated)'] ? `<li>Simulated Hash (End): <code>...${collectedFingerprintData['Canvas Fingerprint Hash (simulated)']}</code></li>` : '';
+                     break;
+                 case 'audioFingerprinting':
+                     specificDataHtml = collectedFingerprintData['Audio Fingerprint Hash (simulated)'] ? `<li>Simulated Hash (Sum): <code>${collectedFingerprintData['Audio Fingerprint Hash (simulated)']}</code></li>` : '';
+                     break;
+                 case 'webRTCLeak':
+                     specificDataHtml = collectedFingerprintData['WebRTC Leaked Address'] ? `<li>Potentially Leaked Address: <code>${collectedFingerprintData['WebRTC Leaked Address']}</code></li>` : '';
+                     break;
+                 case 'comprehensiveTracking':
+                    // Add a note to check the breakdown section instead of listing all domains here
+                    implicationText += ` ${getString('detailsLabel')}: Check the '${getString('trackerBreakdownTitle')}' section above for specific allowed domains.`;
+                    break;
+             }
+
+             const iconClass = 'result-warning fas fa-exclamation-triangle'; // Always warning for exposed info
+
+            detailsEl.innerHTML = `
+                <summary>
+                    <span><i class="summary-icon ${iconClass}"></i>${summaryText}</span>
+                    <i class="summary-arrow fas fa-chevron-right"></i>
+                </summary>
+                <div class="details-content">
+                     <p><strong>${getString('implicationLabel')}:</strong> ${implicationText}</p>
+                     ${specificDataHtml ? `<h5 class="font-semibold mt-2 mb-1">${getString('dataPointsLabel')}</h5><ul class="list-disc pl-5">${specificDataHtml}</ul>` : ''}
+                     ${result.details ? `<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">${getString('detailsLabel')}: ${result.details}</p>` : ''}
+                 </div>
+             `;
+             exposedInfoList.appendChild(detailsEl);
+        }
+
+         // REVISED Recommendation Function using translations
+         function addRecommendation(testId, result) {
+             const li = document.createElement('li');
+             const recommendationKey = `recommendation_${testId}`;
+             let recommendationText = getString(recommendationKey);
+
+            // If no specific recommendation exists, create a generic one based on name
+             if (recommendationText === recommendationKey) { // getString returns key if not found
+                 recommendationText = `Review "${result.name}" settings or consider specific tools.`;
+             }
+
+            li.textContent = recommendationText;
+             // Avoid duplicates if multiple tests trigger similar generic advice implicitly
+             if (!recommendationsList.innerHTML.includes(recommendationText.substring(0, 50))) { // Simple check
+                 recommendationsList.appendChild(li);
+             }
+         }
+
+    </script>
+</body>
+</html>
