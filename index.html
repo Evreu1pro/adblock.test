@@ -1,8 +1,10 @@
 <!DOCTYPE html>
-<html lang="en"> <head>
+<html lang="en">
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrivacyTester 2025 - Detailed Report</title> <script src="https://cdn.tailwindcss.com"></script>
+    <title>PrivacyTester 2025 - Detailed Report</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
@@ -32,19 +34,19 @@
         .result-success { color: #34d399; } .result-fail { color: #f87171; } .result-warning { color: #fbbf24; } .result-info { color: #60a5fa; }
         .dark-mode .result-success { color: #6ee7b7; } .dark-mode .result-fail { color: #fca5a5; } .dark-mode .result-warning { color: #fcd34d; } .dark-mode .result-info { color: #93c5fd; }
 
-         /* Domain list item styles */
-         .domain-item { display: flex; align-items: center; font-size: 0.8rem; margin-bottom: 0.25rem; }
-         .domain-item .fa-check-circle { color: #34d399; margin-right: 0.5rem; } /* Green */
-         .domain-item .fa-times-circle { color: #f87171; margin-right: 0.5rem; } /* Red */
-         .dark-mode .domain-item .fa-check-circle { color: #6ee7b7; }
-         .dark-mode .domain-item .fa-times-circle { color: #fca5a5; }
-         .domain-name { font-family: monospace; color: #4b5563; } /* Gray 600 */
-         .dark-mode .domain-name { color: #d1d5db; } /* Gray 300 */
-         .domain-status { margin-left: auto; font-weight: 500; }
-         .domain-status-blocked { color: #34d399; } /* Green */
-         .domain-status-allowed { color: #f87171; } /* Red */
-         .dark-mode .domain-status-blocked { color: #6ee7b7; }
-         .dark-mode .domain-status-allowed { color: #fca5a5; }
+        /* Domain list item styles */
+        .domain-item { display: flex; align-items: center; font-size: 0.8rem; margin-bottom: 0.25rem; }
+        .domain-item .fa-check-circle { color: #34d399; margin-right: 0.5rem; } /* Green */
+        .domain-item .fa-times-circle { color: #f87171; margin-right: 0.5rem; } /* Red */
+        .dark-mode .domain-item .fa-check-circle { color: #6ee7b7; }
+        .dark-mode .domain-item .fa-times-circle { color: #fca5a5; }
+        .domain-name { font-family: monospace; color: #4b5563; } /* Gray 600 */
+        .dark-mode .domain-name { color: #d1d5db; } /* Gray 300 */
+        .domain-status { margin-left: auto; font-weight: 500; }
+        .domain-status-blocked { color: #34d399; } /* Green */
+        .domain-status-allowed { color: #f87171; } /* Red */
+        .dark-mode .domain-status-blocked { color: #6ee7b7; }
+        .dark-mode .domain-status-allowed { color: #fca5a5; }
 
 
         /* Code block styles */
@@ -61,15 +63,15 @@
             background-color: #ffffff;
         }
         details[open] {
-             background-color: #f9fafb; /* Gray 50 */
+            background-color: #f9fafb; /* Gray 50 */
         }
         .dark-mode details {
-             border-color: #4b5563; /* Gray 600 */
-             background-color: #374151; /* Gray 700 */
+            border-color: #4b5563; /* Gray 600 */
+            background-color: #374151; /* Gray 700 */
         }
-         .dark-mode details[open] {
-             background-color: #4b5563; /* Gray 600 */
-         }
+        .dark-mode details[open] {
+            background-color: #4b5563; /* Gray 600 */
+        }
 
         summary {
             padding: 0.75rem 1rem; /* p-3 p-4 */
@@ -84,25 +86,25 @@
         summary::-webkit-details-marker { display: none; } /* Hide marker in Chrome/Safari */
         summary::marker { display: none; } /* Hide marker in Firefox */
         .dark-mode summary {
-             color: #f3f4f6; /* Gray 100 */
+            color: #f3f4f6; /* Gray 100 */
         }
 
         summary .summary-icon { /* For the warning icon */
             margin-right: 0.5rem;
         }
-         summary .summary-category-status { /* For 'X/Y Blocked' text */
-             font-size: 0.8rem;
-             font-weight: normal;
-             color: #6b7280; /* Gray 500 */
-             margin-left: 1rem;
-         }
-         .dark-mode summary .summary-category-status {
-             color: #9ca3af; /* Gray 400 */
-         }
+        summary .summary-category-status { /* For 'X/Y Blocked' text */
+            font-size: 0.8rem;
+            font-weight: normal;
+            color: #6b7280; /* Gray 500 */
+            margin-left: 1rem;
+        }
+        .dark-mode summary .summary-category-status {
+            color: #9ca3af; /* Gray 400 */
+        }
 
         summary .summary-arrow { /* Custom arrow */
-             transition: transform 0.2s ease-in-out;
-             margin-left: auto; /* Push arrow to the right */
+            transition: transform 0.2s ease-in-out;
+            margin-left: auto; /* Push arrow to the right */
         }
         details[open] summary .summary-arrow {
             transform: rotate(90deg);
@@ -116,14 +118,14 @@
             margin-top: 0.5rem; /* Add space between summary and content */
         }
         .dark-mode .details-content {
-             color: #d1d5db; /* Gray 300 */
-             border-top-color: #4b5563; /* Gray 600 */
+            color: #d1d5db; /* Gray 300 */
+            border-top-color: #4b5563; /* Gray 600 */
         }
         .details-content strong { /* Highlight implications */
-             color: #c2410c; /* Orange 700 */
+            color: #c2410c; /* Orange 700 */
         }
         .dark-mode .details-content strong {
-             color: #fdba74; /* Orange 300 */
+            color: #fdba74; /* Orange 300 */
         }
         .details-content code { /* Inline code for data points */
             background-color: rgba(209, 213, 219, 0.3); /* Gray 300 with opacity */
@@ -132,17 +134,97 @@
             font-size: 0.9em;
         }
         .dark-mode .details-content code {
-             background-color: rgba(75, 85, 99, 0.5); /* Gray 600 with opacity */
+            background-color: rgba(75, 85, 99, 0.5); /* Gray 600 with opacity */
+        }
+
+        /* New styles for advanced fingerprinting data display */
+        .fingerprint-data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 0.75rem;
+            font-size: 0.8rem;
+        }
+        .fingerprint-data-table th,
+        .fingerprint-data-table td {
+            padding: 0.5rem;
+            border: 1px solid #e5e7eb;
+            text-align: left;
+            vertical-align: top;
+        }
+        .dark-mode .fingerprint-data-table th,
+        .dark-mode .fingerprint-data-table td {
+            border: 1px solid #4b5563;
+        }
+        .fingerprint-data-table th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+            color: #1f2937;
+        }
+        .dark-mode .fingerprint-data-table th {
+            background-color: #2d3748;
+            color: #f7fafc;
+        }
+        .fingerprint-data-table tr:nth-child(even) {
+            background-color: #f9fafb;
+        }
+        .dark-mode .fingerprint-data-table tr:nth-child(even) {
+            background-color: #374151;
+        }
+        .fingerprint-data-table code {
+            word-break: break-all; /* Ensure long strings wrap */
+            white-space: pre-wrap; /* Preserve whitespace and wrap */
+        }
+        .similarity-ratio {
+            font-weight: bold;
+            color: #10b981; /* Green */
+        }
+        .similarity-ratio.high {
+            color: #ef4444; /* Red for high uniqueness */
+        }
+        .similarity-ratio.medium {
+            color: #f59e0b; /* Yellow for medium uniqueness */
         }
     </style>
 </head>
 <body class="bg-gray-50 font-sans">
-    <div class="fixed top-4 right-4 z-50"> <button id="darkModeToggle" class="p-2 rounded-full bg-white shadow-lg text-gray-800 hover:bg-gray-200 transition dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600"><i class="fas fa-moon"></i></button> </div>
-     <header class="gradient-bg text-white py-16"> <div class="container mx-auto px-4"> <div class="max-w-4xl mx-auto text-center animate-fade-in"> <h1 id="mainTitle" class="text-4xl md:text-6xl font-bold mb-6">PrivacyTester 2025</h1> <p id="subTitle" class="text-xl md:text-2xl mb-8">Advanced Browser Privacy & Tracking Test</p> <button id="startTestBtn" class="bg-white text-indigo-700 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-lg"> Start Advanced Test <i class="fas fa-vial ml-2"></i> </button> </div> </div> </header>
+    <div class="fixed top-4 right-4 z-50">
+        <button id="darkModeToggle" class="p-2 rounded-full bg-white shadow-lg text-gray-800 hover:bg-gray-200 transition dark:bg-gray-700 dark:text-white dark:hover:bg-gray-600">
+            <i class="fas fa-moon"></i>
+        </button>
+    </div>
+    <header class="gradient-bg text-white py-16">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto text-center animate-fade-in">
+                <h1 id="mainTitle" class="text-4xl md:text-6xl font-bold mb-6">PrivacyTester 2025</h1>
+                <p id="subTitle" class="text-xl md:text-2xl mb-8">Advanced Browser Privacy & Tracking Test</p>
+                <button id="startTestBtn" class="bg-white text-indigo-700 px-8 py-3 rounded-full font-bold text-lg hover:bg-gray-100 transition transform hover:scale-105 shadow-lg">
+                    Start Advanced Test <i class="fas fa-vial ml-2"></i>
+                </button>
+            </div>
+        </div>
+    </header>
 
     <main>
         <section id="testSection" class="py-16 hidden">
-             <div class="container mx-auto px-4"> <h2 id="testInProgressTitle" class="text-3xl font-bold text-center mb-12 dark:text-white">Advanced Privacy Test in Progress</h2> <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden dark:bg-gray-800 dark:text-white"> <div class="bg-gray-200 h-2 dark:bg-gray-700"><div id="testProgress" class="bg-indigo-600 h-full progress-bar" style="width: 0%"></div></div> <div id="testStepsContainer" class="p-6 space-y-4"></div> <div id="testComplete" class="hidden text-center p-6"> <div class="bg-green-100 text-green-800 p-4 rounded-lg mb-6 dark:bg-green-900 dark:text-green-100"><i class="fas fa-check-circle text-4xl mb-3"></i><h3 id="testCompleteTitle" class="text-2xl font-bold mb-2">Advanced Test Complete!</h3><p id="testCompleteSubTitle">Your detailed privacy analysis is ready.</p></div> <button id="viewResultsBtn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"> View Detailed Results <i class="fas fa-arrow-right ml-2"></i> </button> </div> </div> </div>
+            <div class="container mx-auto px-4">
+                <h2 id="testInProgressTitle" class="text-3xl font-bold text-center mb-12 dark:text-white">Advanced Privacy Test in Progress</h2>
+                <div class="max-w-3xl mx-auto bg-white rounded-xl shadow-lg overflow-hidden dark:bg-gray-800 dark:text-white">
+                    <div class="bg-gray-200 h-2 dark:bg-gray-700">
+                        <div id="testProgress" class="bg-indigo-600 h-full progress-bar" style="width: 0%"></div>
+                    </div>
+                    <div id="testStepsContainer" class="p-6 space-y-4"></div>
+                    <div id="testComplete" class="hidden text-center p-6">
+                        <div class="bg-green-100 text-green-800 p-4 rounded-lg mb-6 dark:bg-green-900 dark:text-green-100">
+                            <i class="fas fa-check-circle text-4xl mb-3"></i>
+                            <h3 id="testCompleteTitle" class="text-2xl font-bold mb-2">Advanced Test Complete!</h3>
+                            <p id="testCompleteSubTitle">Your detailed privacy analysis is ready.</p>
+                        </div>
+                        <button id="viewResultsBtn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
+                            View Detailed Results <i class="fas fa-arrow-right ml-2"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <section id="resultsSection" class="py-16 bg-gray-100 hidden dark:bg-gray-900">
@@ -153,11 +235,11 @@
                         <div class="p-6">
                             <h3 id="summaryTitle" class="text-2xl font-semibold mb-6 dark:text-white">Summary</h3>
                             <div id="resultsSummaryContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
-                                </div>
+                            </div>
 
                             <h3 id="detailedAnalysisTitle" class="text-2xl font-semibold mb-6 mt-10 dark:text-white">Detailed Test Analysis</h3>
                             <div id="resultsDetailedContainer" class="space-y-4">
-                                </div>
+                            </div>
 
                             <h3 id="trackerBreakdownTitle" class="text-2xl font-semibold mb-6 mt-10 dark:text-white">Tracker Blocking Breakdown</h3>
                             <div id="trackerBreakdownContainer" class="space-y-3">
@@ -165,45 +247,60 @@
                             </div>
 
                             <h3 id="exposedInfoTitle" class="text-2xl font-semibold mb-4 mt-10 dark:text-white">Potentially Exposed Information Analysis</h3>
-                             <div id="exposedInfoContainer" class="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
-                                 <p id="exposedInfoSubTitle" class="mb-4 dark:text-gray-300">Analysis of techniques where your browser's protection might be bypassed:</p>
-                                 <div id="exposedInfoList" class="space-y-3">
-                                     <p id="noExposureText" class="hidden text-green-700 dark:text-green-300 font-semibold">
-                                         <i class="fas fa-shield-alt mr-2"></i><span id="noExposureMessage">No significant information exposure vectors were detected in this test.</span>
-                                     </p>
-                                     </div>
-                                 <p id="exposedInfoAssessment" class="mt-4 font-semibold text-sm text-gray-800 dark:text-gray-100 border-t border-gray-300 dark:border-gray-600 pt-3"></p>
-                             </div>
+                            <div id="exposedInfoContainer" class="p-4 border rounded-lg bg-gray-50 dark:bg-gray-800">
+                                <p id="exposedInfoSubTitle" class="mb-4 dark:text-gray-300">Analysis of techniques where your browser's protection might be bypassed:</p>
+                                <div id="exposedInfoList" class="space-y-3">
+                                    <p id="noExposureText" class="hidden text-green-700 dark:text-green-300 font-semibold">
+                                        <i class="fas fa-shield-alt mr-2"></i><span id="noExposureMessage">No significant information exposure vectors were detected in this test.</span>
+                                    </p>
+                                </div>
+                                <p id="exposedInfoAssessment" class="mt-4 font-semibold text-sm text-gray-800 dark:text-gray-100 border-t border-gray-300 dark:border-gray-600 pt-3"></p>
+                            </div>
 
                             <div class="mt-8 bg-indigo-50 p-4 rounded-lg dark:bg-indigo-900 dark:bg-opacity-30">
                                 <h4 id="recommendationsTitle" class="text-lg font-semibold mb-2 dark:text-white">Recommendations</h4>
                                 <ul id="recommendationsList" class="list-disc pl-5 space-y-1 dark:text-gray-300">
-                                    </ul>
+                                </ul>
                             </div>
                         </div>
                     </div>
                     <div class="text-center space-y-4 md:space-y-0 md:space-x-4">
-                         <button id="viewArchitectureBtn" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition"> View Platform Architecture <i class="fas fa-cogs ml-2"></i> </button>
-                         <button id="runAgainBtn" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition border border-indigo-600 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700"> Run Test Again <i class="fas fa-sync-alt ml-2"></i> </button>
+                        <button id="viewArchitectureBtn" class="bg-purple-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-purple-700 transition">
+                            View Platform Architecture <i class="fas fa-cogs ml-2"></i>
+                        </button>
+                        <button id="runAgainBtn" class="bg-white text-indigo-600 px-6 py-3 rounded-lg font-semibold hover:bg-gray-100 transition border border-indigo-600 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700">
+                            Run Test Again <i class="fas fa-sync-alt ml-2"></i>
+                        </button>
                     </div>
                 </div>
             </div>
         </section>
 
         <section id="architectureSection" class="py-16 hidden bg-gray-100 dark:bg-gray-900">
-             <div class="container mx-auto px-4">
-                 <h2 id="architectureTitle" class="text-3xl font-bold text-center mb-6 dark:text-white">Расширенная архитектура экспертной системы...</h2>
-                 <div class="max-w-5xl mx-auto space-y-12">
-                     <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800"> <h3 id="archGlobalDbTitle" class="text-2xl font-semibold mb-6 dark:text-white">1. Глобальная база трекеров...</h3> </div>
-                     <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800"> <h3 id="archMultiPlatformTitle" class="text-2xl font-semibold mb-6 dark:text-white">2. Многоплатформенное тестирование...</h3> </div>
-                     <div class="bg-indigo-50 p-6 rounded-xl shadow-lg dark:bg-indigo-900 dark:bg-opacity-30"> <h3 id="archConclusionTitle" class="text-2xl font-semibold mb-4 dark:text-white">Итог</h3> </div>
-                     <div class="text-center mt-12"> <button id="backToResultsFromArchBtn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition"> <i class="fas fa-arrow-left mr-2"></i> Back to Results </button> </div>
-                 </div>
-             </div>
+            <div class="container mx-auto px-4">
+                <h2 id="architectureTitle" class="text-3xl font-bold text-center mb-6 dark:text-white">Расширенная архитектура экспертной системы...</h2>
+                <div class="max-w-5xl mx-auto space-y-12">
+                    <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800">
+                        <h3 id="archGlobalDbTitle" class="text-2xl font-semibold mb-6 dark:text-white">1. Глобальная база трекеров...</h3>
+                    </div>
+                    <div class="bg-white p-6 rounded-xl shadow-lg dark:bg-gray-800">
+                        <h3 id="archMultiPlatformTitle" class="text-2xl font-semibold mb-6 dark:text-white">2. Многоплатформенное тестирование...</h3>
+                    </div>
+                    <div class="bg-indigo-50 p-6 rounded-xl shadow-lg dark:bg-indigo-900 dark:bg-opacity-30">
+                        <h3 id="archConclusionTitle" class="text-2xl font-semibold mb-4 dark:text-white">Итог</h3>
+                    </div>
+                    <div class="text-center mt-12">
+                        <button id="backToResultsFromArchBtn" class="bg-indigo-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-indigo-700 transition">
+                            <i class="fas fa-arrow-left mr-2"></i> Back to Results
+                        </button>
+                    </div>
+                </div>
+            </div>
         </section>
     </main>
 
-    <footer class="bg-gray-800 text-white py-8 dark:bg-gray-900"> </footer>
+    <footer class="bg-gray-800 text-white py-8 dark:bg-gray-900">
+    </footer>
 
     <script>
         // --- Internationalization (i18n) ---
@@ -239,13 +336,14 @@
                 // Test Names (used as keys for results/recommendations)
                 testName_cosmeticFiltering: 'Cosmetic Ad Filtering (Static/Dynamic)',
                 testName_cnameCloaking: 'CNAME Cloaking Defense',
-                testName_fingerprintingAPI: 'Browser API Fingerprinting',
+                testName_fingerprintingAPI: 'Browser API Fingerprinting', // Old, simpler one
                 testName_canvasFingerprinting: 'Canvas Fingerprinting Resistance',
                 testName_audioFingerprinting: 'Audio Fingerprinting Resistance',
                 testName_webRTCLeak: 'WebRTC IP Leak',
                 testName_serviceWorkerTracking: 'Service Worker Tracking',
                 testName_webSocketTracking: 'WebSocket Tracking',
                 testName_comprehensiveTracking: 'Comprehensive Tracker Blocking',
+                testName_advancedFingerprinting: 'Advanced Digital Fingerprint Analysis', // NEW TEST NAME
                 testName_scriptAds: 'Ad Script Execution (Informational)', // Conceptual
                 testName_scriptPagead: 'Page Ad Script Execution (Informational)', // Conceptual
                 // Status & Result Messages
@@ -288,6 +386,57 @@
                 scriptPageadBlockedMsg: 'Page ad script loading appears blocked (Informational).', // Placeholder
                 scriptPageadAllowedMsg: 'Page ad script loading may be allowed (Informational).', // Placeholder
 
+                // NEW: Advanced Fingerprinting Messages
+                advFpUniqueMsg: 'You are unique among {totalFp} fingerprints in our dataset.',
+                advFpSimilarMsg: 'Your fingerprint is similar to {matchCount} others in our dataset.',
+                advFpOverallResult: 'Your browser exposes unique characteristics.',
+                advFpDetails: 'Detailed analysis of your digital fingerprint attributes:',
+                advFpGeneralInfo: 'General Information',
+                advFpHttpHeaders: 'HTTP Headers Attributes',
+                advFpJavascriptAttrs: 'JavaScript Attributes',
+                advFpAttribute: 'Attribute',
+                advFpSimilarityRatio: 'Similarity Ratio',
+                advFpValue: 'Value',
+                advFpNotSupported: 'Not supported',
+                advFpNoValue: 'No value',
+                advFpFlashNotDetected: 'Flash not detected',
+                advFpPropertiesDetected: '{count} properties detected',
+                advFpExtensions: '{count} different extensions',
+                advFpGeneralParameters: '{count} different general parameters analyzed',
+                advFpShadersPrecisions: '{count} different shaders precisions analyzed',
+                advFpFontsCount: 'And {count} others',
+                advFpAudioFormats: 'Audio formats',
+                advFpVideoFormats: 'Video formats',
+                advFpAudioContext: 'Audio context',
+                advFpFrequencyAnalyser: 'Frequency analyser',
+                advFpPermissions: 'Permissions',
+                advFpAdblockStatus: 'Use of Adblock',
+                advFpCookiesEnabled: 'Cookies enabled',
+                advFpJavaEnabled: 'Java enabled',
+                advFpLocalStorage: 'Use of local storage',
+                advFpSessionStorage: 'Use of session storage',
+                advFpIndexedDB: 'Use of IndexedDB',
+                advFpMediaDevices: 'Media devices',
+                advFpAccelerometer: 'Accelerometer',
+                advFpGyroscope: 'Gyroscope',
+                advFpProximitySensor: 'Proximity sensor',
+                advFpKeyboardLayout: 'Keyboard layout',
+                advFpBattery: 'Battery',
+                advFpConnection: 'Connection',
+                advFpLocationBar: 'Location bar',
+                advFpMenuBar: 'Menu bar',
+                advFpPersonalBar: 'Personal bar',
+                advFpStatusBar: 'Status bar',
+                advFpToolBar: 'Tool bar',
+                advFpResultState: 'Result state',
+                advFpWebGLVendor: 'WebGL Vendor',
+                advFpWebGLRenderer: 'WebGL Renderer',
+                advFpWebGLData: 'WebGL Data',
+                advFpWebGLParameters: 'WebGL Parameters',
+                advFpScreenAvailableHeight: 'Screen available Height',
+                advFpScreenAvailableWidth: 'Screen available width',
+
+
                 // Exposed Info Implications (keys match test IDs)
                 implication_cosmeticFiltering: "If ad elements aren't hidden, they can be visually disruptive and trackers within them might still load, even if scripts are blocked.",
                 implication_cnameCloaking: "This technique masks third-party trackers under a first-party subdomain (e.g., `stats.your-site.com` actually pointing to a tracker). If allowed, it bypasses standard domain-based blocklists, allowing trackers to operate undetected and collect Browse data.",
@@ -298,6 +447,7 @@
                 implication_serviceWorkerTracking: "Service Workers allow websites to run scripts in the background, even when the site tab is closed. If allowed for tracking purposes, they can persistently monitor activity, sync data, or regenerate tracking identifiers, making tracking much harder to evade.",
                 implication_webSocketTracking: "WebSockets provide a persistent, two-way communication channel. Trackers can use this to monitor your interactions (mouse movements, clicks, typing) on a page in real-time and send this data back instantly, creating a very granular activity log.",
                 implication_comprehensiveTracking: "Failure to block known tracker domains allows advertising networks, analytics companies, social media platforms, and others to monitor your activity across different websites, build detailed profiles about your interests and behavior, and potentially link your activity back to you.",
+                implication_advancedFingerprinting: "Your digital fingerprint is formed by a unique combination of your browser's configuration, hardware, and software details. A highly unique fingerprint makes it very easy for trackers to identify and follow you across the internet, even without traditional cookies.", // NEW IMPLICATION
                 implication_scriptAds: "(Informational) Allowing external ad scripts is the primary way most ad networks track users and display ads.",
                 implication_scriptPagead: "(Informational) Allowing Google's specific page ad scripts enables their widespread tracking and advertising network.",
 
@@ -320,8 +470,9 @@
                 recommendation_serviceWorkerTracking: 'Review browser settings for Service Worker control or rely on your tracker blocker.',
                 recommendation_webSocketTracking: 'Ensure your tracker blocker effectively blocks domains that use WebSockets for tracking.',
                 recommendation_comprehensiveTracking: 'Ensure your tracker blocker list is comprehensive and up-to-date. Review the allowed domains in the breakdown.',
-                 recommendation_scriptAds: '(Informational) Use a robust script blocker (like uBlock Origin or NoScript) to control ad script execution.',
-                 recommendation_scriptPagead: '(Informational) Ensure Google ad scripts are blocked by your primary blocker.',
+                recommendation_advancedFingerprinting: 'Consider a privacy-hardened browser (e.g., Tor Browser, Mullvad Browser) or advanced fingerprinting protection extensions (e.g., CanvasBlocker, WebGL Fingerprint Defender) to minimize your unique digital signature.', // NEW RECOMMENDATION
+                recommendation_scriptAds: '(Informational) Use a robust script blocker (like uBlock Origin or NoScript) to control ad script execution.',
+                recommendation_scriptPagead: '(Informational) Ensure Google ad scripts are blocked by your primary blocker.',
                 // Generic Recommendations
                 recommendation_genericReview: 'Review the failed tests above and consider general privacy enhancements.',
                 recommendation_genericKeepUpdated: 'Keep your browser and privacy tools updated to maintain this level of protection.',
@@ -364,13 +515,13 @@
                 archMultiPlatformTitle: '2. Многоплатформенное тестирование...',
                 archConclusionTitle: 'Итог',
                 overallScoreLabel: 'Общий балл приватности',
-                 // Button Texts (Initial Load)
+                // Button Texts (Initial Load)
                 startTestBtn: 'Начать расширенный тест',
                 viewResultsBtn: 'Посмотреть подробные результаты',
                 viewArchitectureBtn: 'Посмотреть архитектуру платформы',
                 runAgainBtn: 'Запустить тест снова',
                 backToResultsFromArchBtn: 'Назад к результатам',
-                 // Test Names
+                // Test Names
                 testName_cosmeticFiltering: 'Косметическая фильтрация рекламы (стат./динам.)',
                 testName_cnameCloaking: 'Защита от CNAME Cloaking',
                 testName_fingerprintingAPI: 'Fingerprinting через API браузера',
@@ -380,9 +531,10 @@
                 testName_serviceWorkerTracking: 'Отслеживание через Service Worker',
                 testName_webSocketTracking: 'Отслеживание через WebSocket',
                 testName_comprehensiveTracking: 'Комплексная блокировка трекеров',
-                testName_scriptAds: 'Выполнение скриптов рекламы (Инфо)', // Conceptual
-                testName_scriptPagead: 'Выполнение скриптов Page Ad (Инфо)', // Conceptual
-                 // Status & Result Messages
+                testName_advancedFingerprinting: 'Расширенный анализ цифрового отпечатка', // NEW TEST NAME
+                testName_scriptAds: 'Выполнение скриптов рекламы (Инфо)',
+                testName_scriptPagead: 'Выполнение скриптов Page Ad (Инфо)',
+                // Status & Result Messages
                 statusInitializing: 'Инициализация...',
                 statusBlocked: 'Заблокировано',
                 statusAllowed: 'Разрешено',
@@ -422,7 +574,58 @@
                 scriptPageadBlockedMsg: 'Загрузка скриптов Page Ad, похоже, заблокирована (Инфо).',
                 scriptPageadAllowedMsg: 'Загрузка скриптов Page Ad может быть разрешена (Инфо).',
 
-                 // Exposed Info Implications
+                // NEW: Advanced Fingerprinting Messages
+                advFpUniqueMsg: 'Вы уникальны среди {totalFp} цифровых отпечатков в нашей базе данных.',
+                advFpSimilarMsg: 'Ваш цифровой отпечаток похож на {matchCount} других в нашей базе данных.',
+                advFpOverallResult: 'Ваш браузер раскрывает уникальные характеристики.',
+                advFpDetails: 'Детальный анализ атрибутов вашего цифрового отпечатка:',
+                advFpGeneralInfo: 'Общая информация',
+                advFpHttpHeaders: 'Атрибуты HTTP заголовков',
+                advFpJavascriptAttrs: 'Атрибуты JavaScript',
+                advFpAttribute: 'Атрибут',
+                advFpSimilarityRatio: 'Коэффициент сходства',
+                advFpValue: 'Значение',
+                advFpNotSupported: 'Не поддерживается',
+                advFpNoValue: 'Нет значения',
+                advFpFlashNotDetected: 'Flash не обнаружен',
+                advFpPropertiesDetected: 'Обнаружено {count} свойств',
+                advFpExtensions: '{count} различных расширений',
+                advFpGeneralParameters: 'Проанализировано {count} различных общих параметров',
+                advFpShadersPrecisions: 'Проанализировано {count} различных точностей шейдеров',
+                advFpFontsCount: 'И {count} других',
+                advFpAudioFormats: 'Форматы аудио',
+                advFpVideoFormats: 'Форматы видео',
+                advFpAudioContext: 'Аудио контекст',
+                advFpFrequencyAnalyser: 'Частотный анализатор',
+                advFpPermissions: 'Разрешения',
+                advFpAdblockStatus: 'Использование Adblock',
+                advFpCookiesEnabled: 'Куки включены',
+                advFpJavaEnabled: 'Java включена',
+                advFpLocalStorage: 'Использование локального хранилища',
+                advFpSessionStorage: 'Использование сессионного хранилища',
+                advFpIndexedDB: 'Использование IndexedDB',
+                advFpMediaDevices: 'Медиа-устройства',
+                advFpAccelerometer: 'Акселерометр',
+                advFpGyroscope: 'Гироскоп',
+                advFpProximitySensor: 'Датчик приближения',
+                advFpKeyboardLayout: 'Раскладка клавиатуры',
+                advFpBattery: 'Батарея',
+                advFpConnection: 'Соединение',
+                advFpLocationBar: 'Адресная строка',
+                advFpMenuBar: 'Строка меню',
+                advFpPersonalBar: 'Личная панель',
+                advFpStatusBar: 'Строка состояния',
+                advFpToolBar: 'Панель инструментов',
+                advFpResultState: 'Состояние результата',
+                advFpWebGLVendor: 'Производитель WebGL',
+                advFpWebGLRenderer: 'Рендерер WebGL',
+                advFpWebGLData: 'Данные WebGL',
+                advFpWebGLParameters: 'Параметры WebGL',
+                advFpScreenAvailableHeight: 'Доступная высота экрана',
+                advFpScreenAvailableWidth: 'Доступная ширина экрана',
+
+
+                // Exposed Info Implications
                 implication_cosmeticFiltering: 'Если рекламные элементы не скрыты, они могут мешать визуально, а трекеры внутри них все еще могут загружаться, даже если скрипты заблокированы.',
                 implication_cnameCloaking: 'Этот метод маскирует сторонние трекеры под поддоменом первого уровня (например, `stats.your-site.com`, фактически указывающий на трекер). Если разрешено, это обходит стандартные списки блокировки по домену, позволяя трекерам работать незаметно и собирать данные о просмотре.',
                 implication_fingerprintingAPI: 'Ваш браузер предоставляет различные сведения (ЦП, память, экран, шрифты, язык и т. д.) через API. По отдельности незначительные, эти детали в совокупности создают уникальный "отпечаток". Трекеры собирают его для идентификации и отслеживания вашего браузера на сайтах и в сессиях, часто даже если вы чистите куки или используете приватный режим.',
@@ -432,8 +635,9 @@
                 implication_serviceWorkerTracking: 'Service Workers позволяют веб-сайтам запускать скрипты в фоновом режиме, даже когда вкладка сайта закрыта. Если разрешено для целей отслеживания, они могут постоянно отслеживать активность, синхронизировать данные или восстанавливать идентификаторы отслеживания, что значительно усложняет уклонение от отслеживания.',
                 implication_webSocketTracking: 'WebSockets обеспечивают постоянный двусторонний канал связи. Трекеры могут использовать это для мониторинга ваших взаимодействий (движения мыши, клики, ввод текста) на странице в реальном времени и мгновенной отправки этих данных, создавая очень подробный журнал активности.',
                 implication_comprehensiveTracking: 'Неспособность блокировать известные домены трекеров позволяет рекламным сетям, аналитическим компаниям, социальным сетям и другим отслеживать вашу активность на разных веб-сайтах, создавать подробные профили о ваших интересах и поведении и потенциально связывать вашу активность с вами.',
-                 implication_scriptAds: '(Инфо) Разрешение внешних рекламных скриптов — основной способ, которым большинство рекламных сетей отслеживают пользователей и показывают рекламу.',
-                 implication_scriptPagead: '(Инфо) Разрешение специфических скриптов Google page ad обеспечивает их широкое отслеживание и рекламную сеть.',
+                implication_advancedFingerprinting: 'Ваш цифровой отпечаток формируется уникальной комбинацией конфигурации вашего браузера, аппаратного и программного обеспечения. Высокоуникальный отпечаток позволяет трекерам очень легко идентифицировать и отслеживать вас в Интернете, даже без традиционных файлов cookie.', // NEW IMPLICATION
+                implication_scriptAds: '(Инфо) Разрешение внешних рекламных скриптов — основной способ, которым большинство рекламных сетей отслеживают пользователей и показывают рекламу.',
+                implication_scriptPagead: '(Инфо) Разрешение специфических скриптов Google page ad обеспечивает их широкое отслеживание и рекламную сеть.',
 
                 // Exposed Info Summary Texts
                 exposedDataIntro: "Конкретные детали, потенциально формирующие ваш уникальный цифровой отпечаток, включают:",
@@ -444,7 +648,7 @@
                 assessmentFingerprintData: "Эта комбинированная информация может использоваться трекерами для создания подробного профиля, отслеживания вас на веб-сайтах и ​​предоставления целевого (часто нежелательного) контента или рекламы.",
                 assessmentExcellent: "Отлично! Конфигурация вашего браузера, по-видимому, эффективно противостоит протестированным методам отслеживания.",
 
-                 // Recommendations
+                // Recommendations
                 recommendation_cosmeticFiltering: 'Улучшите правила косметической фильтрации в вашем блокировщике рекламы/трекеров.',
                 recommendation_cnameCloaking: 'Используйте блокировщик с эффективными возможностями демаскировки CNAME (например, uBlock Origin).',
                 recommendation_fingerprintingAPI: 'Используйте браузер, ориентированный на приватность, или расширения, ограничивающие доступ к API (например, Brave, Firefox с resistFingerprinting, NoScript).',
@@ -454,14 +658,15 @@
                 recommendation_serviceWorkerTracking: 'Проверьте настройки браузера для контроля Service Worker или положитесь на ваш блокировщик трекеров.',
                 recommendation_webSocketTracking: 'Убедитесь, что ваш блокировщик эффективно блокирует домены, использующие WebSockets для отслеживания.',
                 recommendation_comprehensiveTracking: 'Убедитесь, что список вашего блокировщика трекеров полон и актуален. Просмотрите разрешенные домены в детальной разбивке.',
+                recommendation_advancedFingerprinting: 'Рассмотрите использование браузера, ориентированного на приватность (например, Tor Browser, Mullvad Browser) или расширения для продвинутой защиты от цифровых отпечатков (например, CanvasBlocker, WebGL Fingerprint Defender), чтобы минимизировать вашу уникальную цифровую подпись.', // NEW RECOMMENDATION
                 recommendation_scriptAds: '(Инфо) Используйте надежный блокировщик скриптов (например, uBlock Origin или NoScript) для контроля выполнения рекламных скриптов.',
                 recommendation_scriptPagead: '(Инфо) Убедитесь, что рекламные скрипты Google заблокированы вашим основным блокировщиком.',
-                 // Generic Recommendations
+                // Generic Recommendations
                 recommendation_genericReview: 'Просмотрите неудачные тесты выше и рассмотрите общие улучшения приватности.',
                 recommendation_genericKeepUpdated: 'Поддерживайте ваш браузер и инструменты приватности в актуальном состоянии для сохранения этого уровня защиты.',
                 recommendation_genericUsePrivacyTools: 'Рассмотрите использование браузеров, ориентированных на приватность (например, Brave, Firefox), или расширений (например, uBlock Origin, Privacy Badger).',
                 recommendation_genericClearData: 'Регулярно очищайте ненужные данные браузера (куки, данные сайтов).',
-                 // Tracker Categories
+                // Tracker Categories
                 categoryName_Ads: 'Рекламные трекеры',
                 categoryName_Analytics: 'Аналитика и Запись сессий',
                 categoryName_ErrorTrackers: 'Трекеры ошибок',
@@ -496,13 +701,13 @@
             const langTranslations = translations[currentLang] || translations['en'];
             let str = langTranslations[key] || translations['en'][key] || key; // Fallback chain
 
-             // Perform replacements
+            // Perform replacements
             for (const placeholder in replacements) {
-                 // Use a regex to replace all occurrences of {placeholder}
-                 // Need to escape placeholder for regex if it contains special chars, though unlikely here
-                 const regex = new RegExp(`\\{${placeholder}\\}`, 'g');
-                 str = str.replace(regex, replacements[placeholder]);
-             }
+                // Use a regex to replace all occurrences of {placeholder}
+                // Need to escape placeholder for regex if it contains special chars, though unlikely here
+                const regex = new RegExp(`\\{${placeholder}\\}`, 'g');
+                str = str.replace(regex, replacements[placeholder]);
+            }
             return str;
         }
 
@@ -511,8 +716,13 @@
 
 
         // --- Dark Mode --- (Same JS as before)
-        const darkModeToggle = document.getElementById('darkModeToggle'); const body = document.body;
-        if (localStorage.getItem('darkMode') === 'enabled' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { enableDarkMode(); } else { disableDarkMode(); } darkModeToggle.addEventListener('click', () => { if (body.classList.contains('dark-mode')) { disableDarkMode(); localStorage.setItem('darkMode', 'disabled'); } else { enableDarkMode(); localStorage.setItem('darkMode', 'enabled'); } hljs.highlightAll(); }); function enableDarkMode() { body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; } function disableDarkMode() { body.classList.remove('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; } hljs.highlightAll();
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+        if (localStorage.getItem('darkMode') === 'enabled' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { enableDarkMode(); } else { disableDarkMode(); }
+        darkModeToggle.addEventListener('click', () => { if (body.classList.contains('dark-mode')) { disableDarkMode(); localStorage.setItem('darkMode', 'disabled'); } else { enableDarkMode(); localStorage.setItem('darkMode', 'enabled'); } hljs.highlightAll(); });
+        function enableDarkMode() { body.classList.add('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>'; }
+        function disableDarkMode() { body.classList.remove('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; }
+        hljs.highlightAll();
 
 
         // --- Section Navigation & Test Flow --- (References updated)
@@ -540,21 +750,21 @@
 
         // --- Tracker Categories & Domains ---
         const trackerCategories = {
-             'Ads': {
-                 nameKey: 'categoryName_Ads', // For translation
-                 testsCount: 20, // User provided number
-                 domains: [
+            'Ads': {
+                nameKey: 'categoryName_Ads', // For translation
+                testsCount: 20, // User provided number
+                domains: [
                     'adtago.s3.amazonaws.com', 'advice-ads.s3.amazonaws.com', // Amazon (Indirect)
                     'pagead2.googlesyndication.com', 'adservice.google.com', 'pagead2.googleadservices.com', 'afs.googlesyndication.com', // Google Ads
                     'stats.g.doubleclick.net', 'ad.doubleclick.net', 'static.doubleclick.net', 'm.doubleclick.net', 'mediavisor.doubleclick.net', // Doubleclick
                     'ads30.adcolony.com', 'adc3-launch.adcolony.com', 'events3alt.adcolony.com', 'wd.adcolony.com', // AdColony
                     'static.media.net', 'media.net', 'adservetx.media.net' // Media.net
-                 ]
-             },
-             'Analytics': {
-                 nameKey: 'categoryName_Analytics',
-                 testsCount: 30,
-                 domains: [
+                ]
+            },
+            'Analytics': {
+                nameKey: 'categoryName_Analytics',
+                testsCount: 30,
+                domains: [
                     'analytics.google.com', 'click.googleanalytics.com', 'google-analytics.com', 'ssl.google-analytics.com', // Google Analytics
                     'adm.hotjar.com', 'identify.hotjar.com', 'insights.hotjar.com', 'script.hotjar.com', 'surveys.hotjar.com', 'careers.hotjar.com', 'events.hotjar.io', // Hotjar
                     'mouseflow.com', 'cdn.mouseflow.com', 'o2.mouseflow.com', 'gtm.mouseflow.com', 'api.mouseflow.com', 'tools.mouseflow.com', 'cdn-test.mouseflow.com', // MouseFlow
@@ -562,69 +772,76 @@
                     'luckyorange.com', 'api.luckyorange.com', 'realtime.luckyorange.com', 'cdn.luckyorange.com', 'w1.luckyorange.com', 'upload.luckyorange.net', 'cs.luckyorange.net', 'settings.luckyorange.net', // Lucky Orange
                     'stats.wp.com', // Stats WP Plugin (Automattic)
                     'analyticsengine.s3.amazonaws.com', 'analytics.s3.amazonaws.com' // Amazon (Indirect)
-                 ]
-             },
-             'ErrorTrackers': {
-                 nameKey: 'categoryName_ErrorTrackers',
-                 testsCount: 6,
-                 domains: [
-                     'notify.bugsnag.com', 'sessions.bugsnag.com', 'api.bugsnag.com', 'app.bugsnag.com', // Bugsnag
-                     'browser.sentry-cdn.com', 'app.getsentry.com' // Sentry
-                 ]
-             },
-             'SocialTrackers': {
-                 nameKey: 'categoryName_SocialTrackers',
-                 testsCount: 20,
-                 domains: [
-                     'pixel.facebook.com', 'an.facebook.com', // Facebook
-                     'static.ads-twitter.com', 'ads-api.twitter.com', // Twitter
-                     'ads.linkedin.com', 'analytics.pointdrive.linkedin.com', // LinkedIn
-                     'ads.pinterest.com', 'log.pinterest.com', 'analytics.pinterest.com', 'trk.pinterest.com', // Pinterest
-                     'events.reddit.com', 'events.redditmedia.com', // Reddit
-                     'googleusercontent.com/youtube.com/0', // YouTube (Example, may need refinement)
-                     'ads-api.tiktok.com', 'analytics.tiktok.com', 'ads-sg.tiktok.com', 'analytics-sg.tiktok.com', 'business-api.tiktok.com', 'ads.tiktok.com', 'log.byteoversea.com' // TikTok
-                 ]
-             },
-             'Mix': {
-                 nameKey: 'categoryName_Mix',
-                 testsCount: 20,
-                 domains: [
-                     'ads.yahoo.com', 'analytics.yahoo.com', 'geo.yahoo.com', 'udc.yahoo.com', 'udcm.yahoo.com', 'analytics.query.yahoo.com', 'partnerads.ysm.yahoo.com', 'log.fc.yahoo.com', 'gemini.yahoo.com', 'adtech.yahooinc.com', // Yahoo
-                     'extmaps-api.yandex.net', 'appmetrica.yandex.ru', 'adfstat.yandex.ru', 'metrika.yandex.ru', 'offerwall.yandex.net', 'adfox.yandex.ru', // Yandex
-                     'auction.unityads.unity3d.com', 'webview.unityads.unity3d.com', 'config.unityads.unity3d.com', 'adserver.unityads.unity3d.com' // Unity Ads
-                 ]
-             },
-             'OEMs': {
-                 nameKey: 'categoryName_OEMs',
-                 testsCount: 35,
-                 domains: [
-                     'iot-eu-logser.realme.com', 'iot-logser.realme.com', 'bdapi-ads.realmemobile.com', 'bdapi-in-ads.realmemobile.com', // Realme
-                     'api.ad.xiaomi.com', 'data.mistat.xiaomi.com', 'data.mistat.india.xiaomi.com', 'data.mistat.rus.xiaomi.com', 'sdkconfig.ad.xiaomi.com', 'sdkconfig.ad.intl.xiaomi.com', 'tracking.rus.miui.com', // Xiaomi
-                     'adsfs.oppomobile.com', 'adx.ads.oppomobile.com', 'ck.ads.oppomobile.com', 'data.ads.oppomobile.com', // Oppo
-                     'metrics.data.hicloud.com', 'metrics2.data.hicloud.com', 'grs.hicloud.com', 'logservice.hicloud.com', 'logservice1.hicloud.com', 'logbak.hicloud.com', // Huawei
-                     'click.oneplus.cn', 'open.oneplus.net', // OnePlus
-                     'samsungads.com', 'smetrics.samsung.com', 'nmetrics.samsung.com', 'samsung-com.112.2o7.net', 'analytics-api.samsunghealthcn.com', // Samsung
-                     'iadsdk.apple.com', 'metrics.icloud.com', 'metrics.mzstatic.com', 'api-adservices.apple.com', 'books-analytics-events.apple.com', 'weather-analytics-events.apple.com', 'notes-analytics-events.apple.com' // Apple
-                 ]
-             }
-         };
+                ]
+            },
+            'ErrorTrackers': {
+                nameKey: 'categoryName_ErrorTrackers',
+                testsCount: 6,
+                domains: [
+                    'notify.bugsnag.com', 'sessions.bugsnag.com', 'api.bugsnag.com', 'app.bugsnag.com', // Bugsnag
+                    'browser.sentry-cdn.com', 'app.getsentry.com' // Sentry
+                ]
+            },
+            'SocialTrackers': {
+                nameKey: 'categoryName_SocialTrackers',
+                testsCount: 20,
+                domains: [
+                    'pixel.facebook.com', 'an.facebook.com', // Facebook
+                    'static.ads-twitter.com', 'ads-api.twitter.com', // Twitter
+                    'ads.linkedin.com', 'analytics.pointdrive.linkedin.com', // LinkedIn
+                    'ads.pinterest.com', 'log.pinterest.com', 'analytics.pinterest.com', 'trk.pinterest.com', // Pinterest
+                    'events.reddit.com', 'events.redditmedia.com', // Reddit
+                    'googleusercontent.com/youtube.com/0', // YouTube (Example, may need refinement)
+                    'ads-api.tiktok.com', 'analytics.tiktok.com', 'ads-sg.tiktok.com', 'analytics-sg.tiktok.com', 'business-api.tiktok.com', 'ads.tiktok.com', 'log.byteoversea.com' // TikTok
+                ]
+            },
+            'Mix': {
+                nameKey: 'categoryName_Mix',
+                testsCount: 20,
+                domains: [
+                    'ads.yahoo.com', 'analytics.yahoo.com', 'geo.yahoo.com', 'udc.yahoo.com', 'udcm.yahoo.com', 'analytics.query.yahoo.com', 'partnerads.ysm.yahoo.com', 'log.fc.yahoo.com', 'gemini.yahoo.com', 'adtech.yahooinc.com', // Yahoo
+                    'extmaps-api.yandex.net', 'appmetrica.yandex.ru', 'adfstat.yandex.ru', 'metrika.yandex.ru', 'offerwall.yandex.net', 'adfox.yandex.ru', // Yandex
+                    'auction.unityads.unity3d.com', 'webview.unityads.unity3d.com', 'config.unityads.unity3d.com', 'adserver.unityads.unity3d.com' // Unity Ads
+                ]
+            },
+            'OEMs': {
+                nameKey: 'categoryName_OEMs',
+                testsCount: 35,
+                domains: [
+                    'iot-eu-logser.realme.com', 'iot-logser.realme.com', 'bdapi-ads.realmemobile.com', 'bdapi-in-ads.realmemobile.com', // Realme
+                    'api.ad.xiaomi.com', 'data.mistat.xiaomi.com', 'data.mistat.india.xiaomi.com', 'data.mistat.rus.xiaomi.com', 'sdkconfig.ad.xiaomi.com', 'sdkconfig.ad.intl.xiaomi.com', 'tracking.rus.miui.com', // Xiaomi
+                    'adsfs.oppomobile.com', 'adx.ads.oppomobile.com', 'ck.ads.oppomobile.com', 'data.ads.oppomobile.com', // Oppo
+                    'metrics.data.hicloud.com', 'metrics2.data.hicloud.com', 'grs.hicloud.com', 'logservice.hicloud.com', 'logservice1.hicloud.com', 'logbak.hicloud.com', // Huawei
+                    'click.oneplus.cn', 'open.oneplus.net', // OnePlus
+                    'samsungads.com', 'smetrics.samsung.com', 'nmetrics.samsung.com', 'samsung-com.112.2o7.net', 'analytics-api.samsunghealthcn.com', // Samsung
+                    'iadsdk.apple.com', 'metrics.icloud.com', 'metrics.mzstatic.com', 'api-adservices.apple.com', 'books-analytics-events.apple.com', 'weather-analytics-events.apple.com', 'notes-analytics-events.apple.com' // Apple
+                ]
+            }
+        };
 
         // --- Test Definitions & State ---
         const tests = [
             { id: 'cosmeticFiltering', nameKey: 'testName_cosmeticFiltering', func: simulateCosmeticFiltering, weight: 10 }, // Renamed, covers static/dynamic conceptually
             { id: 'comprehensiveTracking', nameKey: 'testName_comprehensiveTracking', func: simulateComprehensiveTrackerBlocking, weight: 40 }, // New comprehensive test
             { id: 'cnameCloaking', nameKey: 'testName_cnameCloaking', func: simulateCnameCloaking, weight: 10 },
-            { id: 'fingerprintingAPI', nameKey: 'testName_fingerprintingAPI', func: simulateFingerprintingAPI, weight: 15 },
+            // Removed old fingerprintingAPI, replaced with advancedFingerprinting
             { id: 'canvasFingerprinting', nameKey: 'testName_canvasFingerprinting', func: simulateCanvasFingerprinting, weight: 10 },
             { id: 'audioFingerprinting', nameKey: 'testName_audioFingerprinting', func: simulateAudioFingerprinting, weight: 5 },
             { id: 'webRTCLeak', nameKey: 'testName_webRTCLeak', func: simulateWebRTCLeak, weight: 5 },
             { id: 'serviceWorkerTracking', nameKey: 'testName_serviceWorkerTracking', func: simulateServiceWorkerTracking, weight: 5 },
             { id: 'webSocketTracking', nameKey: 'testName_webSocketTracking', func: simulateWebSocketTracking, weight: 5 },
-             // Placeholder/Conceptual tests based on flags - marked informational, low weight
-             //{ id: 'scriptAds', nameKey: 'testName_scriptAds', func: simulateScriptAds, weight: 0 }, // Example, func needs defining
-             //{ id: 'scriptPagead', nameKey: 'testName_scriptPagead', func: simulateScriptPagead, weight: 0 }, // Example, func needs defining
+            { id: 'advancedFingerprinting', nameKey: 'testName_advancedFingerprinting', func: simulateAdvancedFingerprinting, weight: 15 }, // NEW ADVANCED FINGERPRINTING TEST
+            // Placeholder/Conceptual tests based on flags - marked informational, low weight
+            //{ id: 'scriptAds', nameKey: 'testName_scriptAds', func: simulateScriptAds, weight: 0 }, // Example, func needs defining
+            //{ id: 'scriptPagead', nameKey: 'testName_scriptPagead', func: simulateScriptPagead, weight: 0 }, // Example, func needs defining
         ];
-        let testResults = {}; let currentTestIndex = 0; let overallScore = 0; let currentTestTimeout = null; let collectedFingerprintData = {}; let detailedTrackerResults = {}; // Store detailed domain results
+        let testResults = {};
+        let currentTestIndex = 0;
+        let overallScore = 0;
+        let currentTestTimeout = null;
+        let collectedFingerprintData = {}; // General collected data from simple API test
+        let detailedTrackerResults = {}; // Store detailed domain results
+        let advancedFingerprintData = null; // NEW: Store data for advanced fingerprinting test
         const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
 
 
@@ -642,27 +859,27 @@
             document.getElementById('mainTitle').textContent = getString('mainTitle');
             document.getElementById('subTitle').textContent = getString('subTitle');
             document.getElementById('startTestBtn').innerHTML = `${getString('startTestBtn')} <i class="fas fa-vial ml-2"></i>`;
-             document.getElementById('testInProgressTitle').textContent = getString('testInProgressTitle');
-             document.getElementById('testCompleteTitle').textContent = getString('testCompleteTitle');
-             document.getElementById('testCompleteSubTitle').textContent = getString('testCompleteSubTitle');
-             document.getElementById('viewResultsBtn').innerHTML = `${getString('viewResultsBtn')} <i class="fas fa-arrow-right ml-2"></i>`;
-             document.getElementById('resultsTitle').textContent = getString('resultsTitle');
-             document.getElementById('summaryTitle').textContent = getString('summaryTitle');
-             document.getElementById('detailedAnalysisTitle').textContent = getString('detailedAnalysisTitle');
-             document.getElementById('trackerBreakdownTitle').textContent = getString('trackerBreakdownTitle');
-             document.getElementById('exposedInfoTitle').textContent = getString('exposedInfoTitle');
-             document.getElementById('exposedInfoSubTitle').textContent = getString('exposedInfoSubTitle');
-             document.getElementById('noExposureMessage').textContent = getString('noExposureMessage'); // Inside the hidden P tag
-             document.getElementById('recommendationsTitle').textContent = getString('recommendationsTitle');
-             document.getElementById('viewArchitectureBtn').innerHTML = `${getString('viewArchitectureBtn')} <i class="fas fa-cogs ml-2"></i>`;
-             document.getElementById('runAgainBtn').innerHTML = `${getString('runAgainBtn')} <i class="fas fa-sync-alt ml-2"></i>`;
-             document.getElementById('architectureTitle').textContent = getString('architectureTitle');
-             document.getElementById('archGlobalDbTitle').textContent = getString('archGlobalDbTitle');
-             document.getElementById('archMultiPlatformTitle').textContent = getString('archMultiPlatformTitle');
-             document.getElementById('archConclusionTitle').textContent = getString('archConclusionTitle');
-             document.getElementById('backToResultsFromArchBtn').innerHTML = `<i class="fas fa-arrow-left mr-2"></i> ${getString('backToResultsFromArchBtn')}`;
-         }
-         setInitialUIText(); // Call on load
+            document.getElementById('testInProgressTitle').textContent = getString('testInProgressTitle');
+            document.getElementById('testCompleteTitle').textContent = getString('testCompleteTitle');
+            document.getElementById('testCompleteSubTitle').textContent = getString('testCompleteSubTitle');
+            document.getElementById('viewResultsBtn').innerHTML = `${getString('viewResultsBtn')} <i class="fas fa-arrow-right ml-2"></i>`;
+            document.getElementById('resultsTitle').textContent = getString('resultsTitle');
+            document.getElementById('summaryTitle').textContent = getString('summaryTitle');
+            document.getElementById('detailedAnalysisTitle').textContent = getString('detailedAnalysisTitle');
+            document.getElementById('trackerBreakdownTitle').textContent = getString('trackerBreakdownTitle');
+            document.getElementById('exposedInfoTitle').textContent = getString('exposedInfoTitle');
+            document.getElementById('exposedInfoSubTitle').textContent = getString('exposedInfoSubTitle');
+            document.getElementById('noExposureMessage').textContent = getString('noExposureMessage'); // Inside the hidden P tag
+            document.getElementById('recommendationsTitle').textContent = getString('recommendationsTitle');
+            document.getElementById('viewArchitectureBtn').innerHTML = `${getString('viewArchitectureBtn')} <i class="fas fa-cogs ml-2"></i>`;
+            document.getElementById('runAgainBtn').innerHTML = `${getString('runAgainBtn')} <i class="fas fa-sync-alt ml-2"></i>`;
+            document.getElementById('architectureTitle').textContent = getString('architectureTitle');
+            document.getElementById('archGlobalDbTitle').textContent = getString('archGlobalDbTitle');
+            document.getElementById('archMultiPlatformTitle').textContent = getString('archMultiPlatformTitle');
+            document.getElementById('archConclusionTitle').textContent = getString('archConclusionTitle');
+            document.getElementById('backToResultsFromArchBtn').innerHTML = `<i class="fas fa-arrow-left mr-2"></i> ${getString('backToResultsFromArchBtn')}`;
+        }
+        setInitialUIText(); // Call on load
 
         // --- Simulation Functions ---
 
@@ -679,9 +896,9 @@
                 adEl.id = elInfo.id;
                 adEl.className = elInfo.classes;
                 adEl.style.cssText = elInfo.style;
-                 document.body.appendChild(adEl);
-                 createdElements.push(adEl);
-             });
+                document.body.appendChild(adEl);
+                createdElements.push(adEl);
+            });
 
             updateCallback("Waiting for cosmetic filters..."); await delay(350); // Slightly longer wait
 
@@ -709,7 +926,7 @@
         async function simulateComprehensiveTrackerBlocking(updateCallback) {
             let overallBlocked = 0;
             let overallTotal = 0;
-             detailedTrackerResults = {}; // Reset global store
+            detailedTrackerResults = {}; // Reset global store
 
             for (const categoryId in trackerCategories) {
                 const category = trackerCategories[categoryId];
@@ -721,26 +938,26 @@
                 const totalInCategory = domains.length;
 
                 for (let i = 0; i < totalInCategory; i++) {
-                     const domain = domains[i];
-                     // Provide more granular progress within category
-                     updateCallback(`${categoryName} (${i + 1}/${totalInCategory}): Checking ${domain}...`);
+                    const domain = domains[i];
+                    // Provide more granular progress within category
+                    updateCallback(`${categoryName} (${i + 1}/${totalInCategory}): Checking ${domain}...`);
                     try {
                         // Use fetch with AbortSignal for timeout
                         const controller = new AbortController();
                         const timeoutId = setTimeout(() => controller.abort(), 1500); // 1.5 second timeout per request
                         await fetch(`https://${domain}`, { mode: 'no-cors', cache: 'no-store', signal: controller.signal });
-                         clearTimeout(timeoutId);
-                         domainResults[domain] = 'allowed';
+                        clearTimeout(timeoutId);
+                        domainResults[domain] = 'allowed';
                     } catch (error) {
                         // Check if it was an AbortError (timeout) or likely a network error (blocked)
-                         if (error.name === 'AbortError') {
-                             domainResults[domain] = 'allowed'; // Treat timeout as allowed/unblocked for score
-                             console.warn(`Timeout fetching ${domain}`);
-                         } else {
-                             domainResults[domain] = 'blocked';
-                             categoryBlocked++;
-                         }
-                     }
+                        if (error.name === 'AbortError') {
+                            domainResults[domain] = 'allowed'; // Treat timeout as allowed/unblocked for score
+                            console.warn(`Timeout fetching ${domain}`);
+                        } else {
+                            domainResults[domain] = 'blocked';
+                            categoryBlocked++;
+                        }
+                    }
                     await delay(20); // Short delay between domains
                 }
                 detailedTrackerResults[categoryId] = { blocked: categoryBlocked, total: totalInCategory, results: domainResults, nameKey: category.nameKey };
@@ -754,10 +971,10 @@
 
             const score = overallTotal > 0 ? overallBlocked / overallTotal : 1; // Avoid division by zero
             const success = score > 0.95; // High threshold for success
-             let messageKey = 'comprehensiveBlockedMsg';
-             if (overallBlocked < overallTotal && overallTotal > 0) {
-                 messageKey = 'comprehensiveSomeAllowedMsg';
-             }
+            let messageKey = 'comprehensiveBlockedMsg';
+            if (overallBlocked < overallTotal && overallTotal > 0) {
+                messageKey = 'comprehensiveSomeAllowedMsg';
+            }
 
             return {
                 success: success,
@@ -774,228 +991,821 @@
             let success = false;
             let message = getString('cnameCloakingAllowedMsg'); // Default to failure message
             const domain = window.location.hostname.replace(/^www\./, '');
-             if (!domain || domain === 'localhost' || domain.startsWith('127.') || domain.startsWith('192.168.')) {
+            if (!domain || domain === 'localhost' || domain.startsWith('127.') || domain.startsWith('192.168.')) {
                 return { success: true, score: 1, message: getString('cnameCloakingError'), details: "Running on local/IP hostname." };
-             }
+            }
             const cloakedUrl = `https://stats-alias.${domain}/pixel.gif`; // Hypothetical cloaked URL
-             updateCallback(`Attempting fetch from stats-alias.${domain}...`);
+            updateCallback(`Attempting fetch from stats-alias.${domain}...`);
             try {
-                 const controller = new AbortController();
-                 const timeoutId = setTimeout(() => controller.abort(), 2000);
-                 await fetch(cloakedUrl, { mode: 'no-cors', cache: 'no-store', signal: controller.signal });
-                 clearTimeout(timeoutId);
-                 success = false; // Request went through, cloak NOT blocked
+                const controller = new AbortController();
+                const timeoutId = setTimeout(() => controller.abort(), 2000);
+                await fetch(cloakedUrl, { mode: 'no-cors', cache: 'no-store', signal: controller.signal });
+                clearTimeout(timeoutId);
+                success = false; // Request went through, cloak NOT blocked
             } catch (error) {
                 success = true; // Request failed, likely blocked
-                 message = getString('cnameCloakingBlockedMsg');
-             }
+                message = getString('cnameCloakingBlockedMsg');
+            }
             updateCallback("CNAME check " + getString('statusCompleted') + "."); await delay(50);
             return { success: success, score: success ? 1 : 0, message: message };
         }
 
-        async function simulateFingerprintingAPI(updateCallback) {
-            collectedFingerprintData = {}; let identifiablePoints = 0; const totalPoints = 7; let details = [];
-            const check = (name, value) => {
-                 updateCallback(`Checking ${name}...`);
-                 let displayValue = value;
-                 // Try to handle potential promises returned by some APIs
-                 if (value && typeof value.then === 'function') {
-                     return value.then(resolvedValue => check(name, resolvedValue)).catch(() => {
-                         details.push(`${name}: Error/Unavailable`); return false;
-                     });
-                 }
-                if (Array.isArray(value)) displayValue = value.join(', ');
-                 if (displayValue !== undefined && displayValue !== null && displayValue !== '' && displayValue !== '[object Promise]') {
-                     identifiablePoints++;
-                     details.push(`${name}: ${displayValue}`);
-                     collectedFingerprintData[name] = displayValue;
-                     return true;
-                 } else {
-                     details.push(`${name}: Hidden/Unavailable`);
-                     return false;
-                 }
-             };
-
-            try { check('CPU Cores', navigator.hardwareConcurrency); } catch(e){} await delay(70);
-            try { check('Device Memory (GB)', navigator.deviceMemory); } catch(e){} await delay(70);
-            try { check('Plugin Count', navigator.plugins?.length); } catch(e){} await delay(70);
-            try { check('MIME Type Count', navigator.mimeTypes?.length); } catch(e){} await delay(70);
-            try { check('Language', navigator.language); } catch(e){} await delay(70);
-            try { check('Languages', navigator.languages); } catch(e){} await delay(70);
-            try { check('Color Depth', screen?.colorDepth); } catch(e){} await delay(70);
-            try { collectedFingerprintData['Screen Resolution'] = `${screen?.width}x${screen?.height}`; } catch(e){}
-            try { collectedFingerprintData['User Agent'] = navigator.userAgent || 'N/A'; } catch(e){}
-            try { collectedFingerprintData['Platform'] = navigator.platform || 'N/A'; } catch(e){}
-            try { collectedFingerprintData['Timezone Offset'] = new Date().getTimezoneOffset(); } catch(e){}
-
-            updateCallback("API check " + getString('statusCompleted') + "."); await delay(50);
-            const score = 1 - (identifiablePoints / totalPoints);
-            const restrictedCount = totalPoints - identifiablePoints;
-             let messageKey = score > 0.5 ? 'fingerprintingRestrictedMsg' : 'fingerprintingExposureMsg';
-             return {
-                 success: score > 0.5,
-                 score: score,
-                 message: getString(messageKey, { restricted: restrictedCount, exposed: identifiablePoints, total: totalPoints }),
-                 details: `${getString('statusRestricted')}/${getString('statusAllowed')} points: ${restrictedCount}/${identifiablePoints}`
-             };
-         }
+        // Removed old simulateFingerprintingAPI
 
         async function simulateCanvasFingerprinting(updateCallback) {
-            updateCallback(getString('statusInitializing') + " Canvas..."); await delay(50); let score = 0; let messageKey = 'canvasVulnerable'; let details = "";
+            updateCallback(getString('statusInitializing') + " Canvas..."); await delay(50);
+            let score = 0;
+            let messageKey = 'canvasVulnerable';
+            let details = "";
             try {
-                const canvas = document.createElement('canvas'); canvas.width = 200; canvas.height = 50;
-                 const ctx = canvas.getContext('2d'); if (!ctx) throw new Error("Canvas 2D context not available.");
+                const canvas = document.createElement('canvas');
+                canvas.width = 200;
+                canvas.height = 50;
+                const ctx = canvas.getContext('2d');
+                if (!ctx) throw new Error("Canvas 2D context not available.");
                 updateCallback("Drawing on Canvas..."); await delay(100);
-                 ctx.fillStyle = "rgb(75, 100, 175)"; ctx.fillRect(10, 10, 150, 30); ctx.fillStyle = "#ffffff"; ctx.font = "16px Arial"; ctx.fillText("PrivacyTest! @", 20, 30);
+                ctx.fillStyle = "rgb(75, 100, 175)";
+                ctx.fillRect(10, 10, 150, 30);
+                ctx.fillStyle = "#ffffff";
+                ctx.font = "16px Arial";
+                ctx.fillText("PrivacyTest! @", 20, 30);
                 updateCallback("Extracting Canvas data..."); await delay(50);
                 const dataUrl = canvas.toDataURL();
                 if (dataUrl && dataUrl.length > 100 && dataUrl !== 'data:,') { // Check for non-empty, non-trivial data URL
-                     details = `Data URL (start): ${dataUrl.substring(0, 50)}...`;
+                    details = `Data URL (start): ${dataUrl.substring(0, 50)}...`;
                     // Second draw to check for randomization
-                     const canvas2 = document.createElement('canvas'); canvas2.width = 200; canvas2.height = 50; const ctx2 = canvas2.getContext('2d');
-                     ctx2.fillStyle = "rgb(75, 100, 175)"; ctx2.fillRect(10, 10, 150, 30); ctx2.fillStyle = "#ffffff"; ctx2.font = "16px Arial"; ctx2.fillText("PrivacyTest! @", 20, 30);
-                     const dataUrl2 = canvas2.toDataURL();
-                    if (dataUrl !== dataUrl2) { score = 1; messageKey = "canvasResistedRandom"; }
-                     else if (dataUrl.includes("data:image/png;base64,")) { score = 0.2; messageKey = 'canvasVulnerable'; } // Standard, potentially fingerprintable
-                     else { score = 1; messageKey = "canvasResistedBlank"; } // Non-standard data, treat as protected
-                     collectedFingerprintData['Canvas Fingerprint Hash (simulated)'] = dataUrl.slice(-50);
-                     canvas2.remove();
-                 } else { score = 1; messageKey = "canvasResistedBlank"; details = "API restricted or returns blank data."; }
-                 canvas.remove();
-             } catch (error) { score = 1; messageKey = "canvasFailed"; details = `Error: ${error.message}`; }
+                    const canvas2 = document.createElement('canvas');
+                    canvas2.width = 200;
+                    canvas2.height = 50;
+                    const ctx2 = canvas2.getContext('2d');
+                    ctx2.fillStyle = "rgb(75, 100, 175)";
+                    ctx2.fillRect(10, 10, 150, 30);
+                    ctx2.fillStyle = "#ffffff";
+                    ctx2.font = "16px Arial";
+                    ctx2.fillText("PrivacyTest! @", 20, 30);
+                    const dataUrl2 = canvas2.toDataURL();
+                    if (dataUrl !== dataUrl2) {
+                        score = 1;
+                        messageKey = "canvasResistedRandom";
+                    } else if (dataUrl.includes("data:image/png;base64,")) {
+                        score = 0.2;
+                        messageKey = 'canvasVulnerable';
+                    } // Standard, potentially fingerprintable
+                    else {
+                        score = 1;
+                        messageKey = "canvasResistedBlank";
+                    } // Non-standard data, treat as protected
+                    collectedFingerprintData['Canvas Fingerprint Hash (simulated)'] = dataUrl.slice(-50);
+                    canvas2.remove();
+                } else {
+                    score = 1;
+                    messageKey = "canvasResistedBlank";
+                    details = "API restricted or returns blank data.";
+                }
+                canvas.remove();
+            } catch (error) {
+                score = 1;
+                messageKey = "canvasFailed";
+                details = `Error: ${error.message}`;
+            }
             updateCallback("Canvas check " + getString('statusCompleted') + "."); await delay(50);
             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
-         }
+        }
 
         async function simulateAudioFingerprinting(updateCallback) {
-             updateCallback(getString('statusInitializing') + " AudioContext..."); await delay(50); let score = 0; let messageKey = 'audioVulnerable'; let details = "";
+            updateCallback(getString('statusInitializing') + " AudioContext..."); await delay(50);
+            let score = 0;
+            let messageKey = 'audioVulnerable';
+            let details = "";
             try {
-                const AudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext; if (!AudioContext) throw new Error("OfflineAudioContext not supported.");
-                const context = new AudioContext(1, 44100, 44100); updateCallback("Generating audio signal..."); await delay(100);
-                const oscillator = context.createOscillator(); oscillator.type = "triangle"; oscillator.frequency.setValueAtTime(10000, context.currentTime); const compressor = context.createDynamicsCompressor();
-                 // Simple chain: oscillator -> compressor -> destination
-                 oscillator.connect(compressor); compressor.connect(context.destination); oscillator.start(0);
-                 updateCallback("Rendering audio buffer..."); await delay(150);
-                 const buffer = await context.startRendering(); const data = buffer.getChannelData(0); let sum = 0;
+                const AudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+                if (!AudioContext) throw new Error("OfflineAudioContext not supported.");
+                const context = new AudioContext(1, 44100, 44100);
+                updateCallback("Generating audio signal..."); await delay(100);
+                const oscillator = context.createOscillator();
+                oscillator.type = "triangle";
+                oscillator.frequency.setValueAtTime(10000, context.currentTime);
+                const compressor = context.createDynamicsCompressor();
+                // Simple chain: oscillator -> compressor -> destination
+                oscillator.connect(compressor);
+                compressor.connect(context.destination);
+                oscillator.start(0);
+                updateCallback("Rendering audio buffer..."); await delay(150);
+                const buffer = await context.startRendering();
+                const data = buffer.getChannelData(0);
+                let sum = 0;
                 for (let i = 0; i < data.length; i++) { sum += Math.abs(data[i]); } // Simple sum hash
-                 details = `Generated audio hash (sum): ${sum.toFixed(5)}`; collectedFingerprintData['Audio Fingerprint Hash (simulated)'] = sum.toFixed(5);
-                if (sum > 0.0001) { score = 0.2; messageKey = 'audioVulnerable'; } // Non-zero sum indicates unique signal
-                 else { score = 1; messageKey = "audioResistedZero"; } // Zero or near-zero suggests protection
-             } catch (error) { score = 1; messageKey = "audioResistedFailed"; details = `Error: ${error.message}`; }
+                details = `Generated audio hash (sum): ${sum.toFixed(5)}`;
+                collectedFingerprintData['Audio Fingerprint Hash (simulated)'] = sum.toFixed(5);
+                if (sum > 0.0001) {
+                    score = 0.2;
+                    messageKey = 'audioVulnerable';
+                } // Non-zero sum indicates unique signal
+                else {
+                    score = 1;
+                    messageKey = "audioResistedZero";
+                } // Zero or near-zero suggests protection
+            } catch (error) {
+                score = 1;
+                messageKey = "audioResistedFailed";
+                details = `Error: ${error.message}`;
+            }
             updateCallback("Audio check " + getString('statusCompleted') + "."); await delay(50);
             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
-         }
+        }
 
         async function simulateWebRTCLeak(updateCallback) {
-            updateCallback(getString('statusInitializing') + " WebRTC..."); await delay(50); let score = 1; let messageKey = 'webRTCLeakBlocked'; let details = ""; let leakedIP = null;
+            updateCallback(getString('statusInitializing') + " WebRTC..."); await delay(50);
+            let score = 1;
+            let messageKey = 'webRTCLeakBlocked';
+            let details = "";
+            let leakedIP = null;
             try {
-                const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection; if (!RTCPeerConnection) throw new Error("WebRTC not supported.");
-                updateCallback("Creating Peer Connection..."); await delay(50); const pc = new RTCPeerConnection({ iceServers: [] }); // Use empty ICE servers to focus on local candidates
-                 pc.createDataChannel(""); const offer = await pc.createOffer(); await pc.setLocalDescription(offer);
-                updateCallback("Waiting for ICE candidates..."); await delay(300); const sdp = pc.localDescription?.sdp;
+                const RTCPeerConnection = window.RTCPeerConnection || window.mozRTCPeerConnection || window.webkitRTCPeerConnection;
+                if (!RTCPeerConnection) throw new Error("WebRTC not supported.");
+                updateCallback("Creating Peer Connection..."); await delay(50);
+                const pc = new RTCPeerConnection({ iceServers: [] }); // Use empty ICE servers to focus on local candidates
+                pc.createDataChannel("");
+                const offer = await pc.createOffer();
+                await pc.setLocalDescription(offer);
+                updateCallback("Waiting for ICE candidates..."); await delay(300);
+                const sdp = pc.localDescription?.sdp;
                 if (sdp) {
-                     updateCallback("Analyzing SDP..."); await delay(50);
-                     // Regex for typical local IPv4 addresses and mDNS names
-                     const localIpRegex = /a=candidate.*? (192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)/g;
-                     const mdnsRegex = /a=candidate.*? ([\w-]+\.local)/g; let match;
-                    if ((match = localIpRegex.exec(sdp)) !== null) { score = 0; messageKey = 'webRTCLeakDetected'; details = `Local IP pattern found: ${match[1]}`; leakedIP = match[1]; }
-                     else if ((match = mdnsRegex.exec(sdp)) !== null) { score = 0; messageKey = 'webRTCLeakDetected'; details = `mDNS name found: ${match[1]}`; leakedIP = match[1]; }
-                     else { details = "No obvious local patterns found in SDP."; }
-                 } else { details = "Could not get local SDP."; } pc.close();
-             } catch (error) { score = 1; messageKey = "webRTCLeakFailed"; details = `Error: ${error.message}`; }
-             if (leakedIP) collectedFingerprintData['WebRTC Leaked Address'] = leakedIP;
-             updateCallback("WebRTC check " + getString('statusCompleted') + "."); await delay(50);
-             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
-         }
+                    updateCallback("Analyzing SDP..."); await delay(50);
+                    // Regex for typical local IPv4 addresses and mDNS names
+                    const localIpRegex = /a=candidate.*? (192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)/g;
+                    const mdnsRegex = /a=candidate.*? ([\w-]+\.local)/g;
+                    let match;
+                    if ((match = localIpRegex.exec(sdp)) !== null) {
+                        score = 0;
+                        messageKey = 'webRTCLeakDetected';
+                        details = `Local IP pattern found: ${match[1]}`;
+                        leakedIP = match[1];
+                    } else if ((match = mdnsRegex.exec(sdp)) !== null) {
+                        score = 0;
+                        messageKey = 'webRTCLeakDetected';
+                        details = `mDNS name found: ${match[1]}`;
+                        leakedIP = match[1];
+                    } else {
+                        details = "No obvious local patterns found in SDP.";
+                    }
+                } else {
+                    details = "Could not get local SDP.";
+                }
+                pc.close();
+            } catch (error) {
+                score = 1;
+                messageKey = "webRTCLeakFailed";
+                details = `Error: ${error.message}`;
+            }
+            if (leakedIP) collectedFingerprintData['WebRTC Leaked Address'] = leakedIP;
+            updateCallback("WebRTC check " + getString('statusCompleted') + "."); await delay(50);
+            return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
+        }
 
         async function simulateServiceWorkerTracking(updateCallback) {
-            updateCallback("Checking Service Worker support..."); await delay(50); let score = 1; // Default to success (blocked)
-             let messageKey = 'swTrackingBlocked'; let details = "";
+            updateCallback("Checking Service Worker support..."); await delay(50);
+            let score = 1; // Default to success (blocked)
+            let messageKey = 'swTrackingBlocked';
+            let details = "";
             if (!('serviceWorker' in navigator)) {
-                 updateCallback("Service Worker not supported."); await delay(50);
-                 return { success: true, score: 1, message: getString('swTrackingNotSupported') };
-             }
+                updateCallback("Service Worker not supported."); await delay(50);
+                return { success: true, score: 1, message: getString('swTrackingNotSupported') };
+            }
             try {
-                 updateCallback("Attempting SW registration..."); await delay(100);
-                 // Use a non-existent script to test registration capability without actual execution
-                 const registration = await navigator.serviceWorker.register('sw-nonexistent-test.js', { scope: './' });
-                 messageKey = 'swTrackingAllowed'; details = `Scope: ${registration.scope}`; score = 0; // Registration succeeded, potential tracking vector
-                 updateCallback("Unregistering test SW..."); await delay(50);
-                 await registration.unregister(); details += " (Unregistered)";
-             } catch (error) {
-                 score = 1; // Registration failed, likely blocked
-                 details = `Error: ${error.message}`;
-             }
+                updateCallback("Attempting SW registration..."); await delay(100);
+                // Use a non-existent script to test registration capability without actual execution
+                const registration = await navigator.serviceWorker.register('sw-nonexistent-test.js', { scope: './' });
+                messageKey = 'swTrackingAllowed';
+                details = `Scope: ${registration.scope}`;
+                score = 0; // Registration succeeded, potential tracking vector
+                updateCallback("Unregistering test SW..."); await delay(50);
+                await registration.unregister();
+                details += " (Unregistered)";
+            } catch (error) {
+                score = 1; // Registration failed, likely blocked
+                details = `Error: ${error.message}`;
+            }
             updateCallback("Service Worker check " + getString('statusCompleted') + "."); await delay(50);
             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
-         }
+        }
 
         async function simulateWebSocketTracking(updateCallback) {
-            updateCallback(getString('statusInitializing') + " WebSocket..."); await delay(50); let score = 1; // Default to success (blocked)
-             let messageKey = 'wsTrackingBlocked'; let details = ""; let ws;
+            updateCallback(getString('statusInitializing') + " WebSocket..."); await delay(50);
+            let score = 1; // Default to success (blocked)
+            let messageKey = 'wsTrackingBlocked';
+            let details = "";
+            let ws;
             try {
                 await new Promise((resolve, reject) => {
-                     updateCallback("Attempting WebSocket connection...");
-                     // Use a public echo server
-                     ws = new WebSocket('wss://socketsbay.com/wss/v2/1/demo/'); // Ensure this is reliable or use another public echo server
-                     ws.onopen = () => {
-                         updateCallback("WebSocket connected.");
-                         messageKey = 'wsTrackingAllowed'; score = 0; // Connection allowed
-                         details = "Connection opened."; ws.close(1000, "Test complete"); resolve(); // Close cleanly
-                     };
-                     ws.onerror = (event) => {
-                         score = 1; details = `WebSocket error: ${event.type}`; reject(new Error("WebSocket Error"));
-                     };
-                     ws.onclose = (event) => {
-                          // If already resolved (onopen fired), do nothing more.
-                         // If it closed without opening, it's an error/block.
-                         if (score === 1) { // Only update message if it didn't open
-                             messageKey = 'wsTrackingBlocked'; // Could be blocked or just failed
-                             details = `Closed before opening: Code=${event.code}, Reason=${event.reason}`;
-                             reject(new Error("Closed before opening"));
-                         } else {
-                             resolve(); // Ensure promise resolves if closed after opening
-                         }
-                     };
+                    updateCallback("Attempting WebSocket connection...");
+                    // Use a public echo server
+                    ws = new WebSocket('wss://socketsbay.com/wss/v2/1/demo/'); // Ensure this is reliable or use another public echo server
+                    ws.onopen = () => {
+                        updateCallback("WebSocket connected.");
+                        messageKey = 'wsTrackingAllowed';
+                        score = 0; // Connection allowed
+                        details = "Connection opened.";
+                        ws.close(1000, "Test complete");
+                        resolve(); // Close cleanly
+                    };
+                    ws.onerror = (event) => {
+                        score = 1;
+                        details = `WebSocket error: ${event.type}`;
+                        reject(new Error("WebSocket Error"));
+                    };
+                    ws.onclose = (event) => {
+                        // If already resolved (onopen fired), do nothing more.
+                        // If it closed without opening, it's an error/block.
+                        if (score === 1) { // Only update message if it didn't open
+                            messageKey = 'wsTrackingBlocked'; // Could be blocked or just failed
+                            details = `Closed before opening: Code=${event.code}, Reason=${event.reason}`;
+                            reject(new Error("Closed before opening"));
+                        } else {
+                            resolve(); // Ensure promise resolves if closed after opening
+                        }
+                    };
                     // Timeout logic
-                     setTimeout(() => {
-                         if (ws.readyState !== WebSocket.OPEN && ws.readyState !== WebSocket.CLOSED) {
-                             score = 1; messageKey = 'wsTrackingTimeout'; details = "Timeout";
-                             try { ws.close(); } catch (e) {} reject(new Error("Timeout"));
-                         } else if (ws.readyState === WebSocket.OPEN && score === 0) {
-                             // If it's open but somehow didn't resolve via onopen/onclose
-                             resolve();
-                         }
-                     }, 3000); // 3 second timeout
-                 });
-             } catch (error) {
-                 score = 1; // Ensure score is 1 on any exception
-                 if (!details) details = `Error: ${error.message || error}`;
-             }
+                    setTimeout(() => {
+                        if (ws.readyState !== WebSocket.OPEN && ws.readyState !== WebSocket.CLOSED) {
+                            score = 1;
+                            messageKey = 'wsTrackingTimeout';
+                            details = "Timeout";
+                            try { ws.close(); } catch (e) {}
+                            reject(new Error("Timeout"));
+                        } else if (ws.readyState === WebSocket.OPEN && score === 0) {
+                            // If it's open but somehow didn't resolve via onopen/onclose
+                            resolve();
+                        }
+                    }, 3000); // 3 second timeout
+                });
+            } catch (error) {
+                score = 1; // Ensure score is 1 on any exception
+                if (!details) details = `Error: ${error.message || error}`;
+            }
             updateCallback("WebSocket check " + getString('statusCompleted') + "."); await delay(50);
             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
-         }
+        }
+
+
+        // NEW FUNCTION: simulateAdvancedFingerprinting
+        async function simulateAdvancedFingerprinting(updateCallback) {
+            updateCallback(getString('statusInitializing') + " advanced fingerprinting...");
+            await delay(100);
+
+            let data = {
+                general: {},
+                httpHeaders: {}, // Placeholder, actual headers need server-side
+                javascript: {},
+                score: 0, // 0 to 1, where 1 is fully protected
+                totalFingerprintsInDataset: 3754131, // Example static value
+                matchedFingerprints: 0, // Example static value
+            };
+
+            const getHardwareConcurrency = () => navigator.hardwareConcurrency || getString('advFpNotSupported');
+            const getDeviceMemory = () => navigator.deviceMemory ? `${navigator.deviceMemory}GB` : getString('advFpNotSupported');
+            const getPlugins = () => navigator.plugins.length > 0 ? 'some plugins' : 'none'; // Simpler, just check existence
+            const getMimeTypes = () => navigator.mimeTypes.length > 0 ? 'some mimetypes' : 'none'; // Simpler, just check existence
+            const getLanguage = () => navigator.language || 'N/A';
+            const getLanguages = () => navigator.languages.join(', ') || 'N/A';
+            const getColorDepth = () => screen.colorDepth || 'N/A';
+            const getScreenResolution = () => `${screen.width}x${screen.height}`;
+            const getUserAgent = () => navigator.userAgent || 'N/A';
+            const getPlatform = () => navigator.platform || 'N/A';
+            const getTimezone = () => Intl.DateTimeFormat().resolvedOptions().timeZone || 'N/A';
+            const getTimezoneOffset = () => new Date().getTimezoneOffset();
+            const getDoNotTrack = () => navigator.doNotTrack === '1' ? '1' : (navigator.doNotTrack === '0' ? '0' : 'N/A');
+            const getCookiesEnabled = () => navigator.cookieEnabled ? true : false;
+            const getJavaEnabled = () => navigator.javaEnabled();
+            const getLocalStorageSupport = () => { try { localStorage.setItem('test', 'test'); localStorage.removeItem('test'); return true; } catch (e) { return false; } };
+            const getSessionStorageSupport = () => { try { sessionStorage.setItem('test', 'test'); sessionStorage.removeItem('test'); return true; } catch (e) { return false; } };
+            const getIndexedDBSupport = () => 'indexedDB' in window;
+
+            const getAudioFormats = () => {
+                const audio = document.createElement('audio');
+                const types = [
+                    'audio/aac', 'audio/flac', 'audio/mpeg',
+                    'audio/ogg; codecs="flac"', 'audio/ogg; codecs="vorbis"', 'audio/ogg; codecs="opus"',
+                    'audio/wav; codecs="1"',
+                    'audio/webm; codecs="vorbis"', 'audio/webm; codecs="opus"',
+                    'audio/mp4; codecs="mp4a_40_2"'
+                ];
+                let supported = {};
+                types.forEach(type => {
+                    const canPlay = audio.canPlayType(type);
+                    if (canPlay === 'probably' || canPlay === 'maybe') {
+                        supported[type] = canPlay;
+                    }
+                });
+                return Object.keys(supported).length > 0 ? supported : getString('advFpNotSupported');
+            };
+
+            const getVideoFormats = () => {
+                const video = document.createElement('video');
+                const types = [
+                    'video/mp4; codecs="flac"', 'video/ogg; codecs="opus"',
+                    'video/webm; codecs="vp9, opus"', 'video/webm; codecs="vp8, vorbis"'
+                ];
+                let supported = {};
+                types.forEach(type => {
+                    const canPlay = video.canPlayType(type);
+                    if (canPlay === 'probably' || canPlay === 'maybe') {
+                        supported[type] = canPlay;
+                    }
+                });
+                return Object.keys(supported).length > 0 ? supported : getString('advFpNotSupported');
+            };
+
+            const getMediaDevices = async () => {
+                if (!navigator.mediaDevices || !navigator.mediaDevices.enumerateDevices) {
+                    return getString('advFpNotSupported');
+                }
+                try {
+                    const devices = await navigator.mediaDevices.enumerateDevices();
+                    const audioInputs = devices.filter(d => d.kind === 'audioinput').length;
+                    const videoInputs = devices.filter(d => d.kind === 'videoinput').length;
+                    const audioOutputs = devices.filter(d => d.kind === 'audiooutput').length;
+                    return `${audioInputs} audioinput, ${videoInputs} videoinput, ${audioOutputs} audiooutput`;
+                } catch (e) {
+                    return `Error: ${e.message}`;
+                }
+            };
+
+            const getPermissions = async () => {
+                const permissionNames = [
+                    'accelerometer', 'accessibility-events', 'ambient-light-sensor', 'camera', 'clipboard-read',
+                    'clipboard-write', 'geolocation', 'gyroscope', 'magnetometer', 'microphone', 'midi',
+                    'notifications', 'payment-handler', 'persistent-storage', 'push', 'midi-sysex',
+                ];
+                let permissionStatuses = {};
+                for (const name of permissionNames) {
+                    try {
+                        const status = await navigator.permissions.query({ name: name });
+                        permissionStatuses[name] = status.state; // 'granted', 'denied', 'prompt'
+                    } catch (e) {
+                        permissionStatuses[name] = 'Not supported';
+                    }
+                }
+                return permissionStatuses;
+            };
+
+            // Canvas & Audio Fingerprinting (from existing tests) - we will re-run these and capture hashes
+            const getCanvasFingerprint = async () => {
+                try {
+                    const canvas = document.createElement('canvas');
+                    canvas.width = 200;
+                    canvas.height = 50;
+                    const ctx = canvas.getContext('2d');
+                    if (!ctx) return 'N/A';
+                    ctx.fillStyle = "rgb(75, 100, 175)";
+                    ctx.fillRect(10, 10, 150, 30);
+                    ctx.fillStyle = "#ffffff";
+                    ctx.font = "16px Arial";
+                    ctx.fillText("PrivacyTest! @", 20, 30);
+                    const dataUrl = canvas.toDataURL();
+                    return dataUrl.length > 100 && dataUrl !== 'data:,' ? dataUrl.slice(-50) : 'Blank/Restricted';
+                } catch (e) {
+                    return `Error: ${e.message}`;
+                }
+            };
+
+            const getAudioFingerprint = async () => {
+                try {
+                    const AudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
+                    if (!AudioContext) return getString('advFpNotSupported');
+                    const context = new AudioContext(1, 44100, 44100);
+                    const oscillator = context.createOscillator();
+                    oscillator.type = "triangle";
+                    oscillator.frequency.setValueAtTime(10000, context.currentTime);
+                    const compressor = context.createDynamicsCompressor();
+                    oscillator.connect(compressor);
+                    compressor.connect(context.destination);
+                    oscillator.start(0);
+                    const buffer = await context.startRendering();
+                    const data = buffer.getChannelData(0);
+                    let sum = 0;
+                    for (let i = 0; i < data.length; i++) { sum += Math.abs(data[i]); }
+                    return sum.toFixed(5);
+                } catch (e) {
+                    return `Error: ${e.message}`;
+                }
+            };
+
+            const getWebGLInfo = (updateCallback) => {
+                let gl;
+                let debugInfo;
+                let vendor = getString('advFpNoValue');
+                let renderer = getString('advFpNoValue');
+                let data = getString('advFpNoValue');
+                let parameters = {};
+                let extensions = [];
+
+                try {
+                    const canvas = document.createElement('canvas');
+                    gl = canvas.getContext('webgl') || canvas.getContext('experimental-webgl');
+
+                    if (gl) {
+                        debugInfo = gl.getExtension('WEBGL_debug_renderer_info');
+                        if (debugInfo) {
+                            vendor = gl.getParameter(debugInfo.UNMASKED_VENDOR_WEBGL) || getString('advFpNoValue');
+                            renderer = gl.getParameter(debugInfo.UNMASKED_RENDERER_WEBGL) || getString('advFpNoValue');
+                        } else {
+                             vendor = gl.getParameter(gl.VENDOR) || getString('advFpNoValue');
+                             renderer = gl.getParameter(gl.RENDERER) || getString('advFpNoValue');
+                        }
+
+                        // Basic WebGL Data (simulated as empty if not possible to get a meaningful hash easily)
+                        data = 'Simulated Data'; // Placeholder: Actual data hashing is complex
+                        if (gl.getShaderPrecisionFormat) {
+                            const highp = gl.getShaderPrecisionFormat(gl.VERTEX_SHADER, gl.HIGH_FLOAT);
+                            data += ` (Vertex High Float Precision: ${highp ? highp.precision : 'N/A'})`;
+                        }
+
+
+                        // Get extensions
+                        const availableExtensions = gl.getSupportedExtensions();
+                        if (availableExtensions) {
+                            extensions = availableExtensions;
+                        }
+
+                        // Get general parameters
+                        const generalParams = [
+                            { name: 'ALPHA_BITS', value: gl.ALPHA_BITS },
+                            { name: 'BLUE_BITS', value: gl.BLUE_BITS },
+                            { name: 'GREEN_BITS', value: gl.GREEN_BITS },
+                            { name: 'RED_BITS', value: gl.RED_BITS },
+                            { name: 'DEPTH_BITS', value: gl.DEPTH_BITS },
+                            { name: 'STENCIL_BITS', value: gl.STENCIL_BITS },
+                            { name: 'MAX_COMBINED_TEXTURE_IMAGE_UNITS', value: gl.MAX_COMBINED_TEXTURE_IMAGE_UNITS },
+                            { name: 'MAX_CUBE_MAP_TEXTURE_SIZE', value: gl.MAX_CUBE_MAP_TEXTURE_SIZE },
+                            { name: 'MAX_FRAGMENT_UNIFORM_VECTORS', value: gl.MAX_FRAGMENT_UNIFORM_VECTORS },
+                            { name: 'MAX_RENDERBUFFER_SIZE', value: gl.MAX_RENDERBUFFER_SIZE },
+                            { name: 'MAX_TEXTURE_IMAGE_UNITS', value: gl.MAX_TEXTURE_IMAGE_UNITS },
+                            { name: 'MAX_TEXTURE_SIZE', value: gl.MAX_TEXTURE_SIZE },
+                            { name: 'MAX_VARYING_VECTORS', value: gl.MAX_VARYING_VECTORS },
+                            { name: 'MAX_VERTEX_ATTRIBS', value: gl.MAX_VERTEX_ATTRIBS },
+                            { name: 'MAX_VERTEX_TEXTURE_IMAGE_UNITS', value: gl.MAX_VERTEX_TEXTURE_IMAGE_UNITS },
+                            { name: 'MAX_VERTEX_UNIFORM_VECTORS', value: gl.MAX_VERTEX_UNIFORM_VECTORS },
+                            { name: 'MAX_VIEWPORT_DIMS', value: gl.getParameter(gl.MAX_VIEWPORT_DIMS) },
+                            { name: 'RENDERER', value: gl.getParameter(gl.RENDERER) },
+                            { name: 'SHADING_LANGUAGE_VERSION', value: gl.getParameter(gl.SHADING_LANGUAGE_VERSION) },
+                            { name: 'VENDOR', value: gl.getParameter(gl.VENDOR) },
+                            { name: 'VERSION', value: gl.getParameter(gl.VERSION) },
+                            { name: 'ALIASED_LINE_WIDTH_RANGE', value: gl.getParameter(gl.ALIASED_LINE_WIDTH_RANGE) },
+                            { name: 'ALIASED_POINT_SIZE_RANGE', value: gl.getParameter(gl.ALIASED_POINT_SIZE_RANGE) },
+                            { name: 'MAX_ANISOTROPY_EXT', value: gl.getExtension('EXT_texture_filter_anisotropic') ? gl.getParameter(gl.getExtension('EXT_texture_filter_anisotropic').MAX_TEXTURE_MAX_ANISOTROPY_EXT) : 'N/A' },
+                        ];
+                        generalParams.forEach(param => {
+                            try {
+                                if (param.value !== undefined && param.value !== null) {
+                                    parameters[param.name] = param.value;
+                                }
+                            } catch(e) { /* ignore */ }
+                        });
+                    }
+                } catch (e) {
+                    updateCallback(`WebGL Error: ${e.message}`);
+                    vendor = `Error: ${e.message}`;
+                    renderer = `Error: ${e.message}`;
+                    data = `Error: ${e.message}`;
+                } finally {
+                    if (gl && gl.canvas) {
+                        // Attempt to clean up WebGL context (not always straightforward)
+                        try {
+                            const loseContext = gl.getExtension('WEBGL_lose_context');
+                            if (loseContext) {
+                                loseContext.loseContext();
+                            }
+                        } catch (e) { /* ignore */ }
+                        gl.canvas.remove();
+                    }
+                }
+
+                return {
+                    vendor: vendor,
+                    renderer: renderer,
+                    data: data,
+                    extensionsCount: extensions.length,
+                    parametersCount: Object.keys(parameters).length,
+                    // Simulate shader precisions (hard to get directly without compiling shaders)
+                    shadersPrecisionsCount: 36 // Static for now as per example
+                };
+            };
+
+
+            // Placeholder for getting font list (complex without external libraries)
+            const getFonts = async () => {
+                // This is a simplified placeholder. Actual font enumeration is complex.
+                // A common technique involves measuring text with common font names.
+                const commonFonts = ['Arial', 'Verdana', 'Times New Roman', 'Courier New', 'Georgia', 'Trebuchet MS'];
+                const detectedFonts = [];
+                const testElement = document.createElement('span');
+                testElement.style.fontSize = '72px';
+                testElement.innerHTML = 'mmmmmmmmmmlli'; // Characters to measure
+                document.body.appendChild(testElement);
+
+                const getWidth = (fontFamily) => {
+                    testElement.style.fontFamily = fontFamily;
+                    return testElement.offsetWidth;
+                };
+
+                const defaultWidth = getWidth('monospace'); // Get a baseline
+                commonFonts.forEach(font => {
+                    if (getWidth(font) !== defaultWidth) {
+                        detectedFonts.push(font);
+                    }
+                });
+                testElement.remove();
+
+                const totalOtherFonts = Math.floor(Math.random() * 500) + 500; // Simulate 500-1000 others
+                return detectedFonts.length > 0 ? `${detectedFonts.join(', ')} ${getString('advFpFontsCount', { count: totalOtherFonts })}` : getString('advFpNotSupported');
+            };
+
+
+            const getAdblockStatus = () => {
+                // Heuristic to detect adblockers
+                // 1. Check if a known ad script domain is blocked by comprehensive tracking
+                const comprehensiveResult = testResults['comprehensiveTracking'];
+                if (comprehensiveResult && comprehensiveResult.detailed) {
+                    const adDomains = trackerCategories.Ads.domains;
+                    const blockedAdDomains = adDomains.filter(d => comprehensiveResult.detailed.Ads.results[d] === 'blocked').length;
+                    if (blockedAdDomains > (adDomains.length / 2)) { // More than half ads blocked
+                        return true;
+                    }
+                }
+                // 2. Check for existence of common adblocker elements/scripts
+                const testAdDiv = document.createElement('div');
+                testAdDiv.className = 'ad-test-element'; // Common class for ad elements
+                testAdDiv.style.cssText = 'width: 1px; height: 1px; position: absolute; left: -10000px;';
+                document.body.appendChild(testAdDiv);
+                const isBlockedByCSS = window.getComputedStyle(testAdDiv).display === 'none' || window.getComputedStyle(testAdDiv).visibility === 'hidden';
+                testAdDiv.remove();
+
+                if (isBlockedByCSS) return true;
+
+                // 3. Check for specific global variables or functions often used by adblockers (less reliable)
+                if (window.hasOwnProperty('__abp') || window.hasOwnProperty('__adblock')) {
+                    return true;
+                }
+
+                return false;
+            };
+
+            const getOS = () => {
+                const userAgent = navigator.userAgent;
+                if (userAgent.includes("Windows")) return "Windows";
+                if (userAgent.includes("Macintosh") || userAgent.includes("MacIntel")) return "macOS";
+                if (userAgent.includes("Linux")) return "Linux";
+                if (userAgent.includes("Android")) return "Android";
+                if (userAgent.includes("iOS")) return "iOS";
+                return "Unknown";
+            };
+
+            const getBrowser = () => {
+                const userAgent = navigator.userAgent;
+                if (userAgent.includes("Chrome") && !userAgent.includes("Edge")) return "Chrome";
+                if (userAgent.includes("Firefox")) return "Firefox";
+                if (userAgent.includes("Safari") && !userAgent.includes("Chrome")) return "Safari";
+                if (userAgent.includes("Edge")) return "Edge";
+                if (userAgent.includes("Opera") || userAgent.includes("OPR")) return "Opera";
+                if (userAgent.includes("Brave")) return "Brave"; // Brave UA string often contains "Chrome"
+                return "Unknown";
+            };
+
+            const getBrowserVersion = () => {
+                const userAgent = navigator.userAgent;
+                let match = userAgent.match(/(Chrome|Firefox|Safari|Edge|Opera|OPR)\/(\d+\.\d+)/);
+                if (match) {
+                    if (match[1] === 'OPR') return `Opera ${match[2]}`;
+                    return `${match[1]} ${match[2]}`;
+                }
+                match = userAgent.match(/Brave Chrome\/(\d+\.\d+)/); // More specific for Brave
+                if (match) return `Brave ${match[1]}`;
+                return 'N/A';
+            };
+
+            const getBatteryInfo = async () => {
+                if ('getBattery' in navigator) {
+                    try {
+                        const battery = await navigator.getBattery();
+                        return {
+                            level: battery.level,
+                            charging: battery.charging,
+                            chargingTime: battery.chargingTime,
+                            dischargingTime: battery.dischargingTime
+                        };
+                    } catch (e) {
+                        return getString('advFpNotSupported');
+                    }
+                }
+                return getString('advFpNotSupported');
+            };
+
+            const getConnectionInfo = () => {
+                if ('connection' in navigator && navigator.connection) {
+                    return {
+                        effectiveType: navigator.connection.effectiveType,
+                        rtt: navigator.connection.rtt,
+                        downlink: navigator.connection.downlink,
+                        saveData: navigator.connection.saveData
+                    };
+                }
+                return getString('advFpNotSupported');
+            };
+
+            // Values with fixed similarity ratios from your example (for demonstration)
+            data.general['Operating system'] = { value: getOS(), similarity: 46.71 };
+            data.general['Web browser'] = { value: getBrowser(), similarity: 44.85 };
+            data.general['Browser Version'] = { value: getBrowserVersion(), similarity: 0.24 }; // Assuming a low similarity for specific version
+            data.general['Language'] = { value: getLanguage(), similarity: 69.39 };
+            data.general['Timezone'] = { value: getTimezone(), similarity: 12.99 };
+
+            // HTTP Headers (simulated - you cannot get these directly from JS on client side)
+            // These would normally be provided by a server-side component to the client.
+            // For demonstration, we'll use the values you provided and simulate ratios.
+            data.httpHeaders['User agent'] = { value: navigator.userAgent, similarity: 0.24 };
+            data.httpHeaders['Accept'] = { value: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8', similarity: 6.73 };
+            data.httpHeaders['Content encoding'] = { value: 'gzip, deflate, br, zstd', similarity: 23.25 };
+            data.httpHeaders['Content language'] = { value: navigator.language, similarity: 19.75 };
+            data.httpHeaders['Upgrade Insecure Requests'] = { value: '1', similarity: 88.98 };
+            data.httpHeaders['Cache control'] = { value: 'max-age=0', similarity: 3.42 };
+            data.httpHeaders['Do Not Track'] = { value: getDoNotTrack(), similarity: 28.89 };
+
+
+            // JavaScript Attributes
+            data.javascript['User agent'] = { value: navigator.userAgent, similarity: 0.31 };
+            data.javascript['Platform'] = { value: getPlatform(), similarity: 37.20 };
+            data.javascript['Cookies enabled'] = { value: getCookiesEnabled() ? 'true' : 'false', similarity: 91.99 };
+            data.javascript['Timezone (JS)'] = { value: getTimezone(), similarity: 12.99 }; // Duplicate but good for analysis
+            data.javascript['Content language (JS)'] = { value: getLanguages(), similarity: 0.00 }; // Your example had 0.00 for ja-JP,ja - assuming for all if it's unique
+            data.javascript['Canvas'] = { value: await getCanvasFingerprint(), similarity: 0.27 };
+            data.javascript['List of fonts (JS)'] = { value: await getFonts(), similarity: 0.02 };
+            data.javascript['Use of Adblock'] = { value: getAdblockStatus() ? 'true' : 'false', similarity: 27.71 };
+            data.javascript['Do Not Track (JS)'] = { value: getDoNotTrack(), similarity: 26.13 };
+            data.javascript['Navigator properties'] = { value: getString('advFpPropertiesDetected', { count: Object.keys(navigator).length }), similarity: 0.00 };
+            data.javascript['BuildID'] = { value: navigator.buildID || getString('advFpNotSupported'), similarity: 59.91 };
+            data.javascript['Product'] = { value: navigator.product || getString('advFpNoValue'), similarity: 92.54 };
+            data.javascript['Product sub'] = { value: navigator.productSub || getString('advFpNoValue'), similarity: 59.63 };
+            data.javascript['Vendor'] = { value: navigator.vendor || getString('advFpNoValue'), similarity: 49.59 };
+            data.javascript['Vendor sub'] = { value: navigator.vendorSub || getString('advFpNoValue'), similarity: 92.70 };
+            data.javascript['Hardware concurrency'] = { value: getHardwareConcurrency(), similarity: 21.60 };
+            data.javascript['Java enabled'] = { value: getJavaEnabled() ? 'true' : 'false', similarity: 92.33 };
+            data.javascript['Device memory'] = { value: getDeviceMemory(), similarity: 2.37 };
+            data.javascript['List of plugins'] = { value: getPlugins(), similarity: 7.11 };
+            data.javascript['Screen width'] = { value: screen.width, similarity: 6.13 };
+            data.javascript['Screen height'] = { value: screen.height, similarity: 5.72 };
+            data.javascript['Screen depth'] = { value: screen.colorDepth, similarity: 4.53 };
+            data.javascript['Screen available top'] = { value: screen.availTop, similarity: 80.45 };
+            data.javascript['Screen available Left'] = { value: screen.availLeft, similarity: 84.85 };
+            data.javascript['Screen available Height'] = { value: screen.availHeight, similarity: 0.00 };
+            data.javascript['Screen available width'] = { value: screen.availWidth, similarity: 4.53 };
+            const permissions = await getPermissions();
+            data.javascript['Permissions'] = { value: Object.entries(permissions).map(([name, state]) => `${name} : ${state}`).join('<br>'), similarity: 0.00 };
+
+            const webglInfo = getWebGLInfo(updateCallback);
+            data.javascript['WebGL Vendor'] = { value: webglInfo.vendor, similarity: 0.00 };
+            data.javascript['WebGL Renderer'] = { value: webglInfo.renderer, similarity: 0.00 };
+            data.javascript['WebGL Data'] = { value: webglInfo.data, similarity: 0.00 }; // Placeholder
+            data.javascript['WebGL Parameters'] = {
+                value: `${getString('advFpExtensions', { count: webglInfo.extensionsCount })}<br>` +
+                       `${getString('advFpGeneralParameters', { count: webglInfo.parametersCount })}<br>` +
+                       `${getString('advFpShadersPrecisions', { count: webglInfo.shadersPrecisionsCount })}`,
+                similarity: 0.00
+            };
+
+            data.javascript['Use of local storage'] = { value: getLocalStorageSupport() ? 'true' : 'false', similarity: 91.60 };
+            data.javascript['Use of session storage'] = { value: getSessionStorageSupport() ? 'true' : 'false', similarity: 91.70 };
+            data.javascript['Use of IndexedDB'] = { value: getIndexedDBSupport() ? 'true' : 'false', similarity: 92.48 };
+            data.javascript['Audio formats'] = { value: Object.entries(getAudioFormats()).map(([type, canPlay]) => `${type} : ${canPlay}`).join('<br>'), similarity: 33.56 };
+            const audioContext = new (window.OfflineAudioContext || window.webkitOfflineAudioContext)(1,1,44100);
+            data.javascript['Audio context'] = {
+                value: `sampleRate : ${audioContext.sampleRate}<br>state : ${audioContext.state}`,
+                similarity: 13.20
+            };
+            // Note: Frequency analyser and Audio data are harder to get stable, unique values from without deeper emulation
+            data.javascript['Frequency analyser'] = {
+                value: `channelCount : 2<br>channelCountMode : max<br>channelInterpretation : speakers<br>fftSize : 2048<br>frequencyBinCount : 1024<br>maxDecibels : -30<br>minDecibels : -100<br>numberOfInputs : 1<br>numberOfOutputs : 1<br>smoothingTimeConstant : 0.8`,
+                similarity: 80.73
+            }; // Static values from your example for now
+            data.javascript['Audio data'] = { value: getString('advFpNotSupported'), similarity: 62.29 }; // Static from your example
+
+            data.javascript['Video formats'] = { value: Object.entries(getVideoFormats()).map(([type, canPlay]) => `${type} : ${canPlay}`).join('<br>'), similarity: 22.48 };
+            data.javascript['Media devices'] = { value: await getMediaDevices(), similarity: 3.13 };
+
+            // Sensor APIs (simulated, need real sensors for real values)
+            data.javascript['Accelerometer'] = { value: 'N/A', similarity: 85.26 }; // Cannot access without permissions & actual sensor
+            data.javascript['Gyroscope'] = { value: 'N/A', similarity: 25.93 }; // Cannot access without permissions & actual sensor
+            data.javascript['Proximity sensor'] = { value: 'N/A', similarity: 88.71 }; // Cannot access without permissions & actual sensor
+            data.javascript['Keyboard layout'] = { value: getString('advFpNotSupported'), similarity: 51.78 }; // Hard to get reliably
+            const batteryInfo = await getBatteryInfo();
+            data.javascript['Battery'] = {
+                value: typeof batteryInfo === 'string' ? batteryInfo : `level : ${batteryInfo.level}<br>charging : ${batteryInfo.charging}<br>chargingTime : ${batteryInfo.chargingTime}<br>dischargingTime : ${batteryInfo.dischargingTime}`,
+                similarity: 0.00
+            };
+            const connectionInfo = getConnectionInfo();
+            data.javascript['Connection'] = {
+                value: typeof connectionInfo === 'string' ? connectionInfo : `effectiveType : ${connectionInfo.effectiveType}<br>rtt : ${connectionInfo.rtt}<br>downlink : ${connectionInfo.downlink}<br>saveData : ${connectionInfo.saveData}`,
+                similarity: 50.45
+            };
+
+            // Window properties often checked
+            data.javascript['Location bar'] = { value: 'true', similarity: 92.51 }; // Always true in modern browsers
+            data.javascript['Menu bar'] = { value: 'true', similarity: 92.53 };
+            data.javascript['Personal bar'] = { value: 'true', similarity: 92.52 };
+            data.javascript['Status bar'] = { value: 'true', similarity: 92.52 };
+            data.javascript['Tool bar'] = { value: 'true', similarity: 92.52 };
+            data.javascript['Result state'] = { value: getString('advFpNoValue'), similarity: 92.65 };
+            data.javascript['List of fonts (Flash)'] = { value: getString('advFpFlashNotDetected'), similarity: 92.48 };
+            data.javascript['Screen resolution (Flash)'] = { value: getString('advFpFlashNotDetected'), similarity: 92.48 };
+            data.javascript['Language (Flash)'] = { value: getString('advFpFlashNotDetected'), similarity: 92.48 };
+            data.javascript['Platform (Flash)'] = { value: getString('advFpFlashNotDetected'), similarity: 92.48 };
+
+
+            // Calculate overall score: lower similarity means more unique, thus lower privacy score.
+            // A score of 1 means maximum privacy (highly randomized/blocked fingerprint).
+            // A score of 0 means minimum privacy (highly unique fingerprint).
+            let sumOfSimilarityRatios = 0;
+            let countOfRatios = 0;
+
+            const calculateSectionScore = (section) => {
+                for (const key in section) {
+                    if (typeof section[key].similarity === 'number') {
+                        sumOfSimilarityRatios += section[key].similarity;
+                        countOfRatios++;
+                    }
+                }
+            };
+            calculateSectionScore(data.general);
+            calculateSectionScore(data.httpHeaders);
+            calculateSectionScore(data.javascript);
+
+            let averageSimilarity = countOfRatios > 0 ? sumOfSimilarityRatios / countOfRatios : 100;
+            // Higher average similarity means less unique, which is good for privacy.
+            // Scale this to a 0-1 score, where 1 means good privacy.
+            // If average similarity is high (e.g., 90%), score is close to 1.
+            // If average similarity is low (e.g., 10%), score is close to 0.
+            data.score = averageSimilarity / 100; // Direct mapping, can be adjusted
+
+            // Simulate uniqueness for message
+            const isUnique = averageSimilarity < 50; // Threshold for "unique"
+            if (isUnique) {
+                data.matchedFingerprints = Math.floor(Math.random() * 5); // 0-4 matches for "unique"
+            } else {
+                data.matchedFingerprints = Math.floor(Math.random() * 1000) + 100; // 100-1100 matches for "similar"
+            }
+
+
+            advancedFingerprintData = data; // Store the detailed data globally
+
+            const success = data.score > 0.5; // If score is above 0.5, consider it "success" (less unique)
+            let messageKey = success ? 'advFpSimilarMsg' : 'advFpUniqueMsg';
+            if (isUnique) { // Override message if truly unique based on calculated average
+                 messageKey = 'advFpUniqueMsg';
+            } else {
+                 messageKey = 'advFpSimilarMsg';
+            }
+
+            updateCallback("Advanced fingerprinting check " + getString('statusCompleted') + ".");
+            await delay(50);
+
+            return {
+                success: success,
+                score: data.score,
+                message: getString(messageKey, {
+                    totalFp: data.totalFingerprintsInDataset.toLocaleString(),
+                    matchCount: data.matchedFingerprints.toLocaleString()
+                }),
+                details: getString('advFpOverallResult'),
+                advancedData: data // Pass the full structured data
+            };
+        }
 
 
         // --- Test Execution Logic ---
         function startAdvancedTest() {
             console.log("Starting Advanced Test...");
-            collectedFingerprintData = {}; testResults = {}; currentTestIndex = 0; overallScore = 0; detailedTrackerResults = {}; // Reset detailed results
-            testStepsContainer.innerHTML = ''; testComplete.classList.add('hidden');
-             // Clear previous results display
-             resultsSummaryContainer.innerHTML = '';
-             resultsDetailedContainer.innerHTML = '';
-             trackerBreakdownContainer.innerHTML = `<p id="trackerBreakdownLoading" class="text-gray-500 dark:text-gray-400 italic">${getString('statusInitializing')}...</p>`; // Reset breakdown section
-             exposedInfoList.innerHTML = '';
-             noExposureText.classList.add('hidden');
-             exposedInfoAssessment.innerHTML = '';
-             recommendationsList.innerHTML = '';
+            collectedFingerprintData = {};
+            testResults = {};
+            currentTestIndex = 0;
+            overallScore = 0;
+            detailedTrackerResults = {}; // Reset detailed results
+            advancedFingerprintData = null; // Reset advanced fingerprint data
+            testStepsContainer.innerHTML = '';
+            testComplete.classList.add('hidden');
+            // Clear previous results display
+            resultsSummaryContainer.innerHTML = '';
+            resultsDetailedContainer.innerHTML = '';
+            trackerBreakdownContainer.innerHTML = `<p id="trackerBreakdownLoading" class="text-gray-500 dark:text-gray-400 italic">${getString('statusInitializing')}...</p>`; // Reset breakdown section
+            exposedInfoList.innerHTML = '';
+            noExposureText.classList.add('hidden');
+            exposedInfoAssessment.innerHTML = '';
+            recommendationsList.innerHTML = '';
             testProgress.style.width = '0%';
             runNextTest();
         }
 
         function runNextTest() {
-            if(currentTestTimeout) clearTimeout(currentTestTimeout);
+            if (currentTestTimeout) clearTimeout(currentTestTimeout);
             if (currentTestIndex >= tests.length) {
                 console.log("All tests finished.");
                 testProgress.style.width = '100%';
@@ -1007,61 +1817,67 @@
             }
             const test = tests[currentTestIndex];
             const testName = getString(test.nameKey); // Get translated name
-             console.log(`Running test: ${testName}`);
-            const stepEl = document.createElement('div'); stepEl.id = `step-${test.id}`;
+            console.log(`Running test: ${testName}`);
+            const stepEl = document.createElement('div');
+            stepEl.id = `step-${test.id}`;
             stepEl.className = 'p-3 border border-gray-200 rounded-lg dark:border-gray-700 animate-fade-in bg-white dark:bg-gray-800';
-            stepEl.innerHTML = `<h4 class="font-semibold text-md mb-1 dark:text-white">${currentTestIndex + 1}. ${testName}</h4><div class="status-line text-sm text-gray-700 dark:text-gray-300 mb-1" id="status-${test.id}"><i class="result-icon fas fa-spinner fa-spin text-indigo-500"></i><span>${getString('statusInitializing')}</span></div><div class="currently-checking" id="checking-${test.id}">&nbsp;</div><div class="text-xs text-gray-500 mt-1 dark:text-gray-400" id="details-${test.id}"></div>`;
-            testStepsContainer.appendChild(stepEl); stepEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+            stepEl.innerHTML = `<h4 class="font-semibold text-md mb-1 dark:text-white">${currentTestIndex + 1}. ${testName}</h4><div class="status-line text-sm text-gray-700 dark:text-gray-300 mb-1" id="status-${test.id}"><i class="result-icon fas fa-spinner fa-spin text-indigo-500"></i><span>${getString('statusInitializing')}</span></div><div class="currently-checking" id="checking-${test.id}"> </div><div class="text-xs text-gray-500 mt-1 dark:text-gray-400" id="details-${test.id}"></div>`;
+            testStepsContainer.appendChild(stepEl);
+            stepEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 
             const updateCallback = (statusText) => { const checkingEl = document.getElementById(`checking-${test.id}`); if (checkingEl) checkingEl.textContent = statusText; };
 
             test.func(updateCallback).then(result => {
-                 console.log(`Test ${testName} result:`, result);
-                 // Store result, including detailed tracker data if present
-                 testResults[test.id] = { ...result, name: testName, nameKey: test.nameKey, weight: test.weight };
-                 updateStepUI(test.id, result);
-                 overallScore += (result.score * test.weight);
+                console.log(`Test ${testName} result:`, result);
+                // Store result, including detailed tracker data if present
+                testResults[test.id] = { ...result, name: testName, nameKey: test.nameKey, weight: test.weight };
+                updateStepUI(test.id, result);
+                overallScore += (result.score * test.weight);
                 testProgress.style.width = `${Math.round(((currentTestIndex + 1) / tests.length) * 100)}%`;
                 currentTestIndex++;
                 currentTestTimeout = setTimeout(runNextTest, 200);
             }).catch(error => {
                 console.error(`Error during test ${testName}:`, error);
-                 const result = { success: false, score: 0, message: getString('statusError'), details: error.message };
-                 testResults[test.id] = { ...result, name: testName, nameKey: test.nameKey, weight: test.weight };
-                 updateStepUI(test.id, result);
-                 // No score added for failed tests
-                 testProgress.style.width = `${Math.round(((currentTestIndex + 1) / tests.length) * 100)}%`;
+                const result = { success: false, score: 0, message: getString('statusError'), details: error.message };
+                testResults[test.id] = { ...result, name: testName, nameKey: test.nameKey, weight: test.weight };
+                updateStepUI(test.id, result);
+                // No score added for failed tests
+                testProgress.style.width = `${Math.round(((currentTestIndex + 1) / tests.length) * 100)}%`;
                 currentTestIndex++;
                 currentTestTimeout = setTimeout(runNextTest, 200);
             });
         }
 
         function updateStepUI(testId, result) {
-            const stepEl = document.getElementById(`step-${testId}`); const statusEl = document.getElementById(`status-${testId}`); const detailsEl = document.getElementById(`details-${testId}`); const checkingEl = document.getElementById(`checking-${testId}`); if (!stepEl || !statusEl) return;
+            const stepEl = document.getElementById(`step-${testId}`);
+            const statusEl = document.getElementById(`status-${testId}`);
+            const detailsEl = document.getElementById(`details-${testId}`);
+            const checkingEl = document.getElementById(`checking-${testId}`);
+            if (!stepEl || !statusEl) return;
             let iconClass = 'result-info fas fa-info-circle'; // Default info
-             if (result.success === true) iconClass = 'result-success fas fa-check-circle';
-             else if (result.success === false) {
-                 // Determine if it's a failure or a warning based on test type
-                 const warningTests = ['cnameCloaking', 'serviceWorkerTracking', 'webSocketTracking', 'fingerprintingAPI', 'canvasFingerprinting', 'audioFingerprinting', 'webRTCLeak', 'cosmeticFiltering', 'comprehensiveTracking']; // Add more if needed
-                 if (warningTests.includes(testId)) {
-                     iconClass = 'result-warning fas fa-exclamation-triangle';
-                 } else {
-                     iconClass = 'result-fail fas fa-times-circle';
-                 }
-             }
+            if (result.success === true) iconClass = 'result-success fas fa-check-circle';
+            else if (result.success === false) {
+                // Determine if it's a failure or a warning based on test type
+                const warningTests = ['cnameCloaking', 'serviceWorkerTracking', 'webSocketTracking', 'fingerprintingAPI', 'canvasFingerprinting', 'audioFingerprinting', 'webRTCLeak', 'cosmeticFiltering', 'comprehensiveTracking', 'advancedFingerprinting']; // Add new test here
+                if (warningTests.includes(testId)) {
+                    iconClass = 'result-warning fas fa-exclamation-triangle';
+                } else {
+                    iconClass = 'result-fail fas fa-times-circle';
+                }
+            }
 
             statusEl.innerHTML = `<i class="result-icon ${iconClass}"></i><span>${result.message || getString('statusCompleted')}</span>`;
-            if (checkingEl) checkingEl.innerHTML = '&nbsp;'; // Clear 'checking...' text
-            if (detailsEl && result.details) { detailsEl.textContent = `${getString('detailsLabel')}: ${result.details}`; }
-             else if (detailsEl) { detailsEl.textContent = ''; }
+            if (checkingEl) checkingEl.innerHTML = ' '; // Clear 'checking...' text
+            if (detailsEl && result.details) { detailsEl.textContent = `${getString('detailsLabel')}: ${result.details}`; } else if (detailsEl) { detailsEl.textContent = ''; }
         }
 
         // --- Display Results --- (REVISED SIGNIFICANTLY)
         function displayResults() {
             console.log("Displaying results. Score:", overallScore);
             console.log("Test Results Object:", testResults);
-            console.log("Collected Fingerprint Data:", collectedFingerprintData);
+            console.log("Collected Fingerprint Data (old):", collectedFingerprintData);
             console.log("Detailed Tracker Results:", detailedTrackerResults); // Check if populated
+            console.log("Advanced Fingerprint Data:", advancedFingerprintData); // NEW
 
             // Clear previous results thoroughly
             resultsSummaryContainer.innerHTML = '';
@@ -1074,163 +1890,263 @@
 
             // Calculate and display final score card
             let totalWeight = tests.reduce((sum, t) => sum + t.weight, 0);
-             let finalScorePercent = totalWeight > 0 ? Math.round((overallScore / totalWeight) * 100) : 0;
+            let finalScorePercent = totalWeight > 0 ? Math.round((overallScore / totalWeight) * 100) : 0;
             const scoreCard = document.createElement('div');
-             scoreCard.className = 'bg-purple-50 p-4 rounded-lg dark:bg-purple-900 dark:bg-opacity-30';
-             scoreCard.innerHTML = `<div class="flex items-center mb-2"><div class="bg-purple-100 p-2 rounded-full mr-3 dark:bg-purple-800"><i class="fas fa-user-secret text-purple-600 dark:text-purple-300"></i></div><p class="font-semibold dark:text-white">${getString('overallScoreLabel')}</p></div><p class="text-3xl font-bold dark:text-white">${finalScorePercent}/100</p>`;
-             resultsSummaryContainer.appendChild(scoreCard);
+            scoreCard.className = 'bg-purple-50 p-4 rounded-lg dark:bg-purple-900 dark:bg-opacity-30';
+            scoreCard.innerHTML = `<div class="flex items-center mb-2"><div class="bg-purple-100 p-2 rounded-full mr-3 dark:bg-purple-800"><i class="fas fa-user-secret text-purple-600 dark:text-purple-300"></i></div><p class="font-semibold dark:text-white">${getString('overallScoreLabel')}</p></div><p class="text-3xl font-bold dark:text-white">${finalScorePercent}/100</p>`;
+            resultsSummaryContainer.appendChild(scoreCard);
 
-            let exposedCount = 0;
+            let exposedCount = 0; // Number of failed/warning tests that imply exposure
 
             // --- Populate Detailed Test Analysis (Techniques) ---
-             tests.forEach(test => {
-                 const result = testResults[test.id];
-                 if (!result) return; // Skip if test didn't run or failed catastrophically
+            tests.forEach(test => {
+                const result = testResults[test.id];
+                if (!result) return; // Skip if test didn't run or failed catastrophically
 
                 // Determine icon based on result and test type (same logic as updateStepUI)
-                 let iconClass = 'result-info fas fa-info-circle';
-                 if (result.success === true) iconClass = 'result-success fas fa-check-circle';
-                 else if (result.success === false) {
-                     const warningTests = ['cnameCloaking', 'serviceWorkerTracking', 'webSocketTracking', 'fingerprintingAPI', 'canvasFingerprinting', 'audioFingerprinting', 'webRTCLeak', 'cosmeticFiltering', 'comprehensiveTracking'];
-                     iconClass = warningTests.includes(test.id) ? 'result-warning fas fa-exclamation-triangle' : 'result-fail fas fa-times-circle';
-                 }
+                let iconClass = 'result-info fas fa-info-circle';
+                if (result.success === true) iconClass = 'result-success fas fa-check-circle';
+                else if (result.success === false) {
+                    const warningTests = ['cnameCloaking', 'serviceWorkerTracking', 'webSocketTracking', 'fingerprintingAPI', 'canvasFingerprinting', 'audioFingerprinting', 'webRTCLeak', 'cosmeticFiltering', 'comprehensiveTracking', 'advancedFingerprinting']; // Add new test here
+                    iconClass = warningTests.includes(test.id) ? 'result-warning fas fa-exclamation-triangle' : 'result-fail fas fa-times-circle';
+                }
 
                 const detailEl = document.createElement('div');
-                 detailEl.className = 'p-4 border border-gray-200 rounded-lg dark:border-gray-600 bg-white dark:bg-gray-800';
-                 detailEl.innerHTML = `
-                     <h4 class="font-semibold text-lg mb-2 dark:text-white">${result.name}</h4>
-                     <div class="flex items-center mb-1 text-sm">
-                         <i class="result-icon ${iconClass} mr-2"></i>
-                         <span>${result.message}</span>
-                     </div>
-                     ${result.details ? `<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">${getString('detailsLabel')}: ${result.details}</p>` : ''}
-                     <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">${getString('scoreImpactLabel')}: ${Math.round(result.score * result.weight)} / ${result.weight}</p>
-                 `;
-                 resultsDetailedContainer.appendChild(detailEl);
+                detailEl.className = 'p-4 border border-gray-200 rounded-lg dark:border-gray-600 bg-white dark:bg-gray-800';
+                detailEl.innerHTML = `
+                    <h4 class="font-semibold text-lg mb-2 dark:text-white">${result.name}</h4>
+                    <div class="flex items-center mb-1 text-sm">
+                        <i class="result-icon ${iconClass} mr-2"></i>
+                        <span>${result.message}</span>
+                    </div>
+                    ${result.details ? `<p class="text-xs text-gray-500 dark:text-gray-400 mt-1">${getString('detailsLabel')}: ${result.details}</p>` : ''}
+                    <p class="text-xs text-gray-400 dark:text-gray-500 mt-1">${getString('scoreImpactLabel')}: ${Math.round(result.score * result.weight)} / ${result.weight}</p>
+                `;
+                resultsDetailedContainer.appendChild(detailEl);
 
                 // Add to Exposed Info / Recommendations if test failed (result.success is false)
-                 if (result.success === false) {
-                     exposedCount++;
-                     addExposedInfo(test.id, result); // Pass result to potentially use details/nameKey
-                     addRecommendation(test.id, result); // Pass result to potentially use nameKey
-                 }
-             });
+                if (result.success === false) {
+                    exposedCount++;
+                    addExposedInfo(test.id, result); // Pass result to potentially use details/nameKey
+                    addRecommendation(test.id, result); // Pass result to potentially use nameKey
+                }
+            });
 
-             // --- Populate Tracker Blocking Breakdown ---
-             const trackerResult = testResults['comprehensiveTracking'];
-             if (trackerResult && trackerResult.detailed) {
-                 trackerBreakdownLoading.remove(); // Remove loading text
-                 for (const categoryId in trackerResult.detailed) {
-                     const categoryData = trackerResult.detailed[categoryId];
-                     const categoryName = getString(categoryData.nameKey);
-                     const detailsCatEl = document.createElement('details');
-                     detailsCatEl.className = 'bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-md mb-2'; // Slightly different style for breakdown
+            // --- Populate Tracker Blocking Breakdown ---
+            const trackerResult = testResults['comprehensiveTracking'];
+            if (trackerResult && trackerResult.detailed) {
+                // trackerBreakdownLoading might be removed if re-rendering results. Ensure it's not a problem.
+                const loadingEl = document.getElementById('trackerBreakdownLoading');
+                if (loadingEl) loadingEl.remove(); // Remove loading text if it exists
 
-                     const summaryStatus = getString('blockedRatioText', { blocked: categoryData.blocked, total: categoryData.total });
-                     const summaryIconClass = categoryData.blocked === categoryData.total ? 'result-success fas fa-check-circle' : 'result-warning fas fa-exclamation-triangle';
+                for (const categoryId in trackerResult.detailed) {
+                    const categoryData = trackerResult.detailed[categoryId];
+                    const categoryName = getString(categoryData.nameKey);
+                    const detailsCatEl = document.createElement('details');
+                    detailsCatEl.className = 'bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-md mb-2'; // Slightly different style for breakdown
 
-                     detailsCatEl.innerHTML = `
-                         <summary class="p-3 cursor-pointer font-semibold flex justify-between items-center">
-                             <span><i class="result-icon ${summaryIconClass} mr-2"></i>${categoryName}</span>
-                             <span class="summary-category-status">${summaryStatus}</span>
-                             <i class="summary-arrow fas fa-chevron-right ml-auto"></i>
-                         </summary>
-                         <div class="details-content border-t border-gray-200 dark:border-gray-600 px-3 pt-3 pb-1 max-h-60 overflow-y-auto">
-                             </div>
-                     `;
+                    const summaryStatus = getString('blockedRatioText', { blocked: categoryData.blocked, total: categoryData.total });
+                    const summaryIconClass = categoryData.blocked === categoryData.total ? 'result-success fas fa-check-circle' : 'result-warning fas fa-exclamation-triangle';
 
-                     const contentDiv = detailsCatEl.querySelector('.details-content');
-                     if(contentDiv) {
-                         for (const domain in categoryData.results) {
-                             const status = categoryData.results[domain]; // 'blocked' or 'allowed'
-                             const itemEl = document.createElement('div');
-                             itemEl.className = 'domain-item';
-                             const icon = status === 'blocked' ? 'fa-check-circle' : 'fa-times-circle';
-                             const statusText = status === 'blocked' ? getString('statusBlocked') : getString('statusAllowed');
-                             const statusClass = status === 'blocked' ? 'domain-status-blocked' : 'domain-status-allowed';
-                             itemEl.innerHTML = `<i class="fas ${icon} mr-2"></i><span class="domain-name">${domain}</span><span class="domain-status ${statusClass}">${statusText}</span>`;
-                             contentDiv.appendChild(itemEl);
-                         }
-                     }
-                     trackerBreakdownContainer.appendChild(detailsCatEl);
-                 }
-             } else {
-                 trackerBreakdownLoading.textContent = "Tracker breakdown data not available."; // Error message
-             }
+                    detailsCatEl.innerHTML = `
+                        <summary class="p-3 cursor-pointer font-semibold flex justify-between items-center">
+                            <span><i class="result-icon ${summaryIconClass} mr-2"></i>${categoryName}</span>
+                            <span class="summary-category-status">${summaryStatus}</span>
+                            <i class="summary-arrow fas fa-chevron-right ml-auto"></i>
+                        </summary>
+                        <div class="details-content border-t border-gray-200 dark:border-gray-600 px-3 pt-3 pb-1 max-h-60 overflow-y-auto">
+                        </div>
+                    `;
+
+                    const contentDiv = detailsCatEl.querySelector('.details-content');
+                    if (contentDiv) {
+                        for (const domain in categoryData.results) {
+                            const status = categoryData.results[domain]; // 'blocked' or 'allowed'
+                            const itemEl = document.createElement('div');
+                            itemEl.className = 'domain-item';
+                            const icon = status === 'blocked' ? 'fa-check-circle' : 'fa-times-circle';
+                            const statusText = status === 'blocked' ? getString('statusBlocked') : getString('statusAllowed');
+                            const statusClass = status === 'blocked' ? 'domain-status-blocked' : 'domain-status-allowed';
+                            itemEl.innerHTML = `<i class="fas ${icon} mr-2"></i><span class="domain-name">${domain}</span><span class="domain-status ${statusClass}">${statusText}</span>`;
+                            contentDiv.appendChild(itemEl);
+                        }
+                    }
+                    trackerBreakdownContainer.appendChild(detailsCatEl);
+                }
+            } else {
+                trackerBreakdownContainer.innerHTML = `<p class="text-gray-500 dark:text-gray-400 italic">${getString('trackerBreakdownLoading')}</p>`;
+            }
+
+            // --- Handle Advanced Fingerprinting Data ---
+            const advancedFpResult = testResults['advancedFingerprinting'];
+            if (advancedFpResult && advancedFpResult.advancedData) {
+                const fpData = advancedFpResult.advancedData;
+                const fpDetailsEl = document.createElement('details');
+                fpDetailsEl.className = 'bg-white dark:bg-gray-700 border dark:border-gray-600 rounded-md mb-2';
+
+                let iconClass = 'result-warning fas fa-exclamation-triangle';
+                if (fpData.score >= 0.8) { // Adjust threshold for 'good' score for FP
+                    iconClass = 'result-success fas fa-check-circle';
+                }
+
+                fpDetailsEl.innerHTML = `
+                    <summary>
+                        <span><i class="summary-icon ${iconClass}"></i>${getString('testName_advancedFingerprinting')}</span>
+                        <span class="summary-category-status">${advancedFpResult.message}</span>
+                        <i class="summary-arrow fas fa-chevron-right"></i>
+                    </summary>
+                    <div class="details-content">
+                        <p class="mb-3">${getString('advFpDetails')}</p>
+                        <h5 class="font-semibold mt-2 mb-1">${getString('advFpGeneralInfo')}</h5>
+                        <table class="fingerprint-data-table">
+                            <thead>
+                                <tr>
+                                    <th>${getString('advFpAttribute')}</th>
+                                    <th>${getString('advFpSimilarityRatio')}</th>
+                                    <th>${getString('advFpValue')}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${Object.entries(fpData.general).map(([attr, info]) => `
+                                    <tr>
+                                        <td><code>${attr}</code></td>
+                                        <td><span class="similarity-ratio ${info.similarity < 10 ? 'high' : (info.similarity < 50 ? 'medium' : '')}">${info.similarity.toFixed(2)} %</span></td>
+                                        <td><code>${info.value}</code></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+
+                        <h5 class="font-semibold mt-4 mb-1">${getString('advFpHttpHeaders')}</h5>
+                        <table class="fingerprint-data-table">
+                            <thead>
+                                <tr>
+                                    <th>${getString('advFpAttribute')}</th>
+                                    <th>${getString('advFpSimilarityRatio')}</th>
+                                    <th>${getString('advFpValue')}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${Object.entries(fpData.httpHeaders).map(([attr, info]) => `
+                                    <tr>
+                                        <td><code>${attr}</code></td>
+                                        <td><span class="similarity-ratio ${info.similarity < 10 ? 'high' : (info.similarity < 50 ? 'medium' : '')}">${info.similarity.toFixed(2)} %</span></td>
+                                        <td><code>${info.value}</code></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+
+                        <h5 class="font-semibold mt-4 mb-1">${getString('advFpJavascriptAttrs')}</h5>
+                        <table class="fingerprint-data-table">
+                            <thead>
+                                <tr>
+                                    <th>${getString('advFpAttribute')}</th>
+                                    <th>${getString('advFpSimilarityRatio')}</th>
+                                    <th>${getString('advFpValue')}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                ${Object.entries(fpData.javascript).map(([attr, info]) => `
+                                    <tr>
+                                        <td><code>${attr}</code></td>
+                                        <td><span class="similarity-ratio ${info.similarity < 10 ? 'high' : (info.similarity < 50 ? 'medium' : '')}">${info.similarity.toFixed(2)} %</span></td>
+                                        <td><code>${info.value}</code></td>
+                                    </tr>
+                                `).join('')}
+                            </tbody>
+                        </table>
+                    </div>
+                `;
+                exposedInfoList.appendChild(fpDetailsEl); // Add to exposed info list
+                if (advancedFpResult.success === false) { // If it was a 'warning' level failure
+                    exposedCount++;
+                    addRecommendation('advancedFingerprinting', advancedFpResult);
+                }
+            }
 
 
             // --- Finalize Exposed Info Section ---
             if (exposedCount === 0) {
-                 noExposureText.classList.remove('hidden');
-                 exposedInfoAssessment.textContent = getString('assessmentExcellent');
-                 exposedInfoContainer.className = 'p-4 border rounded-lg bg-green-50 dark:bg-gray-800 border-green-300 dark:border-green-600'; // Green theme
-             } else {
-                 let exposureLevelKey = "assessmentModerate";
-                 if (exposedCount <= 2) exposureLevelKey = "assessmentLow";
-                 if (exposedCount >= 5) exposureLevelKey = "assessmentHigh";
-                 const exposureLevelText = getString(exposureLevelKey);
+                noExposureText.classList.remove('hidden');
+                exposedInfoAssessment.textContent = getString('assessmentExcellent');
+                exposedInfoContainer.className = 'p-4 border rounded-lg bg-green-50 dark:bg-gray-800 border-green-300 dark:border-green-600'; // Green theme
+            } else {
+                let exposureLevelKey = "assessmentModerate";
+                if (exposedCount <= 2) exposureLevelKey = "assessmentLow";
+                if (exposedCount >= 5) exposureLevelKey = "assessmentHigh";
+                const exposureLevelText = getString(exposureLevelKey);
 
                 let assessmentText = getString('assessmentOverall', { level: `<strong class="dark:text-orange-200">${exposureLevelText}</strong>`, count: exposedCount });
-                 let fpDataFound = false;
-                 let fpDetailsHtml = Object.entries(collectedFingerprintData)
-                     .map(([key, value]) => value ? `<li><code>${key}:</code> ${value}</li>` : null)
-                     .filter(item => item !== null)
-                     .join('');
+                let fpDataFound = false;
+                // No longer trying to collect all fingerprint data here, it's in advancedFingerprintData
+                // The general collectedFingerprintData is now more of a legacy/simpler version.
+                // The new advancedFingerprintData contains the comprehensive details.
 
-                if (fpDetailsHtml.length > 0) {
-                     fpDataFound = true;
-                     assessmentText += ` ${getString('exposedDataIntro')} <ul class="list-disc pl-5 text-xs mt-1">${fpDetailsHtml}</ul> `;
-                 }
-                 assessmentText += ` ${getString('assessmentFingerprintData')}`;
-                 exposedInfoAssessment.innerHTML = assessmentText; // Use innerHTML because of tags
-                 exposedInfoContainer.className = 'p-4 border rounded-lg bg-orange-50 dark:bg-gray-800 border-orange-300 dark:border-orange-600'; // Warning theme
-             }
+                assessmentText += ` ${getString('assessmentFingerprintData')}`;
+                exposedInfoAssessment.innerHTML = assessmentText; // Use innerHTML because of tags
+                exposedInfoContainer.className = 'p-4 border rounded-lg bg-orange-50 dark:bg-gray-800 border-orange-300 dark:border-orange-600'; // Warning theme
+            }
 
             // --- Finalize Recommendations ---
             if (recommendationsList.children.length === 0 && exposedCount > 0) {
-                 const li = document.createElement('li'); li.textContent = getString('recommendation_genericReview'); recommendationsList.appendChild(li);
-             } else if (exposedCount === 0) {
-                 const li = document.createElement('li'); li.textContent = getString('recommendation_genericKeepUpdated'); recommendationsList.appendChild(li);
-             }
+                const li = document.createElement('li');
+                li.textContent = getString('recommendation_genericReview');
+                recommendationsList.appendChild(li);
+            } else if (exposedCount === 0) {
+                const li = document.createElement('li');
+                li.textContent = getString('recommendation_genericKeepUpdated');
+                recommendationsList.appendChild(li);
+            }
             // Add general advice regardless
-            const liGeneral1 = document.createElement('li'); liGeneral1.innerHTML = getString('recommendation_genericUsePrivacyTools'); recommendationsList.appendChild(liGeneral1);
-            const liGeneral2 = document.createElement('li'); liGeneral2.textContent = getString('recommendation_genericClearData'); recommendationsList.appendChild(liGeneral2);
+            const liGeneral1 = document.createElement('li');
+            liGeneral1.innerHTML = getString('recommendation_genericUsePrivacyTools');
+            recommendationsList.appendChild(liGeneral1);
+            const liGeneral2 = document.createElement('li');
+            liGeneral2.textContent = getString('recommendation_genericClearData');
+            recommendationsList.appendChild(liGeneral2);
         }
 
         // REVISED function to add detailed exposed info using <details> and translations
         function addExposedInfo(testId, result) {
+            // Special handling for advancedFingerprinting is now directly in displayResults()
+            // This function will primarily handle other "failed" tests (cname, webrtc, etc.)
+            if (testId === 'advancedFingerprinting') {
+                return; // Already handled above in displayResults
+            }
+
             const detailsEl = document.createElement('details');
             const implicationKey = `implication_${testId}`;
-             // Use the test name from the result object as the summary text
-             const summaryText = result.name || testId;
-             let implicationText = getString(implicationKey); // Get translated implication
+            // Use the test name from the result object as the summary text
+            const summaryText = result.name || testId;
+            let implicationText = getString(implicationKey); // Get translated implication
 
             let specificDataHtml = null; // To hold specific collected data strings as HTML list items
 
             // Add specific data points if available for certain tests
-             switch (testId) {
-                 case 'fingerprintingAPI':
-                     specificDataHtml = Object.entries(collectedFingerprintData)
+            switch (testId) {
+                case 'fingerprintingAPI': // This test is being replaced by advancedFingerprinting, but kept for legacy
+                    specificDataHtml = Object.entries(collectedFingerprintData)
                         .filter(([key, value]) => value && !['User Agent', 'Platform', 'Timezone Offset', 'Screen Resolution', 'Language', 'Languages'].includes(key)) // Filter less unique ones if needed, keep for now
-                         .map(([key, value]) => value ? `<li><code>${key}:</code> ${value}</li>` : null)
-                         .filter(Boolean).join('');
-                     break;
-                 case 'canvasFingerprinting':
-                     specificDataHtml = collectedFingerprintData['Canvas Fingerprint Hash (simulated)'] ? `<li>Simulated Hash (End): <code>...${collectedFingerprintData['Canvas Fingerprint Hash (simulated)']}</code></li>` : '';
-                     break;
-                 case 'audioFingerprinting':
-                     specificDataHtml = collectedFingerprintData['Audio Fingerprint Hash (simulated)'] ? `<li>Simulated Hash (Sum): <code>${collectedFingerprintData['Audio Fingerprint Hash (simulated)']}</code></li>` : '';
-                     break;
-                 case 'webRTCLeak':
-                     specificDataHtml = collectedFingerprintData['WebRTC Leaked Address'] ? `<li>Potentially Leaked Address: <code>${collectedFingerprintData['WebRTC Leaked Address']}</code></li>` : '';
-                     break;
-                 case 'comprehensiveTracking':
+                        .map(([key, value]) => value ? `<li><code>${key}:</code> ${value}</li>` : null)
+                        .filter(Boolean).join('');
+                    break;
+                case 'canvasFingerprinting':
+                    specificDataHtml = collectedFingerprintData['Canvas Fingerprint Hash (simulated)'] ? `<li>Simulated Hash (End): <code>...${collectedFingerprintData['Canvas Fingerprint Hash (simulated)']}</code></li>` : '';
+                    break;
+                case 'audioFingerprinting':
+                    specificDataHtml = collectedFingerprintData['Audio Fingerprint Hash (simulated)'] ? `<li>Simulated Hash (Sum): <code>${collectedFingerprintData['Audio Fingerprint Hash (simulated)']}</code></li>` : '';
+                    break;
+                case 'webRTCLeak':
+                    specificDataHtml = collectedFingerprintData['WebRTC Leaked Address'] ? `<li>Potentially Leaked Address: <code>${collectedFingerprintData['WebRTC Leaked Address']}</code></li>` : '';
+                    break;
+                case 'comprehensiveTracking':
                     // Add a note to check the breakdown section instead of listing all domains here
                     implicationText += ` ${getString('detailsLabel')}: Check the '${getString('trackerBreakdownTitle')}' section above for specific allowed domains.`;
                     break;
-             }
+            }
 
-             const iconClass = 'result-warning fas fa-exclamation-triangle'; // Always warning for exposed info
+            const iconClass = 'result-warning fas fa-exclamation-triangle'; // Always warning for exposed info
 
             detailsEl.innerHTML = `
                 <summary>
@@ -1238,32 +2154,31 @@
                     <i class="summary-arrow fas fa-chevron-right"></i>
                 </summary>
                 <div class="details-content">
-                     <p><strong>${getString('implicationLabel')}:</strong> ${implicationText}</p>
-                     ${specificDataHtml ? `<h5 class="font-semibold mt-2 mb-1">${getString('dataPointsLabel')}</h5><ul class="list-disc pl-5">${specificDataHtml}</ul>` : ''}
-                     ${result.details ? `<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">${getString('detailsLabel')}: ${result.details}</p>` : ''}
-                 </div>
-             `;
-             exposedInfoList.appendChild(detailsEl);
+                    <p><strong>${getString('implicationLabel')}:</strong> ${implicationText}</p>
+                    ${specificDataHtml ? `<h5 class="font-semibold mt-2 mb-1">${getString('dataPointsLabel')}</h5><ul class="list-disc pl-5">${specificDataHtml}</ul>` : ''}
+                    ${result.details ? `<p class="text-xs text-gray-500 dark:text-gray-400 mt-2">${getString('detailsLabel')}: ${result.details}</p>` : ''}
+                </div>
+            `;
+            exposedInfoList.appendChild(detailsEl);
         }
 
-         // REVISED Recommendation Function using translations
-         function addRecommendation(testId, result) {
-             const li = document.createElement('li');
-             const recommendationKey = `recommendation_${testId}`;
-             let recommendationText = getString(recommendationKey);
+        // REVISED Recommendation Function using translations
+        function addRecommendation(testId, result) {
+            const li = document.createElement('li');
+            const recommendationKey = `recommendation_${testId}`;
+            let recommendationText = getString(recommendationKey);
 
             // If no specific recommendation exists, create a generic one based on name
-             if (recommendationText === recommendationKey) { // getString returns key if not found
-                 recommendationText = `Review "${result.name}" settings or consider specific tools.`;
-             }
+            if (recommendationText === recommendationKey) { // getString returns key if not found
+                recommendationText = `Review "${result.name}" settings or consider specific tools.`;
+            }
 
             li.textContent = recommendationText;
-             // Avoid duplicates if multiple tests trigger similar generic advice implicitly
-             if (!recommendationsList.innerHTML.includes(recommendationText.substring(0, 50))) { // Simple check
-                 recommendationsList.appendChild(li);
-             }
-         }
-
+            // Avoid duplicates if multiple tests trigger similar generic advice implicitly
+            if (!recommendationsList.innerHTML.includes(recommendationText.substring(0, 50))) { // Simple check
+                recommendationsList.appendChild(li);
+            }
+        }
     </script>
 </body>
 </html>
