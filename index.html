@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PrivacyTester 2025 - Detailed Report</title>
+    <title id="pageTitle">PrivacyTester 2025 - Detailed Report</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github-dark.min.css">
@@ -79,8 +79,7 @@
             font-weight: 600; /* font-semibold */
             display: flex;
             align-items: center;
-            justify-content: space-between;
-            list-style: none; /* Remove default marker */
+            justify-content: space-between; list-style: none; /* Remove default marker */
             color: #1f2937; /* Gray 800 */
         }
         summary::-webkit-details-marker { display: none; } /* Hide marker in Chrome/Safari */
@@ -90,25 +89,20 @@
         }
 
         summary .summary-icon { /* For the warning icon */
-            margin-right: 0.5rem;
-        }
+            margin-right: 0.5rem; }
         summary .summary-category-status { /* For 'X/Y Blocked' text */
-            font-size: 0.8rem;
-            font-weight: normal;
+            font-size: 0.8rem; font-weight: normal;
             color: #6b7280; /* Gray 500 */
-            margin-left: 1rem;
-        }
+            margin-left: 1rem; }
         .dark-mode summary .summary-category-status {
             color: #9ca3af; /* Gray 400 */
         }
 
         summary .summary-arrow { /* Custom arrow */
-            transition: transform 0.2s ease-in-out;
-            margin-left: auto; /* Push arrow to the right */
+            transition: transform 0.2s ease-in-out; margin-left: auto; /* Push arrow to the right */
         }
         details[open] summary .summary-arrow {
-            transform: rotate(90deg);
-        }
+            transform: rotate(90deg); }
 
         .details-content {
             padding: 0 1rem 1rem 1rem; /* px-4 pb-4 */
@@ -129,8 +123,7 @@
         }
         .details-content code { /* Inline code for data points */
             background-color: rgba(209, 213, 219, 0.3); /* Gray 300 with opacity */
-            padding: 0.1em 0.3em;
-            border-radius: 0.2em;
+            padding: 0.1em 0.3em; border-radius: 0.2em;
             font-size: 0.9em;
         }
         .dark-mode .details-content code {
@@ -139,44 +132,36 @@
 
         /* New styles for advanced fingerprinting data display */
         .fingerprint-data-table {
-            width: 100%;
-            border-collapse: collapse;
+            width: 100%; border-collapse: collapse;
             margin-top: 0.75rem;
             font-size: 0.8rem;
         }
         .fingerprint-data-table th,
         .fingerprint-data-table td {
-            padding: 0.5rem;
-            border: 1px solid #e5e7eb;
+            padding: 0.5rem; border: 1px solid #e5e7eb;
             text-align: left;
             vertical-align: top;
         }
         .dark-mode .fingerprint-data-table th,
         .dark-mode .fingerprint-data-table td {
-            border: 1px solid #4b5563;
-        }
+            border: 1px solid #4b5563; }
         .fingerprint-data-table th {
-            background-color: #f3f4f6;
-            font-weight: 600;
+            background-color: #f3f4f6; font-weight: 600;
             color: #1f2937;
         }
         .dark-mode .fingerprint-data-table th {
-            background-color: #2d3748;
-            color: #f7fafc;
+            background-color: #2d3748; color: #f7fafc;
         }
         .fingerprint-data-table tr:nth-child(even) {
-            background-color: #f9fafb;
-        }
+            background-color: #f9fafb; }
         .dark-mode .fingerprint-data-table tr:nth-child(even) {
-            background-color: #374151;
-        }
+            background-color: #374151; }
         .fingerprint-data-table code {
             word-break: break-all; /* Ensure long strings wrap */
             white-space: pre-wrap; /* Preserve whitespace and wrap */
         }
         .similarity-ratio {
-            font-weight: bold;
-            color: #10b981; /* Green */
+            font-weight: bold; color: #10b981; /* Green */
         }
         .similarity-ratio.high {
             color: #ef4444; /* Red for high uniqueness */
@@ -491,7 +476,6 @@
                 dataPointsLabel: 'Specific Data Points Exposed:',
                 implicationLabel: 'Implication',
                 blockedRatioText: '{blocked}/{total} Blocked',
-
             },
             'ru': {
                 // Meta & Titles
@@ -714,8 +698,7 @@
         // Initialize language on load
         detectLanguage();
 
-
-        // --- Dark Mode --- (Same JS as before)
+        // --- Dark Mode ---
         const darkModeToggle = document.getElementById('darkModeToggle');
         const body = document.body;
         if (localStorage.getItem('darkMode') === 'enabled' || (!('darkMode' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) { enableDarkMode(); } else { disableDarkMode(); }
@@ -724,8 +707,7 @@
         function disableDarkMode() { body.classList.remove('dark-mode'); darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>'; }
         hljs.highlightAll();
 
-
-        // --- Section Navigation & Test Flow --- (References updated)
+        // --- Section Navigation & Test Flow ---
         const startTestBtn = document.getElementById('startTestBtn');
         const testSection = document.getElementById('testSection');
         const resultsSection = document.getElementById('resultsSection');
@@ -739,82 +721,156 @@
         const backToResultsFromArchBtn = document.getElementById('backToResultsFromArchBtn');
         const resultsSummaryContainer = document.getElementById('resultsSummaryContainer');
         const resultsDetailedContainer = document.getElementById('resultsDetailedContainer');
-        const trackerBreakdownContainer = document.getElementById('trackerBreakdownContainer'); // New container
-        const trackerBreakdownLoading = document.getElementById('trackerBreakdownLoading'); // Loading text
+        const trackerBreakdownContainer = document.getElementById('trackerBreakdownContainer');
+        const trackerBreakdownLoading = document.getElementById('trackerBreakdownLoading');
         const recommendationsList = document.getElementById('recommendationsList');
         const exposedInfoContainer = document.getElementById('exposedInfoContainer');
         const exposedInfoList = document.getElementById('exposedInfoList');
         const exposedInfoAssessment = document.getElementById('exposedInfoAssessment');
         const noExposureText = document.getElementById('noExposureText');
 
-
-        // --- Tracker Categories & Domains ---
+        // --- Tracker Categories & Domains (UPDATED AND CORRECTED) ---
         const trackerCategories = {
             'Ads': {
-                nameKey: 'categoryName_Ads', // For translation
-                testsCount: 20, // User provided number
+                nameKey: 'categoryName_Ads',
+                testsCount: 20, // This count is not used in the comprehensive test, but for UI
                 domains: [
-                    'adtago.s3.amazonaws.com', 'advice-ads.s3.amazonaws.com', // Amazon (Indirect)
-                    'pagead2.googlesyndication.com', 'adservice.google.com', 'pagead2.googleadservices.com', 'afs.googlesyndication.com', // Google Ads
-                    'stats.g.doubleclick.net', 'ad.doubleclick.net', 'static.doubleclick.net', 'm.doubleclick.net', 'mediavisor.doubleclick.net', // Doubleclick
-                    'ads30.adcolony.com', 'adc3-launch.adcolony.com', 'events3alt.adcolony.com', 'wd.adcolony.com', // AdColony
-                    'static.media.net', 'media.net', 'adservetx.media.net' // Media.net
+                    'adtago.s3.amazonaws.com', 'analyticsengine.s3.amazonaws.com', 'analytics.s3.amazonaws.com', 'advice-ads.s3.amazonaws.com', 'advertising-api-eu.amazon.com',
+                    'amazon-adsystem.com', 'fls-na.amazon.com', 'ir-na.amazon-adsystem.com', 'rcm-na.amazon-adsystem.com', // Amazon extended
+                    'pagead2.googlesyndication.com', 'adservice.google.com', 'pagead2.googleadservices.com', 'afs.googlesyndication.com',
+                    'partner.googleadservices.com', 'tpc.googlesyndication.com', // Google Ads extended
+                    'stats.g.doubleclick.net', 'ad.doubleclick.net', 'static.doubleclick.net', 'm.doubleclick.net', 'mediavisor.doubleclick.net',
+                    'googleads.g.doubleclick.net', 'doubleclick.net', 'cm.g.doubleclick.net', // Doubleclick extended
+                    'ads30.adcolony.com', 'adc3-launch.adcolony.com', 'events3alt.adcolony.com', 'wd.adcolony.com',
+                    'adcolony.com', 'pr.adcolony.com', // AdColony extended
+                    'static.media.net', 'media.net', 'adservetx.media.net',
+                    'contextual.media.net', 'publisher.media.net', // Media.net extended
+
+                    // NEW AD CATEGORIES
+                    'assets.outbrain.com', 'log.outbrain.com', // Outbrain
+                    'api.taboola.com', 'cdn.taboola.com', 'trc.taboola.com', // Taboola
+                    'content.trafficforce.com', 'trafficforce.com', // Content Discovery
+                    'prebid.org', 'sync.adnxs.com', 'ib.adnxs.com', 'acdn.adnxs.com', // AppNexus / Xandr
+                    'rtb.openx.net', 'x.openx.net', 'us-u.openx.net', // OpenX
+                    'tap.rubiconproject.com', 'fastlane.rubiconproject.com', // Rubicon Project
+                    'ads.pubmatic.com', 'image6.pubmatic.com', // PubMatic
+                    'api.applovin.com', 'd.applovin.com', // AppLovin
+                    'ads.mopub.com', // MoPub
+                    'api.vungle.com', 'data.vungle.com', // Vungle
+                    'ads.chartboost.com', // Chartboost
+                    'imasdk.googleapis.com', 'vmap.vpaid.iab.com', 'video.unrulymedia.com', // Video Ads
+                    'ads.coinzilla.com', 'api.ad.network', // Cryptocurrency Ads
+                    'onesignal.com', 'cdn.onesignal.com', 'api.pushcrew.com', 'sendpulse.com', 'push.io' // Push Notifications
                 ]
             },
             'Analytics': {
                 nameKey: 'categoryName_Analytics',
-                testsCount: 30,
+                testsCount: 30, // This count is not used in the comprehensive test, but for UI
                 domains: [
-                    'analytics.google.com', 'click.googleanalytics.com', 'google-analytics.com', 'ssl.google-analytics.com', // Google Analytics
-                    'adm.hotjar.com', 'identify.hotjar.com', 'insights.hotjar.com', 'script.hotjar.com', 'surveys.hotjar.com', 'careers.hotjar.com', 'events.hotjar.io', // Hotjar
-                    'mouseflow.com', 'cdn.mouseflow.com', 'o2.mouseflow.com', 'gtm.mouseflow.com', 'api.mouseflow.com', 'tools.mouseflow.com', 'cdn-test.mouseflow.com', // MouseFlow
-                    'freshmarketer.com', 'claritybt.freshmarketer.com', 'fwtracks.freshmarketer.com', // FreshWorks (FreshMarketer)
-                    'luckyorange.com', 'api.luckyorange.com', 'realtime.luckyorange.com', 'cdn.luckyorange.com', 'w1.luckyorange.com', 'upload.luckyorange.net', 'cs.luckyorange.net', 'settings.luckyorange.net', // Lucky Orange
-                    'stats.wp.com', // Stats WP Plugin (Automattic)
-                    'analyticsengine.s3.amazonaws.com', 'analytics.s3.amazonaws.com' // Amazon (Indirect)
+                    'analytics.google.com', 'click.googleanalytics.com', 'google-analytics.com', 'ssl.google-analytics.com', 'www.google-analytics.com',
+                    'googletagmanager.com', 'gtm.googletagmanager.com', // Google Analytics & GTM
+                    'adm.hotjar.com', 'identify.hotjar.com', 'insights.hotjar.com', 'script.hotjar.com', 'surveys.hotjar.com', 'careers.hotjar.com', 'events.hotjar.io', 'static.hotjar.com', // Hotjar
+                    'mouseflow.com', 'cdn.mouseflow.com', 'o2.mouseflow.com', 'gtm.mouseflow.com', 'api.mouseflow.com', 'tools.mouseflow.com', 'cdn-test.mouseflow.com', 'web.mouseflow.com', // MouseFlow
+                    'freshmarketer.com', 'claritybt.freshmarketer.com', 'fwtracks.freshmarketer.com', 'assets.freshmarketer.com', // FreshWorks
+                    'luckyorange.com', 'api.luckyorange.com', 'realtime.luckyorange.com', 'cdn.luckyorange.com', 'w1.luckyorange.com', 'upload.luckyorange.net', 'cs.luckyorange.net', 'settings.luckyorange.net', 'stats.luckyorange.com', // Lucky Orange
+                    'stats.wp.com', 'pixel.wp.com', // Stats WP Plugin (Automattic)
+                    // NEW ANALYTICS CATEGORIES
+                    'api.mixpanel.com', 'cdn.mixpanel.com', // Mixpanel
+                    'api.segment.io', 'cdn.segment.com', // Segment.io
+                    'api.amplitude.com', 'cdn.amplitude.com', // Amplitude
+                    'app.intercom.io', 'widget.intercom.io', // Intercom
+                    'static.clarity.ms', // Microsoft Clarity
+                    'www.bing.com/analytics', // Bing Analytics
+                    'cdn.optimizely.com', // Optimizely
+                    'cdn.vwo.com', // VWO
+                    'app.convert.com' // Convert Experiences
                 ]
             },
             'ErrorTrackers': {
                 nameKey: 'categoryName_ErrorTrackers',
-                testsCount: 6,
+                testsCount: 6, // This count is not used in the comprehensive test, but for UI
                 domains: [
-                    'notify.bugsnag.com', 'sessions.bugsnag.com', 'api.bugsnag.com', 'app.bugsnag.com', // Bugsnag
-                    'browser.sentry-cdn.com', 'app.getsentry.com' // Sentry
+                    'notify.bugsnag.com', 'sessions.bugsnag.com', 'api.bugsnag.com', 'app.bugsnag.com', 'cdn.bugsnag.com', // Bugsnag
+                    'browser.sentry-cdn.com', 'app.getsentry.com', 'sentry.io', 'o759160.ingest.sentry.io', // Sentry
+                    // NEW ERROR TRACKERS
+                    'cdn.raygun.io', // Raygun
+                    'rum.datadoghq.com' // Datadog RUM
                 ]
             },
             'SocialTrackers': {
                 nameKey: 'categoryName_SocialTrackers',
-                testsCount: 20,
+                testsCount: 20, // This count is not used in the comprehensive test, but for UI
                 domains: [
-                    'pixel.facebook.com', 'an.facebook.com', // Facebook
-                    'static.ads-twitter.com', 'ads-api.twitter.com', // Twitter
-                    'ads.linkedin.com', 'analytics.pointdrive.linkedin.com', // LinkedIn
-                    'ads.pinterest.com', 'log.pinterest.com', 'analytics.pinterest.com', 'trk.pinterest.com', // Pinterest
-                    'events.reddit.com', 'events.redditmedia.com', // Reddit
-                    'googleusercontent.com/youtube.com/0', // YouTube (Example, may need refinement)
-                    'ads-api.tiktok.com', 'analytics.tiktok.com', 'ads-sg.tiktok.com', 'analytics-sg.tiktok.com', 'business-api.tiktok.com', 'ads.tiktok.com', 'log.byteoversea.com' // TikTok
+                    'pixel.facebook.com', 'an.facebook.com', 'connect.facebook.net', 'static.xx.fbcdn.net', 'www.facebook.com/tr/', // Facebook
+                    'static.ads-twitter.com', 'ads-api.twitter.com', 't.co', 'platform.twitter.com', // Twitter
+                    'ads.linkedin.com', 'analytics.pointdrive.linkedin.com', 'px.ads.linkedin.com', 'snap.licdn.com', // LinkedIn
+                    'ads.pinterest.com', 'log.pinterest.com', 'analytics.pinterest.com', 'trk.pinterest.com', 'widgets.pinterest.com', 'help.pinterest.com', // Pinterest
+                    'events.reddit.com', 'events.redditmedia.com', 'pixel.redditmedia.com', 'alb.reddit.com', // Reddit
+                    's.ytimg.com', 'i.ytimg.com', 'youtube.com', // YouTube (simplified, googleusercontent.com might be too broad)
+                    'ads-api.tiktok.com', 'analytics.tiktok.com', 'ads-sg.tiktok.com', 'analytics-sg.tiktok.com', 'business-api.tiktok.com', 'ads.tiktok.com', 'log.byteoversea.com', 'open.tiktokcdn.com', 'mon.tiktokv.com', 'v.tiktok.com', // TikTok
+                    // NEW SOCIAL TRACKERS
+                    'tr.snapchat.com', 'kit.snapchat.com', // Snapchat
+                    'vk.com/rtrg', 'api.vk.com', 'mc.yandex.ru', // VK
+                    't.me/js' // Telegram
                 ]
             },
             'Mix': {
                 nameKey: 'categoryName_Mix',
-                testsCount: 20,
+                testsCount: 20, // This count is not used in the comprehensive test, but for UI
                 domains: [
-                    'ads.yahoo.com', 'analytics.yahoo.com', 'geo.yahoo.com', 'udc.yahoo.com', 'udcm.yahoo.com', 'analytics.query.yahoo.com', 'partnerads.ysm.yahoo.com', 'log.fc.yahoo.com', 'gemini.yahoo.com', 'adtech.yahooinc.com', // Yahoo
-                    'extmaps-api.yandex.net', 'appmetrica.yandex.ru', 'adfstat.yandex.ru', 'metrika.yandex.ru', 'offerwall.yandex.net', 'adfox.yandex.ru', // Yandex
-                    'auction.unityads.unity3d.com', 'webview.unityads.unity3d.com', 'config.unityads.unity3d.com', 'adserver.unityads.unity3d.com' // Unity Ads
+                    'ads.yahoo.com', 'analytics.yahoo.com', 'geo.yahoo.com', 'udc.yahoo.com', 'udcm.yahoo.com', 'advertising.yahoo.com', 'analytics.query.yahoo.com', 'partnerads.ysm.yahoo.com', 'log.fc.yahoo.com', 'gemini.yahoo.com', 'adtech.yahooinc.com',
+                    'developer.yahoo.com', 's.yimg.com', 'pr.yimg.com', // Yahoo extended
+                    'extmaps-api.yandex.net', 'appmetrica.yandex.ru', 'adfstat.yandex.ru', 'metrika.yandex.ru', 'advertising.yandex.ru', 'offerwall.yandex.net', 'adfox.yandex.ru',
+                    'mc.yandex.ru', 'awaps.yandex.ru', 'yastatic.net', // Yandex extended
+                    'auction.unityads.unity3d.com', 'webview.unityads.unity3d.com', 'config.unityads.unity3d.com', 'adserver.unityads.unity3d.com',
+                    'unityads.unity3d.com', 'iot.unityads.unity3d.com', // Unity extended
+                    // NEW MIXED TRACKERS
+                    'radar.cloudflare.com', 'static.cloudflareinsights.com', 'www.cloudflare.com/cdn-cgi/trace', // Cloudflare
+                    'api.amplitude.com', 'cdn.amplitude.com', // Amplitude (can be here too)
+                    'api.webengage.com', 'assets.webengage.com', // Webengage
+                    'api.clevertap.com', 'in.clevertap.com' // Clevertap
                 ]
             },
             'OEMs': {
                 nameKey: 'categoryName_OEMs',
-                testsCount: 35,
+                testsCount: 35, // This count is not used in the comprehensive test, but for UI
                 domains: [
-                    'iot-eu-logser.realme.com', 'iot-logser.realme.com', 'bdapi-ads.realmemobile.com', 'bdapi-in-ads.realmemobile.com', // Realme
-                    'api.ad.xiaomi.com', 'data.mistat.xiaomi.com', 'data.mistat.india.xiaomi.com', 'data.mistat.rus.xiaomi.com', 'sdkconfig.ad.xiaomi.com', 'sdkconfig.ad.intl.xiaomi.com', 'tracking.rus.miui.com', // Xiaomi
-                    'adsfs.oppomobile.com', 'adx.ads.oppomobile.com', 'ck.ads.oppomobile.com', 'data.ads.oppomobile.com', // Oppo
-                    'metrics.data.hicloud.com', 'metrics2.data.hicloud.com', 'grs.hicloud.com', 'logservice.hicloud.com', 'logservice1.hicloud.com', 'logbak.hicloud.com', // Huawei
-                    'click.oneplus.cn', 'open.oneplus.net', // OnePlus
-                    'samsungads.com', 'smetrics.samsung.com', 'nmetrics.samsung.com', 'samsung-com.112.2o7.net', 'analytics-api.samsunghealthcn.com', // Samsung
-                    'iadsdk.apple.com', 'metrics.icloud.com', 'metrics.mzstatic.com', 'api-adservices.apple.com', 'books-analytics-events.apple.com', 'weather-analytics-events.apple.com', 'notes-analytics-events.apple.com' // Apple
+                    'iot-eu-logser.realme.com', 'iot-logser.realme.com', 'bdapi-ads.realmemobile.com', 'bdapi-in-ads.realmemobile.com', 'ad.realmemobile.com', // Realme
+                    'api.ad.xiaomi.com', 'data.mistat.xiaomi.com', 'data.mistat.india.xiaomi.com', 'data.mistat.rus.xiaomi.com', 'sdkconfig.ad.xiaomi.com', 'sdkconfig.ad.intl.xiaomi.com', 'tracking.rus.miui.com', 'data.mistat.intl.xiaomi.com', 'ad.intl.xiaomi.com', // Xiaomi
+                    'adsfs.oppomobile.com', 'adx.ads.oppomobile.com', 'ck.ads.oppomobile.com', 'data.ads.oppomobile.com', 'cc.ads.oppomobile.com', 'log.ads.oppomobile.com', // Oppo
+                    'metrics.data.hicloud.com', 'metrics2.data.hicloud.com', 'grs.hicloud.com', 'logservice.hicloud.com', 'logservice1.hicloud.com', 'logbak.hicloud.com', 'cloudstorage.hicloud.com', 'push-api.cloud.huawei.com', 'ads.huawei.com', // Huawei
+                    'click.oneplus.cn', 'open.oneplus.net', 'api.oneplus.net', 'log.oneplus.cn', // OnePlus
+                    'samsungads.com', 'smetrics.samsung.com', 'nmetrics.samsung.com', 'samsung-com.112.2o7.net', 'analytics-api.samsunghealthcn.com', 'ad.samsungads.com', 'config.samsungads.com', 'cdn.samsungcloud.com', // Samsung
+                    'advertising.apple.com', 'iadsdk.apple.com', 'metrics.icloud.com', 'metrics.mzstatic.com', 'api-adservices.apple.com', 'books-analytics-events.apple.com', 'weather-analytics-events.apple.com', 'notes-analytics-events.apple.com', 'apple.com/metrics', 'cdn.apple-mapkit.com', // Apple
+                    // NEW OEM CATEGORIES
+                    'ads-api.vivo.com', 'tracker.vivo.com', // Vivo
+                    'vortex.data.microsoft.com', 'settings-win.data.microsoft.com', 'go.microsoft.com', 'browser.events.data.msn.com', // Microsoft
+                    'client.samsungapps.com', // Samsung (apps)
+                    'api.lgappstore.com' // LG
+                ]
+            },
+            'Cryptojacking/Mining': {
+                nameKey: 'categoryName_Cryptojacking', // You might need to add this translation key
+                testsCount: 5,
+                domains: [
+                    'cdn.coinhive.com', 'webminepool.com', 'authedmine.com',
+                    'stratum.slushpool.com', 'pool.minergate.com'
+                ]
+            },
+            'Malware/Fraud Related': {
+                nameKey: 'categoryName_Malware', // You might need to add this translation key
+                testsCount: 4,
+                domains: [
+                    'suspicious-redirect.com', 'bad-ad-network.info',
+                    'cdn.adware-domain.net', 'adware-delivery.xyz'
+                ]
+            },
+            'Telemetry & Diagnostics': {
+                nameKey: 'categoryName_Telemetry', // You might need to add this translation key
+                testsCount: 4,
+                domains: [
+                    'vortex.data.microsoft.com', 'telemetry.microsoft.com', // Windows Telemetry (re-listed for this category)
+                    'client.samsungapps.com', 'api.lgappstore.com' // General System Telemetry (re-listed)
                 ]
             }
         };
@@ -843,7 +899,6 @@
         let detailedTrackerResults = {}; // Store detailed domain results
         let advancedFingerprintData = null; // NEW: Store data for advanced fingerprinting test
         const delay = ms => new Promise(resolve => setTimeout(resolve, ms));
-
 
         // --- Event Listeners ---
         startTestBtn.addEventListener('click', () => { hideAllSections(); testSection.classList.remove('hidden'); testSection.scrollIntoView({ behavior: 'smooth', block: 'start' }); startAdvancedTest(); });
@@ -885,7 +940,8 @@
 
         // Renamed from simulateAdBlocking, enhanced slightly
         async function simulateCosmeticFiltering(updateCallback) {
-            updateCallback(getString('statusInitializing') + " ad elements..."); await delay(50);
+            updateCallback(getString('statusInitializing') + " ad elements...");
+            await delay(50);
             const elements = [
                 { id: 'banner_ad_1', classes: 'banner_ad google_ad adsbox ad-banner', style: 'position:absolute;left:-9999px;height:1px;width:1px;' },
                 { id: 'popup_ad_1', classes: 'popup-ad annoying-ad modal-ad overlay-ad', style: 'position:absolute;top:-9999px;height:1px;width:1px;' }
@@ -899,13 +955,13 @@
                 document.body.appendChild(adEl);
                 createdElements.push(adEl);
             });
-
             updateCallback("Waiting for cosmetic filters..."); await delay(350); // Slightly longer wait
 
             let hiddenCount = 0;
             let messages = [];
             for (const adEl of createdElements) {
-                updateCallback(`Checking ${adEl.id} visibility...`); await delay(50);
+                updateCallback(`Checking ${adEl.id} visibility...`);
+                await delay(50);
                 const isHidden = !adEl || adEl.offsetParent === null || adEl.offsetHeight === 0 || adEl.offsetWidth === 0 || adEl.style.display === 'none' || window.getComputedStyle(adEl).display === 'none' || window.getComputedStyle(adEl).visibility === 'hidden';
                 if (isHidden) {
                     hiddenCount++;
@@ -916,7 +972,8 @@
                 adEl.remove(); // Clean up
             }
 
-            updateCallback("Ad element check " + getString('statusCompleted') + "."); await delay(50);
+            updateCallback("Ad element check " + getString('statusCompleted') + ".");
+            await delay(50);
             const score = hiddenCount / elements.length;
             const messageKey = score > 0.5 ? 'cosmeticFilteringBlockedMsg' : 'cosmeticFilteringVisibleMsg';
             return { success: score > 0.5, score: score, message: getString(messageKey, { count: hiddenCount }), details: messages.join(' ') };
@@ -936,7 +993,6 @@
                 let categoryBlocked = 0;
                 let domainResults = {};
                 const totalInCategory = domains.length;
-
                 for (let i = 0; i < totalInCategory; i++) {
                     const domain = domains[i];
                     // Provide more granular progress within category
@@ -967,7 +1023,8 @@
                 await delay(100); // Delay between categories
             }
 
-            updateCallback("Comprehensive tracker check " + getString('statusCompleted') + "."); await delay(50);
+            updateCallback("Comprehensive tracker check " + getString('statusCompleted') + ".");
+            await delay(50);
 
             const score = overallTotal > 0 ? overallBlocked / overallTotal : 1; // Avoid division by zero
             const success = score > 0.95; // High threshold for success
@@ -1006,14 +1063,16 @@
                 success = true; // Request failed, likely blocked
                 message = getString('cnameCloakingBlockedMsg');
             }
-            updateCallback("CNAME check " + getString('statusCompleted') + "."); await delay(50);
+            updateCallback("CNAME check " + getString('statusCompleted') + ".");
+            await delay(50);
             return { success: success, score: success ? 1 : 0, message: message };
         }
 
         // Removed old simulateFingerprintingAPI
 
         async function simulateCanvasFingerprinting(updateCallback) {
-            updateCallback(getString('statusInitializing') + " Canvas..."); await delay(50);
+            updateCallback(getString('statusInitializing') + " Canvas...");
+            await delay(50);
             let score = 0;
             let messageKey = 'canvasVulnerable';
             let details = "";
@@ -1068,12 +1127,14 @@
                 messageKey = "canvasFailed";
                 details = `Error: ${error.message}`;
             }
-            updateCallback("Canvas check " + getString('statusCompleted') + "."); await delay(50);
+            updateCallback("Canvas check " + getString('statusCompleted') + ".");
+            await delay(50);
             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
         }
 
         async function simulateAudioFingerprinting(updateCallback) {
-            updateCallback(getString('statusInitializing') + " AudioContext..."); await delay(50);
+            updateCallback(getString('statusInitializing') + " AudioContext...");
+            await delay(50);
             let score = 0;
             let messageKey = 'audioVulnerable';
             let details = "";
@@ -1110,12 +1171,14 @@
                 messageKey = "audioResistedFailed";
                 details = `Error: ${error.message}`;
             }
-            updateCallback("Audio check " + getString('statusCompleted') + "."); await delay(50);
+            updateCallback("Audio check " + getString('statusCompleted') + ".");
+            await delay(50);
             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
         }
 
         async function simulateWebRTCLeak(updateCallback) {
-            updateCallback(getString('statusInitializing') + " WebRTC..."); await delay(50);
+            updateCallback(getString('statusInitializing') + " WebRTC...");
+            await delay(50);
             let score = 1;
             let messageKey = 'webRTCLeakBlocked';
             let details = "";
@@ -1131,7 +1194,8 @@
                 updateCallback("Waiting for ICE candidates..."); await delay(300);
                 const sdp = pc.localDescription?.sdp;
                 if (sdp) {
-                    updateCallback("Analyzing SDP..."); await delay(50);
+                    updateCallback("Analyzing SDP...");
+                    await delay(50);
                     // Regex for typical local IPv4 addresses and mDNS names
                     const localIpRegex = /a=candidate.*? (192\.168\.\d+\.\d+|10\.\d+\.\d+\.\d+|172\.(?:1[6-9]|2\d|3[01])\.\d+\.\d+)/g;
                     const mdnsRegex = /a=candidate.*? ([\w-]+\.local)/g;
@@ -1164,34 +1228,40 @@
         }
 
         async function simulateServiceWorkerTracking(updateCallback) {
-            updateCallback("Checking Service Worker support..."); await delay(50);
+            updateCallback("Checking Service Worker support...");
+            await delay(50);
             let score = 1; // Default to success (blocked)
             let messageKey = 'swTrackingBlocked';
             let details = "";
             if (!('serviceWorker' in navigator)) {
-                updateCallback("Service Worker not supported."); await delay(50);
+                updateCallback("Service Worker not supported.");
+                await delay(50);
                 return { success: true, score: 1, message: getString('swTrackingNotSupported') };
             }
             try {
-                updateCallback("Attempting SW registration..."); await delay(100);
+                updateCallback("Attempting SW registration...");
+                await delay(100);
                 // Use a non-existent script to test registration capability without actual execution
                 const registration = await navigator.serviceWorker.register('sw-nonexistent-test.js', { scope: './' });
                 messageKey = 'swTrackingAllowed';
                 details = `Scope: ${registration.scope}`;
                 score = 0; // Registration succeeded, potential tracking vector
-                updateCallback("Unregistering test SW..."); await delay(50);
+                updateCallback("Unregistering test SW...");
+                await delay(50);
                 await registration.unregister();
                 details += " (Unregistered)";
             } catch (error) {
                 score = 1; // Registration failed, likely blocked
                 details = `Error: ${error.message}`;
             }
-            updateCallback("Service Worker check " + getString('statusCompleted') + "."); await delay(50);
+            updateCallback("Service Worker check " + getString('statusCompleted') + ".");
+            await delay(50);
             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
         }
 
         async function simulateWebSocketTracking(updateCallback) {
-            updateCallback(getString('statusInitializing') + " WebSocket..."); await delay(50);
+            updateCallback(getString('statusInitializing') + " WebSocket...");
+            await delay(50);
             let score = 1; // Default to success (blocked)
             let messageKey = 'wsTrackingBlocked';
             let details = "";
@@ -1243,7 +1313,8 @@
                 score = 1; // Ensure score is 1 on any exception
                 if (!details) details = `Error: ${error.message || error}`;
             }
-            updateCallback("WebSocket check " + getString('statusCompleted') + "."); await delay(50);
+            updateCallback("WebSocket check " + getString('statusCompleted') + ".");
+            await delay(50);
             return { success: score > 0.5, score: score, message: getString(messageKey), details: details };
         }
 
@@ -1280,7 +1351,6 @@
             const getLocalStorageSupport = () => { try { localStorage.setItem('test', 'test'); localStorage.removeItem('test'); return true; } catch (e) { return false; } };
             const getSessionStorageSupport = () => { try { sessionStorage.setItem('test', 'test'); sessionStorage.removeItem('test'); return true; } catch (e) { return false; } };
             const getIndexedDBSupport = () => 'indexedDB' in window;
-
             const getAudioFormats = () => {
                 const audio = document.createElement('audio');
                 const types = [
@@ -1330,7 +1400,6 @@
                     return `Error: ${e.message}`;
                 }
             };
-
             const getPermissions = async () => {
                 const permissionNames = [
                     'accelerometer', 'accessibility-events', 'ambient-light-sensor', 'camera', 'clipboard-read',
@@ -1368,7 +1437,6 @@
                     return `Error: ${e.message}`;
                 }
             };
-
             const getAudioFingerprint = async () => {
                 try {
                     const AudioContext = window.OfflineAudioContext || window.webkitOfflineAudioContext;
@@ -1390,7 +1458,6 @@
                     return `Error: ${e.message}`;
                 }
             };
-
             const getWebGLInfo = (updateCallback) => {
                 let gl;
                 let debugInfo;
@@ -1491,8 +1558,6 @@
                     shadersPrecisionsCount: 36 // Static for now as per example
                 };
             };
-
-
             // Placeholder for getting font list (complex without external libraries)
             const getFonts = async () => {
                 // This is a simplified placeholder. Actual font enumeration is complex.
@@ -1503,7 +1568,6 @@
                 testElement.style.fontSize = '72px';
                 testElement.innerHTML = 'mmmmmmmmmmlli'; // Characters to measure
                 document.body.appendChild(testElement);
-
                 const getWidth = (fontFamily) => {
                     testElement.style.fontFamily = fontFamily;
                     return testElement.offsetWidth;
@@ -1516,12 +1580,9 @@
                     }
                 });
                 testElement.remove();
-
                 const totalOtherFonts = Math.floor(Math.random() * 500) + 500; // Simulate 500-1000 others
                 return detectedFonts.length > 0 ? `${detectedFonts.join(', ')} ${getString('advFpFontsCount', { count: totalOtherFonts })}` : getString('advFpNotSupported');
             };
-
-
             const getAdblockStatus = () => {
                 // Heuristic to detect adblockers
                 // 1. Check if a known ad script domain is blocked by comprehensive tracking
@@ -1540,7 +1601,6 @@
                 document.body.appendChild(testAdDiv);
                 const isBlockedByCSS = window.getComputedStyle(testAdDiv).display === 'none' || window.getComputedStyle(testAdDiv).visibility === 'hidden';
                 testAdDiv.remove();
-
                 if (isBlockedByCSS) return true;
 
                 // 3. Check for specific global variables or functions often used by adblockers (less reliable)
@@ -1550,7 +1610,6 @@
 
                 return false;
             };
-
             const getOS = () => {
                 const userAgent = navigator.userAgent;
                 if (userAgent.includes("Windows")) return "Windows";
@@ -1612,7 +1671,6 @@
                 }
                 return getString('advFpNotSupported');
             };
-
             // Values with fixed similarity ratios from your example (for demonstration)
             data.general['Operating system'] = { value: getOS(), similarity: 46.71 };
             data.general['Web browser'] = { value: getBrowser(), similarity: 44.85 };
@@ -1630,8 +1688,6 @@
             data.httpHeaders['Upgrade Insecure Requests'] = { value: '1', similarity: 88.98 };
             data.httpHeaders['Cache control'] = { value: 'max-age=0', similarity: 3.42 };
             data.httpHeaders['Do Not Track'] = { value: getDoNotTrack(), similarity: 28.89 };
-
-
             // JavaScript Attributes
             data.javascript['User agent'] = { value: navigator.userAgent, similarity: 0.31 };
             data.javascript['Platform'] = { value: getPlatform(), similarity: 37.20 };
@@ -1661,7 +1717,6 @@
             data.javascript['Screen available width'] = { value: screen.availWidth, similarity: 4.53 };
             const permissions = await getPermissions();
             data.javascript['Permissions'] = { value: Object.entries(permissions).map(([name, state]) => `${name} : ${state}`).join('<br>'), similarity: 0.00 };
-
             const webglInfo = getWebGLInfo(updateCallback);
             data.javascript['WebGL Vendor'] = { value: webglInfo.vendor, similarity: 0.00 };
             data.javascript['WebGL Renderer'] = { value: webglInfo.renderer, similarity: 0.00 };
@@ -1672,7 +1727,6 @@
                        `${getString('advFpShadersPrecisions', { count: webglInfo.shadersPrecisionsCount })}`,
                 similarity: 0.00
             };
-
             data.javascript['Use of local storage'] = { value: getLocalStorageSupport() ? 'true' : 'false', similarity: 91.60 };
             data.javascript['Use of session storage'] = { value: getSessionStorageSupport() ? 'true' : 'false', similarity: 91.70 };
             data.javascript['Use of IndexedDB'] = { value: getIndexedDBSupport() ? 'true' : 'false', similarity: 92.48 };
@@ -1686,12 +1740,11 @@
             data.javascript['Frequency analyser'] = {
                 value: `channelCount : 2<br>channelCountMode : max<br>channelInterpretation : speakers<br>fftSize : 2048<br>frequencyBinCount : 1024<br>maxDecibels : -30<br>minDecibels : -100<br>numberOfInputs : 1<br>numberOfOutputs : 1<br>smoothingTimeConstant : 0.8`,
                 similarity: 80.73
-            }; // Static values from your example for now
+            };
             data.javascript['Audio data'] = { value: getString('advFpNotSupported'), similarity: 62.29 }; // Static from your example
 
             data.javascript['Video formats'] = { value: Object.entries(getVideoFormats()).map(([type, canPlay]) => `${type} : ${canPlay}`).join('<br>'), similarity: 22.48 };
             data.javascript['Media devices'] = { value: await getMediaDevices(), similarity: 3.13 };
-
             // Sensor APIs (simulated, need real sensors for real values)
             data.javascript['Accelerometer'] = { value: 'N/A', similarity: 85.26 }; // Cannot access without permissions & actual sensor
             data.javascript['Gyroscope'] = { value: 'N/A', similarity: 25.93 }; // Cannot access without permissions & actual sensor
@@ -1707,7 +1760,6 @@
                 value: typeof connectionInfo === 'string' ? connectionInfo : `effectiveType : ${connectionInfo.effectiveType}<br>rtt : ${connectionInfo.rtt}<br>downlink : ${connectionInfo.downlink}<br>saveData : ${connectionInfo.saveData}`,
                 similarity: 50.45
             };
-
             // Window properties often checked
             data.javascript['Location bar'] = { value: 'true', similarity: 92.51 }; // Always true in modern browsers
             data.javascript['Menu bar'] = { value: 'true', similarity: 92.53 };
@@ -1726,7 +1778,6 @@
             // A score of 0 means minimum privacy (highly unique fingerprint).
             let sumOfSimilarityRatios = 0;
             let countOfRatios = 0;
-
             const calculateSectionScore = (section) => {
                 for (const key in section) {
                     if (typeof section[key].similarity === 'number') {
@@ -1791,8 +1842,7 @@
             detailedTrackerResults = {}; // Reset detailed results
             advancedFingerprintData = null; // Reset advanced fingerprint data
             testStepsContainer.innerHTML = '';
-            testComplete.classList.add('hidden');
-            // Clear previous results display
+            testComplete.classList.add('hidden'); // Clear previous results display
             resultsSummaryContainer.innerHTML = '';
             resultsDetailedContainer.innerHTML = '';
             trackerBreakdownContainer.innerHTML = `<p id="trackerBreakdownLoading" class="text-gray-500 dark:text-gray-400 italic">${getString('statusInitializing')}...</p>`; // Reset breakdown section
@@ -1840,8 +1890,7 @@
                 console.error(`Error during test ${testName}:`, error);
                 const result = { success: false, score: 0, message: getString('statusError'), details: error.message };
                 testResults[test.id] = { ...result, name: testName, nameKey: test.nameKey, weight: test.weight };
-                updateStepUI(test.id, result);
-                // No score added for failed tests
+                updateStepUI(test.id, result); // No score added for failed tests
                 testProgress.style.width = `${Math.round(((currentTestIndex + 1) / tests.length) * 100)}%`;
                 currentTestIndex++;
                 currentTestTimeout = setTimeout(runNextTest, 200);
@@ -1947,7 +1996,6 @@
 
                     const summaryStatus = getString('blockedRatioText', { blocked: categoryData.blocked, total: categoryData.total });
                     const summaryIconClass = categoryData.blocked === categoryData.total ? 'result-success fas fa-check-circle' : 'result-warning fas fa-exclamation-triangle';
-
                     detailsCatEl.innerHTML = `
                         <summary class="p-3 cursor-pointer font-semibold flex justify-between items-center">
                             <span><i class="result-icon ${summaryIconClass} mr-2"></i>${categoryName}</span>
@@ -1957,7 +2005,6 @@
                         <div class="details-content border-t border-gray-200 dark:border-gray-600 px-3 pt-3 pb-1 max-h-60 overflow-y-auto">
                         </div>
                     `;
-
                     const contentDiv = detailsCatEl.querySelector('.details-content');
                     if (contentDiv) {
                         for (const domain in categoryData.results) {
@@ -2076,7 +2123,6 @@
                 if (exposedCount <= 2) exposureLevelKey = "assessmentLow";
                 if (exposedCount >= 5) exposureLevelKey = "assessmentHigh";
                 const exposureLevelText = getString(exposureLevelKey);
-
                 let assessmentText = getString('assessmentOverall', { level: `<strong class="dark:text-orange-200">${exposureLevelText}</strong>`, count: exposedCount });
                 let fpDataFound = false;
                 // No longer trying to collect all fingerprint data here, it's in advancedFingerprintData
